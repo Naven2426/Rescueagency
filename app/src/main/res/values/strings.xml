@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Rescueagency</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="helper_text_for_sos_dialog">Your Alert has been Recorded. Rescue Team will contact you Shortly</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="next">Next</string>
+    <string name="gender">Gender</string>
+    <string name="d_o_b">D.O.B</string>
+    <string name="email">Email</string>
+    <string name="name">Name</string>
+    <string name="sign_up">Sign UP</string>
+    <string name="mobile">Mobile</string>
+    <string name="address">Address</string>
+    <string name="textview">TextView</string>
+    <string name="User" />
+    <string name="update_profile">Update Profile</string>
+    <string name="save_profile">Save profile</string>
+    <string name="changee_password">Changee password</string>
+    <string name="change_password">Change password</string>
+    <string name="current_password">Current Password</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="tell_us_what_can_be_improved">Tell us what can be improved?</string>
+    <string name="feedback">FEEDBACK</string>
+    <string name="submit">Submit</string>
+</resources>

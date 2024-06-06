@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/lightsandal"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".main_menu_fragments.HomeFragment">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        app:cardBackgroundColor="@color/sandal"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/id_booking_back_arrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/backarrow"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"/>
+
+            <TextView
+                android:id="@+id/new_request"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="New Request"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_centerInParent="true"/>
+
+            <TextView
+                android:id="@+id/info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="INFO"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:layout_below="@id/new_request"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"/>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id_request_choose_team_button"
+        android:layout_width="300dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="60dp"
+        android:background="@drawable/roundstyle"
+        android:text="Choose Rescue team"
+        android:textColor="@color/white" >
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <TextView
+        android:id="@+id/id_request_describe_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:text="Describe"
+        android:textSize="18dp"
+        android:textColor="@color/black"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/id_edittext_request_describe"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:background="@drawable/edittext"
+        android:paddingLeft="5dp"
+        android:paddingTop="5dp"
+        android:inputType="textMultiLine"
+        android:gravity="top"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/id_request_proof"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="30dp"
+        android:text="Proof"
+        android:textSize="18dp"
+        android:textColor="@color/black"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        android:background="@drawable/dotted_stoke"
+        android:layout_height="120dp">
+
+        <ImageView
+            android:id="@+id/id_request_proof_imageView"
+            android:layout_width="93dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:src="@mipmap/imageupload"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/id_request_text_addimage"
+            android:layout_width="92dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+
+            android:text="Add Image"
+            android:textColor="@color/ahs"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_request_proof_imageView"
+            tools:ignore="MissingConstraints" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id_request_Submit_button"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="50dp"
+        android:background="@drawable/roundstyle"
+        android:text="Submit Request"
+        android:textColor="@color/white" >
+    </androidx.appcompat.widget.AppCompatButton>
+
+
+
+
+</LinearLayout>

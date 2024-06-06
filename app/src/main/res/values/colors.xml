@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="green">#4BDF15</color>
+    <color name="gray">#8F8F8C</color>
+    <color name="blue">#2FCF9A</color>
+    <color name="lightred">#F41246</color>
+    <color name="sandal">#E3E2C3</color>
+    <color name="primaryColor">#E3E2C3</color>
+    <color name="lightsandal">#F0EFE2</color>
+    <color name="ligthgreen">#5FBDB0</color>
+    <color name="red">#F82929</color>
+    <color name="card_stroke_color">#000000</color>
+    <color name="hex">#8ED1ED</color>
+    <color name="darksandal">#939161</color>
+    <color name="ahs">#CCCCCC</color>
+</resources>

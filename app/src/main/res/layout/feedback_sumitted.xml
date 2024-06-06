@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="450dp"
+    android:layout_gravity="center"
+    android:id="@+id/id_feedback_submitted"
+    android:background="@drawable/corner_radius">
+
+    <ImageView
+        android:id="@+id/id_feedback_successful"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="12dp"
+        android:src="@mipmap/feedback" />
+
+    <TextView
+        android:id="@+id/id_feedback_text"
+        android:layout_width="392dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/id_feedback_successful"
+        android:layout_marginTop="43dp"
+        android:text="Feedback Submitted Successful!"
+        android:textAlignment="center"
+        android:textColor="@color/hex"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/id_feedback_text"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="15dp">
+
+
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/id_feedback_back_to_notification"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id_feedback_text"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="58dp"
+        android:layout_marginTop="57dp"
+        android:background="@drawable/roundstyle3"
+        android:text="Back To Notification"
+        android:textColor="@color/hex" />
+
+
+</RelativeLayout>
