@@ -25,4 +25,5 @@ public interface MYAPI {
 
     @GET("/category/getcategory")
     Call<GetCategoryResponse> getCategory();
+    //added
 }
