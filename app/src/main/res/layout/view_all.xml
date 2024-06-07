@@ -7,8 +7,7 @@
     android:gravity="center"
     android:background="@color/lightsandal"
     android:layout_height="130dp"
-    android:layout_marginTop="10dp"
-    tools:context=".main_menu_fragments.HomeFragment">
+    android:layout_marginTop="10dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="170dp"

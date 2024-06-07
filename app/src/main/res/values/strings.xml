@@ -25,4 +25,5 @@
     <string name="tell_us_what_can_be_improved">Tell us what can be improved?</string>
     <string name="feedback">FEEDBACK</string>
     <string name="submit">Submit</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

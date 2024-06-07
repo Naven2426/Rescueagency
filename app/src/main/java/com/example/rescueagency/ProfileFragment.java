@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -18,11 +20,67 @@ import com.example.rescueagency.LoginActivityFragments.LoginFragment;
 
 public class ProfileFragment extends Fragment {
 
+    AppCompatButton logoutButton;
+    AppCompatButton updateButton;
+    AppCompatButton changepassword;
+    //imageview
+    AppCompatImageView profilename;
+    AppCompatImageView profileemail;
+    AppCompatImageView profilephone;
+    AppCompatImageView profileaddress;
+    AppCompatImageView profiledob;
+    //textview
+    AppCompatTextView nameAppCompatTextView;
+    AppCompatTextView emailAppCompatTextView;
+    AppCompatTextView phoneAppCompatTextView;
+    AppCompatTextView addressAppCompatTextView;
+    AppCompatTextView dobAppCompatTextView;
+
+    String userId;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
-        AppCompatButton logoutButton = view.findViewById(R.id.id_profile_logout);
+        init(view);
+        clickListener();
+        setText();
+        return view;
+    }
+    private void init(View view){
+        //appcompat button
+        updateButton = view.findViewById(R.id.id_profile_update_button);
+        logoutButton = view.findViewById(R.id.id_profile_logout);
+        changepassword = view.findViewById(R.id.id_profile_change_password_button);
+        //textview
+        nameAppCompatTextView= view.findViewById(R.id.id_profile_name);
+        emailAppCompatTextView = view.findViewById(R.id.id_profile_email_id);
+        phoneAppCompatTextView = view.findViewById(R.id.id_profile_mobile_number);
+        addressAppCompatTextView = view.findViewById(R.id.id_profile_address_id);
+        dobAppCompatTextView = view.findViewById(R.id.id_profile_dob_id);
+        //imageview
+        profilename = view.findViewById(R.id.id_profile_image);
+        profileemail = view.findViewById(R.id.id_profile_email);
+        profilephone = view.findViewById(R.id.id_profile_mobile);
+        profileaddress = view.findViewById(R.id.id_profile_address);
+        profiledob = view.findViewById(R.id.id_profile_dob);
+
+    }
+    private void setText(){
+        SharedPreferences sf=getActivity().getSharedPreferences(Constant.SF_NAME,MODE_PRIVATE);
+        userId=sf.getString(Constant.SF_USERID,null);
+        String name=sf.getString(Constant.SF_NAME,null);
+        String email=sf.getString(Constant.SF_EMAIL,null);
+        String phone=sf.getString(Constant.SF_PHONE,null);
+        String address=sf.getString(Constant.SF_ADDRESS,null);
+        String dob=sf.getString(Constant.SF_DOB,null);
+        String username=sf.getString(Constant.SF_USERNAME,null);
+        nameAppCompatTextView.setText(name);
+        emailAppCompatTextView.setText(email);
+        phoneAppCompatTextView.setText(phone);
+        addressAppCompatTextView.setText(address);
+        dobAppCompatTextView.setText(dob);
+
+    }
+    private void clickListener(){
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -33,7 +91,6 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        AppCompatButton updateButton = view.findViewById(R.id.id_profile_update_button);
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -47,7 +104,6 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        AppCompatButton changepassword = view.findViewById(R.id.id_profile_change_password_button);
         changepassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,7 +116,5 @@ public class ProfileFragment extends Fragment {
 
             }
         });
-
-        return view;
     }
 }
