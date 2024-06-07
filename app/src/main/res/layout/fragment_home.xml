@@ -30,7 +30,7 @@
         app:layout_constraintStart_toEndOf="@+id/GfG_full_logo"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
+    <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/GfG_full_loo"
         android:layout_width="30dp"
         android:layout_height="30dp"
@@ -38,7 +38,9 @@
         android:layout_marginEnd="48dp"
         android:src="@mipmap/bell"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent" >
+
+    </androidx.appcompat.widget.AppCompatImageView>
 
     <LinearLayout
         android:id="@+id/linearLayout3"

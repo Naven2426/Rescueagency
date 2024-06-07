@@ -57,13 +57,17 @@ public class UserRescueTeamMemberListHolder extends RecyclerView.Adapter<UserRes
     public class MyUserRescueTeamMemberListHolder extends RecyclerView.ViewHolder {
 
         TextView textView;
+        TextView textexperience;
+        TextView textposition;
         ImageView imageView;
         CardView cardView;
 
         public MyUserRescueTeamMemberListHolder(@NonNull View itemView) {
             super(itemView);
             cardView = itemView.findViewById(R.id.id_rescue_team_view_member_card);
-            textView = itemView.findViewById(R.id.id_rescue_team_view_member_name_value);
+            textView = itemView.findViewById(R.id.id_rescue_team_view_member_name);
+            textexperience = itemView.findViewById(R.id.id_rescue_team_view_member_experience);
+            textposition = itemView.findViewById(R.id.id_rescue_team_view_member_position);
             imageView = itemView.findViewById(R.id.id_rescue_team_view_member_image);
         }
     }

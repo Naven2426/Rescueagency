@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".RescueTeamSelcetionInMapFragment">
+    tools:context=".TrackingMapFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,7 +14,7 @@
         android:background="@color/sandal">
 
         <ImageView
-            android:id="@+id/id_map_back_button"
+            android:id="@+id/id_tracking_map_back_button"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginStart="32dp"
@@ -24,23 +24,23 @@
             map:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/mapsHeaderTv"
+            android:id="@+id/id_tracking_map_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginStart="36dp"
+            android:layout_marginStart="96dp"
             android:layout_marginTop="56dp"
-            android:text="Choose agency near by you"
+            android:text="Tracking"
             android:textColor="@color/black"
             android:textSize="20dp"
             android:textStyle="bold"
-            map:layout_constraintStart_toEndOf="@+id/id_map_back_button"
+            map:layout_constraintStart_toEndOf="@+id/id_tracking_map_back_button"
             map:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <fragment
-        android:id="@+id/map"
+        android:id="@+id/id_map_tracking"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

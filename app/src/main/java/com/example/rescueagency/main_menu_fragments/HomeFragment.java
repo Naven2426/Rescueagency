@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.rescueagency.BookingFragment;
+import com.example.rescueagency.NotificationFragment;
 import com.example.rescueagency.R;
 
 
@@ -23,6 +24,7 @@ public class HomeFragment extends Fragment {
 
     CardView cardView1, cardView2, cardView3, cardView4, cardView5;
     AppCompatImageView sos_main_emergency;
+    AppCompatImageView notificationButton;
     @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -38,6 +40,7 @@ public class HomeFragment extends Fragment {
 
 
         sos_main_emergency=view.findViewById(R.id.id_sos_alert_img);
+        notificationButton=view.findViewById(R.id.GfG_full_loo);
         sos_main_emergency.setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View view) {
@@ -60,8 +63,15 @@ public class HomeFragment extends Fragment {
               }
         });
 
+        notificationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction transaction=getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.setCustomAnimations(R.anim.enter_from_left,R.anim.exit_to_right);
+                transaction.replace(R.id.frameLayout,new NotificationFragment()).addToBackStack(null).commit();
 
-
+            }
+            });
 
 
         cardView1.setOnClickListener(new View.OnClickListener() {

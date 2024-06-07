@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:background="@color/lightsandal"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".main_menu_fragments.HomeFragment">
+    android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
