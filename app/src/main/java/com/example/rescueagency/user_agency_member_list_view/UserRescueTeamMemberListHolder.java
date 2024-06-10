@@ -1,5 +1,6 @@
 package com.example.rescueagency.user_agency_member_list_view;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -19,9 +20,9 @@ import java.util.List;
 
 public class UserRescueTeamMemberListHolder extends RecyclerView.Adapter<UserRescueTeamMemberListHolder.MyUserRescueTeamMemberListHolder> {
 
-    List<View_all> list;
+    List<user_rescue_team_member_list> list;
     FragmentActivity activity;
-    public UserRescueTeamMemberListHolder(List<View_all> list, FragmentActivity activity) {
+    public UserRescueTeamMemberListHolder(List<user_rescue_team_member_list> list, FragmentActivity activity) {
         this.list = list;
         this.activity = activity;
     }
@@ -31,14 +32,14 @@ public class UserRescueTeamMemberListHolder extends RecyclerView.Adapter<UserRes
     @NonNull
     @Override
     public MyUserRescueTeamMemberListHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = activity.getLayoutInflater().inflate(R.layout.user_rescue_team_member_list,
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.user_rescue_team_member_list,
                 parent, false);
-        return null;
+        return new MyUserRescueTeamMemberListHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyUserRescueTeamMemberListHolder holder, int position) {
-        View_all data=list.get(position);
+        user_rescue_team_member_list data=list.get(position);
         holder.textView.setText(data.getText());
         Glide.with(activity).load(data.getImage()).placeholder(R.mipmap.imagenotfound)
                 .error(R.mipmap.error).into(holder.imageView);

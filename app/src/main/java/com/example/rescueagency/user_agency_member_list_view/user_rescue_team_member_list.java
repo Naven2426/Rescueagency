@@ -1,5 +1,7 @@
 package com.example.rescueagency.user_agency_member_list_view;
 
+import androidx.fragment.app.FragmentActivity;
+
 public class user_rescue_team_member_list {
 
     String name;
@@ -14,6 +16,9 @@ public class user_rescue_team_member_list {
         this.image = image;
         this.position = position;
 
+    }
+
+    public user_rescue_team_member_list(FragmentActivity fragmentActivity) {
     }
 
     public  String getName() { return name;}

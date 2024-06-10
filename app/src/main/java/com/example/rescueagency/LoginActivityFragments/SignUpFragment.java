@@ -16,16 +16,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Adapter;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 import android.widget.DatePicker;
 
 
+import com.example.rescueagency.Constant;
 import com.example.rescueagency.R;
+import com.example.rescueagency.databinding.FragmentBookingBinding;
+import com.example.rescueagency.databinding.FragmentSignUpBinding;
 
 import java.util.Calendar;
+import java.util.ConcurrentModificationException;
 
 public class SignUpFragment extends Fragment {
 
@@ -34,14 +42,13 @@ public class SignUpFragment extends Fragment {
     private RadioButton radioButtonGender;
     private String name, mobile, email, address, dateOfBirth,gender;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sign_up, container, false);
         textField(view);
         radioGroup = view.findViewById(R.id.groupradio);
-
+        
         @SuppressLint({"MissingInflatedId", "LocalSuppress"})
         AppCompatButton button = view.findViewById(R.id.id_button_signup_next);
         button.setOnClickListener(new View.OnClickListener() {

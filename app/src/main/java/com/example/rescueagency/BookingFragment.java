@@ -1,5 +1,6 @@
 package com.example.rescueagency;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatButton;
@@ -15,22 +16,21 @@ import android.widget.ImageView;
 
 import com.example.rescueagency.LoginActivityFragments.LoginFragment;
 import com.example.rescueagency.R;
+import com.example.rescueagency.databinding.FragmentBookingBinding;
 import com.example.rescueagency.main_menu_fragments.HomeFragment;
 
 
 public class BookingFragment extends Fragment {
-
-    private AppCompatEditText describe;
-    AppCompatButton appCompatButton;
-    AppCompatButton chooseTeamButton;
-
+    FragmentBookingBinding binding;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_booking, container, false);
-
-        appCompatButton = view.findViewById(R.id.id_request_Submit_button);
-        appCompatButton.setOnClickListener(new View.OnClickListener() {
+        binding = FragmentBookingBinding.inflate(inflater,container,false);
+        clickListener();
+        return binding.getRoot();
+    }
+    private void clickListener(){
+        binding.idRequestSubmitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -40,31 +40,26 @@ public class BookingFragment extends Fragment {
             }
         });
 
-        chooseTeamButton = view.findViewById(R.id.id_request_choose_team_button);
-        chooseTeamButton.setOnClickListener(new View.OnClickListener() {
+        binding.idRequestChooseTeamButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
                 transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right,
                         R.anim.enter_from_right, R.anim.exit_to_left);
-                transaction.replace(R.id.frameLayout, new RescueTeamSelcetionInMapFragment()).commit();
+                transaction.replace(R.id.frameLayout, new MapsFragment()).addToBackStack("RescueTeamSelcetionInMapFragment").commit();
+//                Intent intent=new Intent(requireContext(),MapsActivity.class);
+//                startActivity(intent);
             }
         });
 
 
-        ImageView imageView = view.findViewById(R.id.id_booking_back_arrow);
-        imageView.setOnClickListener(new View.OnClickListener() {
+        binding.idBookingBackArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Navigate back to the previous fragment
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right,
-                        R.anim.enter_from_right, R.anim.exit_to_left);
-                transaction.replace(R.id.frameLayout, new HomeFragment()).commit();
+                FragmentManager transaction = requireActivity().getSupportFragmentManager();
+                transaction.popBackStack();
             }
         });
-
-
-        return view;
     }
 }

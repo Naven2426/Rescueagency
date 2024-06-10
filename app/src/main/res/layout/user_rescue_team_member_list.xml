@@ -5,15 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:gravity="center"
-    android:background="@color/lightsandal"
     android:layout_height="130dp"
     android:layout_marginTop="10dp"
     tools:context=".main_menu_fragments.HomeFragment">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/id_rescue_team_view_member_card"
-        android:layout_width="350dp"
-        android:layout_height="75dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:radius="16dp"
         app:cardBackgroundColor="@color/ahs"
         app:cardCornerRadius="12dp"
@@ -23,72 +22,72 @@
 
 
         <TextView
+            android:id="@+id/id_rescue_team_view_member_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/id_rescue_team_view_member_name"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="7dp"
             android:text="Name :"
             android:textColor="@color/black"
-            android:textSize="17sp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="7dp">
+            android:textSize="17sp">
 
         </TextView>
 
         <TextView
+            android:id="@+id/id_rescue_team_view_member_name_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/id_rescue_team_view_member_name_value"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="7dp"
             android:text="John"
             android:textColor="@color/black"
-            android:textSize="17sp"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="7dp">
+            android:textSize="17sp">
 
         </TextView>
 
 
         <TextView
+            android:id="@+id/id_rescue_team_view_member_experience"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/id_rescue_team_view_member_experience"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="40dp"
             android:text="Experience :"
             android:textColor="@color/black"
-            android:textSize="17sp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="40dp">
+            android:textSize="17sp">
 
         </TextView>
 
         <TextView
+            android:id="@+id/id_rescue_team_view_member_experience_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/id_rescue_team_view_member_experience_value"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="40dp"
             android:text="6 years"
             android:textColor="@color/black"
-            android:textSize="17sp"
-            android:layout_marginLeft="120dp"
-            android:layout_marginTop="40dp">
+            android:textSize="17sp">
 
         </TextView>
 
         <ImageView
+            android:id="@+id/id_rescue_team_view_member_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/id_rescue_team_view_member_image"
-            android:src="@mipmap/agency_member_profile"
-            android:layout_marginLeft="280dp">
+            android:layout_marginLeft="280dp"
+            android:src="@mipmap/agency_member_profile">
 
         </ImageView>
 
         <TextView
+            android:id="@+id/id_rescue_team_view_member_position"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/id_rescue_team_view_member_position"
+            android:layout_marginLeft="280dp"
+            android:layout_marginTop="50dp"
             android:text="Position"
             android:textColor="@color/black"
-            android:textSize="17sp"
-            android:layout_marginLeft="280dp"
-            android:layout_marginTop="50dp">
+            android:textSize="17sp">
             >
 
         </TextView>

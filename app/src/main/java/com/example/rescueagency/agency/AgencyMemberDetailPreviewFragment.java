@@ -1,4 +1,4 @@
-package com.example.rescueagency;
+package com.example.rescueagency.agency;
 
 import android.os.Bundle;
 
@@ -8,12 +8,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class RescueTeamDetailFragment extends Fragment {
+import com.example.rescueagency.R;
+
+
+public class AgencyMemberDetailPreviewFragment extends Fragment {
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_rescue_team_detail, container, false);
+        return inflater.inflate(R.layout.fragment_agency_member_detail_preview, container, false);
     }
 }

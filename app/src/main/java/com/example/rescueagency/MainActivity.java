@@ -46,7 +46,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             transaction.replace(R.id.frameLayout,profileFragment).commit();
         }
         else if(menu==R.id.history){
-
+            RequestHistoryFragment requestFragment=new RequestHistoryFragment();
+            transaction.replace(R.id.frameLayout,requestFragment).commit();
         }
         return true;
     }

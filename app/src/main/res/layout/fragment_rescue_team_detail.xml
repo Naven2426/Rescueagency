@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:background="@color/white"
+    tools:context=".user_agency_member_list_view.RescueTeamDetailFragment">
+
 
     <ImageView
         android:id="@+id/id_rescue_team_view_back_button"
@@ -20,7 +23,7 @@
         android:id="@+id/id_rescue_team_view_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="84dp"
+        android:layout_marginStart="75dp"
         android:layout_marginTop="56dp"
         android:text="Rescue Team"
         android:textColor="@color/black"
@@ -48,7 +51,7 @@
         android:layout_height="25dp"
         android:layout_marginStart="36dp"
         android:layout_marginTop="12dp"
-        android:radius="16dp"
+        android:radius="10dp"
         app:cardBackgroundColor="@color/green"
         app:cardCornerRadius="12dp"
         app:cardElevation="4dp"
@@ -142,13 +145,13 @@
         android:id="@+id/id_rescue_team_view_response_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
-        android:text=". Response time : 20 mins"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="8dp"
+        android:text="Response time : 20 mins"
         android:textColor="@color/black"
         android:textSize="17sp"
-        app:layout_constraintStart_toEndOf="@+id/id_rescue_team_view_service_years"
-        app:layout_constraintTop_toBottomOf="@+id/id_rescue_team_view_services" >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_rescue_team_view_service_years">
 
     </TextView>
 
@@ -162,7 +165,7 @@
         android:textColor="@color/black"
         android:textSize="17sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_rescue_team_view_service_years" >
+        app:layout_constraintTop_toBottomOf="@+id/id_rescue_team_view_response_time" >
 
     </TextView>
 
@@ -210,14 +213,9 @@
 
     </TextView>
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/id_rescue_team_view_nested_scroll_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/id_rescue_team_view_team_members">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/id_rescue_team_view_member_list"
+            android:id="@+id/idRescueTeamRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
@@ -225,23 +223,22 @@
 
         </androidx.recyclerview.widget.RecyclerView>
 
-    </androidx.core.widget.NestedScrollView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/id_rescue_team_view_confirm_agency"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="30dp"
-        android:layout_marginTop="40dp"
         android:background="@drawable/roundstyle"
         android:text="Confirm Agency"
         android:textColor="@color/white"
         android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_rescue_team_view_nested_scroll_view">
+        app:layout_constraintTop_toBottomOf="@+id/idRescueTeamRecyclerView">
 
     </androidx.appcompat.widget.AppCompatButton>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

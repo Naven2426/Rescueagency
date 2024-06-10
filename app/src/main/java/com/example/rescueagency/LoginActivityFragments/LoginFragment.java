@@ -34,7 +34,6 @@ public class LoginFragment extends Fragment {
 
     private AppCompatEditText personName, personPassword;
     private String name, password;
-
     AppCompatButton appCompatButton;
     TextView signup;
     SharedPreferences sharedPreferences;
@@ -48,10 +47,10 @@ public class LoginFragment extends Fragment {
         textField(view);
         appCompatButton = view.findViewById(R.id.Login_button);
         signup = view.findViewById(R.id.SignUPNewAccount);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(requireActivity(), R.layout.dropdown_item, Constant.LOGIN_TYPE);
-        AutoCompleteTextView autoCompleteTextView = view.findViewById(R.id.Login_text);
-        autoCompleteTextView.setThreshold(1);
-        autoCompleteTextView.setAdapter(arrayAdapter);
+//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(requireActivity(), R.layout.dropdown_item, Constant.LOGIN_TYPE);
+//        AutoCompleteTextView autoCompleteTextView = view.findViewById(R.id.Login_text);
+//        autoCompleteTextView.setThreshold(1);
+//        autoCompleteTextView.setAdapter(arrayAdapter);
         sharedPreferences = requireActivity().getSharedPreferences(Constant.SF_NAME, 0);
         editor = sharedPreferences.edit();
         appCompatButton.setOnClickListener(new View.OnClickListener() {
@@ -95,7 +94,6 @@ public class LoginFragment extends Fragment {
 
 
     }
-
 
     private void apiCall(String username, String password){
         Call<SignUpResponse> responseCall= RestClient.makeAPI().login(username, password);

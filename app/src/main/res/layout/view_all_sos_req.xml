@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:background="@color/lightsandal"
+    android:layout_height="130dp"
+    android:layout_marginTop="10dp">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="300dp"
+        android:id="@+id/viewAllSOSCardView"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        app:cardBackgroundColor="@color/sandal"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="10dp"
+        app:cardMaxElevation="12dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/id_agency_sos_req_name"
+            android:text="Name :"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/black"
+            />
+
+        <TextView
+            android:id="@+id/id_agency_sos_req_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Date Sent :"
+            android:textColor="@color/black"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/id_agency_sos_req_location"
+            android:text="Location :"
+            android:layout_marginTop="52dp"
+            android:layout_marginLeft="15dp"
+            android:textColor="@color/black"
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/id_agency_sos_req_name_detail"
+            android:text="ABC"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="65dp"
+            android:textColor="@color/black">
+
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/id_agency_sos_req_date_detail"
+            android:text="12/12/2022"
+            android:textColor="@color/black"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="85dp">
+
+        </TextView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginLeft="90dp"
+            app:cardBackgroundColor="@color/hex"
+            app:cardCornerRadius="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View"
+                android:textColor="@color/white"
+                android:layout_gravity="center">
+
+            </TextView>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/id_agency_sos_req_info"
+            android:layout_width="30dp"
+            android:layout_height="28dp"
+            android:layout_marginLeft="235dp"
+            android:layout_marginTop="25dp"
+            android:src="@mipmap/info">
+
+        </androidx.appcompat.widget.AppCompatImageView>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
