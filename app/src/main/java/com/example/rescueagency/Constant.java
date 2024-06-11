@@ -1,7 +1,9 @@
 package com.example.rescueagency;
 
 public class Constant {
-    public static final String[] LOGIN_TYPE= {"USER","ADMIN","AGENT"};
+    public static final String LOGIN_AS_USER= "USER";
+    public static final String LOGIN_AS_AGENCY= "AGENCY";
+    public static final String LOGIN_AS_ADMIN= "ADMIN";
     public static final String SF_NAME="SF";
     public static final String SF_USERNAME="SF_USERNAME";
     public static final String SF_USERID="SF_USERID";
@@ -10,4 +12,5 @@ public class Constant {
     public static final String SF_ADDRESS="SF_ADDRESS";
     public static final String SF_DOB="SF_DOB";
     public static final String SF_GENDER="SF_GENDER";
+    public static final String USER_TYPE="USER";
 }

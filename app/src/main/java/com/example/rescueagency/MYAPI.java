@@ -17,7 +17,7 @@ public interface MYAPI {
                                 @Query("address")String address,@Query("dob")String dob,
                                 @Query("gender")String gender,
                                 @Query("username")String username,
-                                @Query("password")String password);
+                                @Query("password")String password,@Query("user_type")String user_type);
 
     @GET("/use/login")
     Call<SignUpResponse> login(@Query("username")String username,

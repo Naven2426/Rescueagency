@@ -4,14 +4,18 @@
     <item
         android:id="@+id/home"
         android:title=""
-        android:enabled="true"
-        app:showAsAction="ifRoom"
         android:icon="@drawable/home_vector"
         />
     <item
-        android:id="@+id/history"
+        android:id="@+id/userHistory"
         android:title=""
         android:icon="@mipmap/history"
+        />
+    <item
+        android:id="@+id/adminAddAgency"
+        android:title=""
+        android:visible="false"
+        android:icon="@mipmap/addagency"
         />
     <item
         android:id="@+id/profile"

@@ -18,6 +18,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.rescueagency.Constant;
 import com.example.rescueagency.R;
 import com.example.rescueagency.RestClient;
 import com.example.rescueagency.apiresponse.SignUpResponse;
@@ -49,7 +50,7 @@ private String username, password, confirmPassword;
                         String address=bundle.getString("address");
                         String dob=bundle.getString("dateOfBirth");
                         String gender=bundle.getString("gender");
-                        apiCall(name,phone,email,address,dob,gender,username,password);
+                        apiCall(name,phone,email,address,dob,gender,username,password, Constant.USER_TYPE);
                     }
                     else{
                         Toast.makeText(getContext(), "Values are null", Toast.LENGTH_SHORT).show();
@@ -74,9 +75,9 @@ private String username, password, confirmPassword;
     return view;
     }
     private void apiCall(String name, String phone, String email,String address,String dob,String gender,
-                         String username, String password){
+                         String username, String password,String userType){
         Call<SignUpResponse> responseCall= RestClient.makeAPI().signUp(name, phone, email,
-                address, dob,gender, username, password);
+                address, dob,gender, username, password,userType);
         responseCall.enqueue(new Callback<SignUpResponse>() {
             @Override
             public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {

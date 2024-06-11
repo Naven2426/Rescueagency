@@ -1,6 +1,7 @@
 package com.example.rescueagency.LoginActivityFragments;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -47,11 +48,8 @@ public class LoginFragment extends Fragment {
         textField(view);
         appCompatButton = view.findViewById(R.id.Login_button);
         signup = view.findViewById(R.id.SignUPNewAccount);
-//        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(requireActivity(), R.layout.dropdown_item, Constant.LOGIN_TYPE);
-//        AutoCompleteTextView autoCompleteTextView = view.findViewById(R.id.Login_text);
-//        autoCompleteTextView.setThreshold(1);
-//        autoCompleteTextView.setAdapter(arrayAdapter);
-        sharedPreferences = requireActivity().getSharedPreferences(Constant.SF_NAME, 0);
+
+        sharedPreferences = requireActivity().getSharedPreferences(Constant.SF_NAME, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
         appCompatButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,10 +63,10 @@ public class LoginFragment extends Fragment {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
                 transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right,
                         R.anim.enter_from_right, R.anim.exit_to_left);
-                transaction.replace(R.id.loginFrameLayout, new SignUpFragment()).addToBackStack("signup").commit();
+                transaction.replace(R.id.loginFrameLayout, new SignUpFragment()).addToBackStack("SignUpFragment").commit();
             }
         });
         return view;
@@ -90,10 +88,7 @@ public class LoginFragment extends Fragment {
             private void textField(View view) {
                 personName = view.findViewById(R.id.id_edittext_login_username_Text);
                 personPassword = view.findViewById(R.id.id_edittext_login_password_Text);
-
-
-
-    }
+           }
 
     private void apiCall(String username, String password){
         Call<SignUpResponse> responseCall= RestClient.makeAPI().login(username, password);
@@ -110,17 +105,18 @@ public class LoginFragment extends Fragment {
                         editor.putString(Constant.SF_PHONE,data.getPhone());
                         editor.putString(Constant.SF_DOB,data.getDob());
                         editor.putString(Constant.SF_ADDRESS,data.getAddress());
+                        editor.putString(Constant.USER_TYPE,data.getUser_type());
                         editor.apply();
+                        Log.e("TAG", "onResponse: "+response.body().getUser().getUser_type());
                         Toast.makeText(getContext(), signUpResponse.getMessage(), Toast.LENGTH_SHORT).show();
-                        getContext().startActivity(new Intent(getContext(), MainActivity.class));
-                        getActivity().finish();
+                        requireContext().startActivity(new Intent(getContext(), MainActivity.class));
+                        requireActivity().finish();
                     }
                     else{
                         Toast.makeText(getContext(), signUpResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<SignUpResponse> call, Throwable t) {
                 Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();

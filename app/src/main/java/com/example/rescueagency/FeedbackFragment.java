@@ -23,7 +23,7 @@ AppCompatButton  feedback_button;
         feedback_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Dialog dialog = new Dialog(getContext());
+                Dialog dialog = new Dialog(requireContext());
                 dialog.setContentView(R.layout.feedback_sumitted);
                 dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 dialog.setCancelable(false);

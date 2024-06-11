@@ -40,7 +40,7 @@ public class UserRescueTeamMemberListHolder extends RecyclerView.Adapter<UserRes
     @Override
     public void onBindViewHolder(@NonNull MyUserRescueTeamMemberListHolder holder, int position) {
         user_rescue_team_member_list data=list.get(position);
-        holder.textView.setText(data.getText());
+        holder.textposition.setText(data.getText());
         Glide.with(activity).load(data.getImage()).placeholder(R.mipmap.imagenotfound)
                 .error(R.mipmap.error).into(holder.imageView);
         holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +57,7 @@ public class UserRescueTeamMemberListHolder extends RecyclerView.Adapter<UserRes
 
     public class MyUserRescueTeamMemberListHolder extends RecyclerView.ViewHolder {
 
-        TextView textView;
+        TextView textname;
         TextView textexperience;
         TextView textposition;
         ImageView imageView;
@@ -66,7 +66,7 @@ public class UserRescueTeamMemberListHolder extends RecyclerView.Adapter<UserRes
         public MyUserRescueTeamMemberListHolder(@NonNull View itemView) {
             super(itemView);
             cardView = itemView.findViewById(R.id.id_rescue_team_view_member_card);
-            textView = itemView.findViewById(R.id.id_rescue_team_view_member_name);
+            textname = itemView.findViewById(R.id.id_rescue_team_view_member_name);
             textexperience = itemView.findViewById(R.id.id_rescue_team_view_member_experience);
             textposition = itemView.findViewById(R.id.id_rescue_team_view_member_position);
             imageView = itemView.findViewById(R.id.id_rescue_team_view_member_image);

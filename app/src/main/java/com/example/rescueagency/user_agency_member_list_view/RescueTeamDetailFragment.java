@@ -42,12 +42,12 @@ public class RescueTeamDetailFragment extends Fragment {
     }
     private void recyclerView(){
         List<user_rescue_team_member_list> data=new ArrayList<>();
-        data.add(new user_rescue_team_member_list("5","dfa","asdf","asdfa"));
-        data.add(new user_rescue_team_member_list("5","dfa","asdf","asdfa"));
-        data.add(new user_rescue_team_member_list("5","dfa","asdf","asdfa"));
-        data.add(new user_rescue_team_member_list("5","dfa","asdf","asdfa"));
-        data.add(new user_rescue_team_member_list("5","dfa","asdf","asdfa"));
-        data.add(new user_rescue_team_member_list("5","dfa","asdf","asdfa"));
+        data.add(new user_rescue_team_member_list("Position","dfa","Name","asdfa"));
+        data.add(new user_rescue_team_member_list("Position","dfa","Name","asdfa"));
+        data.add(new user_rescue_team_member_list("Position","dfa","Name","asdfa"));
+        data.add(new user_rescue_team_member_list("Position","dfa","Name","asdfa"));
+        data.add(new user_rescue_team_member_list("Position","dfa","Name","asdfa"));
+        data.add(new user_rescue_team_member_list("Position","dfa","Name","asdfa"));
         binding.idRescueTeamRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         binding.idRescueTeamRecyclerView.setAdapter(new UserRescueTeamMemberListHolder(data,requireActivity()));
     }

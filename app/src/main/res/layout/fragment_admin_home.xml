@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.AdminHomeFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/AdminHomeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:layout_marginLeft="40dp"
+        android:text="HOME"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </androidx.appcompat.widget.AppCompatTextView>
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/idAdminAgencyToggleButtonGroup"
+        android:layout_width="331dp"
+        android:layout_height="60dp"
+        app:singleSelection="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/AdminHomeTV"
+        app:layout_constraintVertical_bias="0.065">
+
+
+        <Button
+            android:id="@+id/idAdminSelAgency"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="165dp"
+            android:layout_height="60dp"
+            android:text="Agency"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="164dp"
+            tools:layout_editor_absoluteY="266dp" />
+
+
+        <Button
+            android:id="@+id/idAdminSelUser"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="165dp"
+            android:layout_height="60dp"
+            android:text="User"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="170dp"
+            tools:layout_editor_absoluteY="341dp" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/idAdminAgencyRecyclerView"
+        android:layout_marginTop="32dp"
+        app:layout_constraintTop_toBottomOf="@+id/idAdminAgencyToggleButtonGroup"
+        tools:layout_editor_absoluteX="0dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

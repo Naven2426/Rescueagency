@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/lightsandal"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:background="@color/lightsandal"
+        android:layout_height="match_parent"
+        tools:context=".main_menu_fragments.HomeFragment">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:cardBackgroundColor="@color/sandal"
+            app:cardCornerRadius="10dp"
+            app:cardElevation="10dp"
+            app:cardMaxElevation="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/idAdminProfileImage"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="150dp"
+                    android:src="@mipmap/profile" />
+
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/idAdminProfileImageUpdate"
+                    android:layout_width="40dp"
+                    android:layout_height="42dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="136dp"
+                    android:layout_marginEnd="133dp"
+                    android:background="@drawable/roundstyle2"
+                    android:src="@mipmap/updateprofile" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/idAdminProfileUpdateB"
+                    android:layout_width="150dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/idAdminProfileImageUpdate"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginStart="38dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/roundstyle2"
+                    android:text="Update Profile"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:textSize="12dp"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/idAdminProfileChangePasswordB"
+                    android:layout_width="150dp"
+                    android:layout_height="35dp"
+                    android:layout_below="@+id/idAdminProfileImageUpdate"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="38dp"
+                    android:background="@drawable/roundstyle2"
+                    android:text="Change Password"
+                    android:textColor="@color/black"
+                    android:textSize="12dp"
+                    android:textStyle="bold" />
+
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+
+        <TextView
+            android:id="@+id/idAdminProfileAccountInfo"
+            android:layout_width="202dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:text="Account Info"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.248"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idAdminProfileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="Name"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.113"
+            app:layout_constraintStart_toEndOf="@+id/idAdminProfileNameImage"
+            app:layout_constraintTop_toBottomOf="@+id/idAdminProfileAccountInfo" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/idAdminProfileNameImage"
+            android:layout_width="51dp"
+            android:layout_height="49dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="36dp"
+            android:src="@mipmap/profilename"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idAdminProfileAccountInfo" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/idAdminProfileMobileImage"
+            android:layout_width="55dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="15dp"
+            android:src="@mipmap/mobile"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idAdminProfileNameImage" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idAdminProfileMobileNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="9876543210"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.147"
+            app:layout_constraintStart_toEndOf="@+id/idAdminProfileMobileImage"
+            app:layout_constraintTop_toBottomOf="@+id/idAdminProfileNameImage" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/idAdminProfileEmail"
+            android:layout_width="46dp"
+            android:layout_height="53dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="15dp"
+            android:src="@mipmap/email"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idAdminProfileMobileImage" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idAdminProfileEmailID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:text="markexa123@gmail.com"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.567"
+            app:layout_constraintStart_toEndOf="@+id/idAdminProfileEmail"
+            app:layout_constraintTop_toBottomOf="@+id/idAdminProfileMobileNumber" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/idAdminProfileAddress"
+            android:layout_width="46dp"
+            android:layout_height="53dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="15dp"
+            android:src="@mipmap/address"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idAdminProfileEmail" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idAdminProfileAddressName"
+            android:layout_width="95dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="40dp"
+            android:text="Chennai"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.154"
+            app:layout_constraintStart_toEndOf="@+id/idAdminProfileAddress"
+            app:layout_constraintTop_toBottomOf="@+id/idAdminProfileEmailID" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/idAdminProfileDOBIV"
+            android:layout_width="46dp"
+            android:layout_height="53dp"
+            android:layout_marginStart="56dp"
+            android:layout_marginTop="15dp"
+            android:src="@mipmap/dob"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idAdminProfileAddress" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idAdminProfileDOBTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="12-12-1999"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.163"
+            app:layout_constraintStart_toEndOf="@+id/idAdminProfileDOBIV"
+            app:layout_constraintTop_toBottomOf="@+id/idAdminProfileAddressName" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/idAdminProfileLogoutButton"
+            android:layout_width="217dp"
+            android:layout_height="50dp"
+            android:background="@drawable/roundstyle"
+            android:text="Logout"
+            android:textColor="@color/white"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            app:layout_constraintTop_toBottomOf="@+id/idAdminProfileDOBTV" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.core.widget.NestedScrollView>
+
