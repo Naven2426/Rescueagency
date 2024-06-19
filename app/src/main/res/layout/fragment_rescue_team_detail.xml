@@ -51,6 +51,11 @@
                 android:textSize="25sp"
                 android:textStyle="bold"/>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/id_rescue_team_view_rating_card"
                 android:layout_width="60dp"
@@ -64,25 +69,25 @@
                 app:cardMaxElevation="4dp">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="4dp">
 
-                    <ImageView
-                        android:id="@+id/id_rescue_team_view_rating"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="27dp"
-                        android:src="@mipmap/rating_star"/>
-
                     <TextView
                         android:id="@+id/id_rescue_team_view_rating_no"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:text="4.5"
                         android:textColor="@color/white"
-                        android:textSize="17sp"/>
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:id="@+id/id_rescue_team_view_rating"
+                        android:layout_width="25dp"
+                        android:layout_height="20dp"
+                        android:src="@mipmap/rating_star" />
+
 
                 </LinearLayout>
 
@@ -93,10 +98,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="13dp"
+                android:layout_marginTop="12dp"
                 android:text="100 reviews"
                 android:textColor="@color/black"
                 android:textSize="15sp"/>
+
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/id_rescue_team_view_address"
@@ -128,25 +136,63 @@
                 android:textColor="@color/black"
                 android:textSize="17sp"/>
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/id_rescue_team_view_response_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="8dp"
-                android:text="Response time : 20 mins"
+                android:text="Response time :"
                 android:textColor="@color/black"
                 android:textSize="17sp"/>
 
+                <TextView
+                    android:id="@+id/id_rescue_team_view_response_time_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="10dp"
+                    android:text="20 mins"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"/>
+
+
+            </LinearLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
             <TextView
                 android:id="@+id/id_rescue_team_view_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
                 android:layout_marginTop="10dp"
-                android:text="Phone : 094446 13123"
+                android:text="Phone :"
                 android:textColor="@color/black"
                 android:textSize="17sp"/>
+
+    <TextView
+        android:id="@+id/id_rescue_team_view_phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="10dp"
+        android:text="094446 13123"
+        android:textColor="@color/black"
+        android:textSize="17sp"/>
+
+</LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/id_rescue_team_view_hours"
@@ -168,6 +214,8 @@
                 android:textColor="@color/black"
                 android:textSize="17sp"/>
 
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/id_rescue_team_view_team_members"
                 android:layout_width="wrap_content"
@@ -187,14 +235,13 @@
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/id_rescue_team_view_confirm_agency"
-                android:layout_width="350dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_width="339dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/roundstyle"
                 android:text="Confirm Agency"
                 android:textColor="@color/white"
-                android:textSize="17sp"
                 android:textStyle="bold"/>
 
         </LinearLayout>

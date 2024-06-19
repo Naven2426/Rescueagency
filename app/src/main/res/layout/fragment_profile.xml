@@ -30,6 +30,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/idProfileLogoutIV"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_above="@+id/id_profile_change_password_button"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="43dp"
+                android:layout_marginEnd="34dp"
+                android:layout_marginBottom="97dp"
+                android:src="@mipmap/logout">
+
+            </androidx.appcompat.widget.AppCompatImageView>
+
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/id_booking_back_arrow"
                 android:layout_width="100dp"
@@ -105,57 +120,83 @@
         android:id="@+id/id_profile_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="28dp"
         android:text="Name"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.113"
+        app:layout_constraintHorizontal_bias="0.111"
         app:layout_constraintStart_toEndOf="@+id/id_profile_image"
         app:layout_constraintTop_toBottomOf="@+id/id_profile_account_info" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/idProfileNameTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Mark"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.157"
+        app:layout_constraintStart_toEndOf="@+id/id_profile_image"
+        app:layout_constraintTop_toBottomOf="@+id/id_profile_name" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/id_profile_image"
         android:layout_width="51dp"
-        android:layout_height="49dp"
+        android:layout_height="35dp"
         android:layout_marginStart="56dp"
         android:layout_marginTop="36dp"
         android:src="@mipmap/profilename"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_profile_account_info" />
 
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/id_profile_mobile"
         android:layout_width="55dp"
-        android:layout_height="59dp"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="32dp"
         android:src="@mipmap/mobile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_profile_image" />
-
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/id_profile_mobile_number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="9876543210"
+        android:text="Mobile"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.147"
+        app:layout_constraintHorizontal_bias="0.115"
         app:layout_constraintStart_toEndOf="@+id/id_profile_mobile"
         app:layout_constraintTop_toBottomOf="@+id/id_profile_name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/idProfileMobileTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="9876543210"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintStart_toEndOf="@+id/id_profile_mobile"
+        app:layout_constraintTop_toBottomOf="@+id/id_profile_mobile_number" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/id_profile_email"
         android:layout_width="46dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="32dp"
         android:src="@mipmap/email"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_profile_mobile" />
@@ -164,32 +205,45 @@
         android:id="@+id/id_profile_email_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:text="markexa123@gmail.com"
+        android:layout_marginTop="40dp"
+        android:text="Email"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.567"
+        app:layout_constraintHorizontal_bias="0.113"
         app:layout_constraintStart_toEndOf="@+id/id_profile_email"
         app:layout_constraintTop_toBottomOf="@+id/id_profile_mobile_number" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/idProfileEmailTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="markexa123@gmail.com"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.365"
+        app:layout_constraintStart_toEndOf="@+id/id_profile_email"
+        app:layout_constraintTop_toBottomOf="@+id/id_profile_email_id" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/id_profile_address"
         android:layout_width="46dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="32dp"
         android:src="@mipmap/address"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_profile_email" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/id_profile_address_id"
-        android:layout_width="95dp"
-        android:layout_height="32dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="Chennai"
+        android:text="Address"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
@@ -198,12 +252,25 @@
         app:layout_constraintStart_toEndOf="@+id/id_profile_address"
         app:layout_constraintTop_toBottomOf="@+id/id_profile_email_id" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/idProfileAddressTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Chennai"
+        android:textColor="@color/black"
+        android:textSize="17dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.173"
+        app:layout_constraintStart_toEndOf="@+id/id_profile_address"
+        app:layout_constraintTop_toBottomOf="@+id/id_profile_address_id" />
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/id_profile_dob"
         android:layout_width="46dp"
-        android:layout_height="53dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="32dp"
         android:src="@mipmap/dob"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_profile_address" />
@@ -213,30 +280,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="12-12-1999"
+        android:text="D.O.B"
         android:textColor="@color/black"
         android:textSize="20dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.163"
+        app:layout_constraintHorizontal_bias="0.127"
         app:layout_constraintStart_toEndOf="@+id/id_profile_dob"
         app:layout_constraintTop_toBottomOf="@+id/id_profile_address_id" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/id_profile_logout"
-        android:layout_width="217dp"
-        android:layout_height="50dp"
-        android:background="@drawable/roundstyle"
-        android:text="Logout"
-        android:textColor="@color/white"
-        android:textSize="15dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/idProfileDOBTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="12-12-1999"
+        android:textColor="@color/black"
+        android:textSize="17dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
+        app:layout_constraintHorizontal_bias="0.191"
+        app:layout_constraintStart_toEndOf="@+id/id_profile_dob"
         app:layout_constraintTop_toBottomOf="@+id/id_profile_dob_id" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

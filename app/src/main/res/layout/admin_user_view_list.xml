@@ -1,0 +1,85 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="130dp"
+    android:layout_marginTop="10dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/idAdminUserListCV"
+        android:layout_width="320dp"
+        android:layout_height="130dp"
+        android:radius="16dp"
+        app:cardBackgroundColor="@color/ahs"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:cardMaxElevation="4dp"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/idAdminUserProfile"
+            android:layout_width="75dp"
+            android:layout_height="79dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="30dp"
+            android:src="@mipmap/profilename">
+
+        </androidx.appcompat.widget.AppCompatImageView>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idAdminUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Username :"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="30dp">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idAdminUserNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mark786"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginTop="33dp"
+            android:layout_marginLeft="220dp">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/idAdminUserListName"
+                android:text="Name :"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="70dp">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/idAdminUserListNameTV"
+            android:text="Mark"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_marginLeft="180dp"
+            android:layout_marginTop="70dp">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

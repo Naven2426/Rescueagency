@@ -23,41 +23,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="44dp"
                 android:layout_marginTop="56dp"
-                android:text="Your Request"
+                android:text="Check Status"
                 android:textColor="@color/black"
                 android:textSize="25dp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/id_req_history_total_req"
-                android:layout_width="132dp"
-                android:layout_height="28dp"
-                android:layout_marginTop="60dp"
-                android:layout_marginEnd="28dp"
-                android:background="@drawable/border_line"
-                android:paddingLeft="5dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.785"
-                app:layout_constraintStart_toEndOf="@+id/id_req_history_req"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <TextView
-                    android:id="@+id/id_req_history_total_req_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:text="Total Request"
-                    android:textColor="@color/hex"
-                    android:textSize="17sp"
-                    tools:layout_editor_absoluteX="10dp"
-                    tools:layout_editor_absoluteY="3dp">
-
-                </TextView>
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

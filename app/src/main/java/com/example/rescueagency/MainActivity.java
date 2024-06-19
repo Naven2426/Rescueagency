@@ -11,8 +11,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.rescueagency.admin.AdminHomeFragment;
-import com.example.rescueagency.agency.AgencyHomeFragment;
+import com.example.rescueagency.admin.AdminAddAgencyFragment;
+import com.example.rescueagency.admin.HomeFragment.AdminHomeFragment;
+import com.example.rescueagency.agency.SOSRequestRVFragment.AgencyHomeFragment;
+import com.example.rescueagency.agency.AgencyProfileFragment;
+import com.example.rescueagency.agency.AgencyRequestHistoryFragment;
 import com.example.rescueagency.main_menu_fragments.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottomNavigationView);
+//        bottomNavigationView.setItemIconTintList(null);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
         FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right,
@@ -47,11 +51,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
          }
         transaction.replace(R.id.frameLayout,fragment).commit();
     }
+    Fragment fragment;
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int menu=item.getItemId();
-        Fragment fragment;
         FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right,
                 R.anim.enter_from_right, R.anim.exit_to_left);
@@ -71,22 +75,28 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             transaction.replace(R.id.frameLayout,fragment).commit();
         }else if(menu==R.id.profile){
             if(userType.equalsIgnoreCase(Constant.LOGIN_AS_AGENCY)){
-                fragment=new AgencyHomeFragment();
+
+                    fragment=new AgencyProfileFragment();
+
             }else{
+
                 fragment=new ProfileFragment();
             }
             transaction.replace(R.id.frameLayout,fragment).commit();
         }
         else if(menu==R.id.userHistory){
             if(userType.equalsIgnoreCase(Constant.LOGIN_AS_AGENCY)){
-                fragment=new AgencyHomeFragment();
+
+                    fragment=new AgencyRequestHistoryFragment();
+
+
             }else {
                 fragment=new RequestHistoryFragment();
             }
             transaction.replace(R.id.frameLayout,fragment).commit();
         }
         else if(menu==R.id.adminAddAgency){
-            AdminHomeFragment adminFragment=new AdminHomeFragment();
+            AdminAddAgencyFragment adminFragment=new AdminAddAgencyFragment();
             transaction.replace(R.id.frameLayout,adminFragment).commit();
         }
         return true;

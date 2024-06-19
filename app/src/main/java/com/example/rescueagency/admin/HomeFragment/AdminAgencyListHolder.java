@@ -1,4 +1,4 @@
-package com.example.rescueagency.admin;
+package com.example.rescueagency.admin.HomeFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;

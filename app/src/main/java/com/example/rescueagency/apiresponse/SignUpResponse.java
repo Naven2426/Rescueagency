@@ -35,6 +35,42 @@ public class SignUpResponse {
         private String username;
         private String password;
         private String user_type;
+        private String type_of_service;
+        private String total_members;
+        private String registration_proof;
+        private String profile;
+
+        public String getType_of_service() {
+            return type_of_service;
+        }
+
+        public void setType_of_service(String type_of_service) {
+            this.type_of_service = type_of_service;
+        }
+
+        public String getTotal_members() {
+            return total_members;
+        }
+
+        public void setTotal_members(String total_members) {
+            this.total_members = total_members;
+        }
+
+        public String getRegistration_proof() {
+            return registration_proof;
+        }
+
+        public void setRegistration_proof(String registration_proof) {
+            this.registration_proof = registration_proof;
+        }
+
+        public String getProfile() {
+            return profile;
+        }
+
+        public void setProfile(String profile) {
+            this.profile = profile;
+        }
 
         public String getUser_type() {
             return user_type;

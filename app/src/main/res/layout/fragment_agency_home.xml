@@ -128,7 +128,7 @@
                 android:text="12/12/2022"
                 android:textColor="@color/black"
                 android:layout_marginTop="30dp"
-                android:layout_marginLeft="85dp">
+                android:layout_marginLeft="90dp">
 
             </TextView>
 
@@ -151,7 +151,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/id_agency_sos_req_info"
+                android:id="@+id/idAgencySosReqInfo"
                 android:layout_width="30dp"
                 android:layout_height="28dp"
                 android:layout_marginLeft="235dp"
@@ -223,7 +223,7 @@
                 android:text="12/12/2022"
                 android:textColor="@color/black"
                 android:layout_marginTop="30dp"
-                android:layout_marginLeft="85dp">
+                android:layout_marginLeft="90dp">
 
             </TextView>
 
@@ -246,7 +246,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/id_agency_sos_req_info2"
+                android:id="@+id/idAgencySosReqInfo2"
                 android:layout_width="30dp"
                 android:layout_height="28dp"
                 android:layout_marginLeft="235dp"
@@ -260,7 +260,7 @@
 
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/id_agency_sos_req_view_all"
+            android:id="@+id/idAgencySosReqViewAll"
             android:layout_width="186dp"
             android:layout_height="37dp"
             android:layout_gravity="center"
@@ -359,7 +359,7 @@
                 android:id="@+id/id_agency_emergency_req_alert_type_detail"
                 android:text="Medical"
                 android:layout_marginTop="30dp"
-                android:layout_marginLeft="90dp"
+                android:layout_marginLeft="95dp"
                 android:textColor="@color/black">
 
             </TextView>
@@ -382,13 +382,13 @@
                 android:text="12/12/2022"
                 android:textColor="@color/black"
                 android:layout_marginTop="52dp"
-                android:layout_marginLeft="85dp">
+                android:layout_marginLeft="90dp">
 
             </TextView>
 
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/id_agency_emergency_req_info"
+                android:id="@+id/idAgencyEmergencyReqInfo"
                 android:layout_width="30dp"
                 android:layout_height="28dp"
                 android:layout_marginLeft="235dp"
@@ -447,7 +447,7 @@
                 android:id="@+id/id_agency_emergency_req_alert_type_detail2"
                 android:text="Medical"
                 android:layout_marginTop="30dp"
-                android:layout_marginLeft="90dp"
+                android:layout_marginLeft="95dp"
                 android:textColor="@color/black">
 
             </TextView>
@@ -470,11 +470,11 @@
                 android:text="12/12/2022"
                 android:textColor="@color/black"
                 android:layout_marginTop="52dp"
-                android:layout_marginLeft="85dp">
+                android:layout_marginLeft="90dp">
 
             </TextView>
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/id_agency_emergency_req_info2"
+                android:id="@+id/idAgencyEmergencyReqInfo2"
                 android:layout_width="30dp"
                 android:layout_height="28dp"
                 android:layout_marginLeft="235dp"
@@ -488,7 +488,7 @@
 
 
         <androidx.cardview.widget.CardView
-            android:id="@+id/id_agency_emergency_req_view_all"
+            android:id="@+id/idAgencyEmergencyReqViewAll"
             android:layout_width="186dp"
             android:layout_height="37dp"
             android:layout_gravity="center"

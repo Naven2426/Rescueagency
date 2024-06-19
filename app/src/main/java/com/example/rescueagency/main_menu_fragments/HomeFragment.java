@@ -9,20 +9,31 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.rescueagency.BookingFragment;
 import com.example.rescueagency.NotificationFragment;
 import com.example.rescueagency.R;
+import com.example.rescueagency.RestClient;
+import com.example.rescueagency.apiresponse.GetCategoryResponse;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class HomeFragment extends Fragment {
 
 
-    CardView cardView1, cardView2, cardView3, cardView4, cardView5;
     AppCompatImageView sos_main_emergency;
     AppCompatImageView notificationButton;
     @SuppressLint("MissingInflatedId")
@@ -32,11 +43,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_home, container, false);
 
-        cardView1=view.findViewById(R.id.homeViewAllCardView);
-        cardView2=view.findViewById(R.id.id_home_medical_booking);
-        cardView3=view.findViewById(R.id.id_home_fire_force_booking);
-        cardView4=view.findViewById(R.id.id_home_tow_booking);
-        cardView5=view.findViewById(R.id.id_home_cop_booking);
+        apiCall(view);
 
 
         sos_main_emergency=view.findViewById(R.id.id_sos_alert_img);
@@ -74,56 +81,42 @@ public class HomeFragment extends Fragment {
             });
 
 
-        cardView1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                View_allFragment view_allFragment=new View_allFragment();
-                FragmentTransaction transaction1=getActivity().getSupportFragmentManager().beginTransaction();
-                transaction1.replace(R.id.frameLayout,new View_allFragment()).addToBackStack("").commit();
 
-            }
-        });
-        cardView2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                View_allFragment view_allFragment=new View_allFragment();
-                FragmentTransaction transaction1=getActivity().getSupportFragmentManager().beginTransaction();
-                transaction1.replace(R.id.frameLayout,new BookingFragment()).addToBackStack("").commit();
-
-
-            }
-        });
-
-        cardView3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                View_allFragment view_allFragment=new View_allFragment();
-                FragmentTransaction transaction1=getActivity().getSupportFragmentManager().beginTransaction();
-                transaction1.replace(R.id.frameLayout,new BookingFragment()).addToBackStack("").commit();
-            }
-        });
-
-        cardView4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                View_allFragment view_allFragment=new View_allFragment();
-                FragmentTransaction transaction1=getActivity().getSupportFragmentManager().beginTransaction();
-                transaction1.replace(R.id.frameLayout,new BookingFragment()).addToBackStack("").commit();
-            }
-        });
-
-        cardView5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                View_allFragment view_allFragment=new View_allFragment();
-                FragmentTransaction transaction1=getActivity().getSupportFragmentManager().beginTransaction();
-                transaction1.replace(R.id.frameLayout,new BookingFragment()).addToBackStack("").commit();
-            }
-        });
 
         return view;
     }
 
+    private void apiCall(View view) {
+        Call<GetCategoryResponse> responseCall = RestClient.makeAPI().getCategory();
+        responseCall.enqueue(new Callback<GetCategoryResponse>() {
+            @Override
+            public void onResponse(Call<GetCategoryResponse> call, Response<GetCategoryResponse> response) {
+                if (response.isSuccessful()) {
+                    GetCategoryResponse imageResponse = response.body();
+                    if (imageResponse.getStatus() == 200) {
+                        RecyclerView recyclerView=view.findViewById(R.id.viewAllRecyclerView);
+                        List<View_all> dataList=new ArrayList<>();
+                        for(int i=0;i<imageResponse.getData().size();i++){
+                            GetCategoryResponse.Data data = response.body().getData().get(i);
+                            dataList.add(new View_all(data.getCategory_name(),data.getImage()));
+                        }
+                        GridLayoutManager grid=new GridLayoutManager(getContext(),3);
+                        recyclerView.setLayoutManager(grid);
+                        recyclerView.setAdapter(new View_allHolder(dataList,getActivity()));
+                    } else {
+                        Toast.makeText(getContext(), imageResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getContext(), "Response was not successful", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<GetCategoryResponse> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 
 
 }

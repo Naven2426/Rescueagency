@@ -4,22 +4,22 @@
     <item
         android:id="@+id/home"
         android:title=""
-        android:icon="@drawable/home_vector"
+        android:icon="@drawable/home"
         />
     <item
         android:id="@+id/userHistory"
         android:title=""
-        android:icon="@mipmap/history"
+        android:icon="@drawable/check_status"
         />
     <item
         android:id="@+id/adminAddAgency"
         android:title=""
         android:visible="false"
-        android:icon="@mipmap/addagency"
+        android:icon="@drawable/add_agency"
         />
     <item
         android:id="@+id/profile"
         android:title=""
-        android:icon="@mipmap/profile"
+        android:icon="@drawable/profile"
         />
 </menu>

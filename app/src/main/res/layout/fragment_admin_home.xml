@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin.AdminHomeFragment">
+    tools:context=".admin.HomeFragment.AdminHomeFragment">
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/AdminHomeTV"
@@ -24,20 +24,20 @@
 
     <com.google.android.material.button.MaterialButtonToggleGroup
         android:id="@+id/idAdminAgencyToggleButtonGroup"
-        android:layout_width="331dp"
-        android:layout_height="60dp"
-        app:singleSelection="true"
+        android:layout_width="360dp"
+        android:layout_height="66dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AdminHomeTV"
-        app:layout_constraintVertical_bias="0.065">
+        app:layout_constraintVertical_bias="0.065"
+        app:singleSelection="true">
 
 
         <Button
             android:id="@+id/idAdminSelAgency"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="165dp"
+            android:layout_width="120dp"
             android:layout_height="60dp"
             android:text="Agency"
             android:textColor="@color/black"
@@ -45,13 +45,23 @@
             tools:layout_editor_absoluteX="164dp"
             tools:layout_editor_absoluteY="266dp" />
 
-
         <Button
             android:id="@+id/idAdminSelUser"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="165dp"
+            android:layout_width="110dp"
             android:layout_height="60dp"
             android:text="User"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="170dp"
+            tools:layout_editor_absoluteY="341dp" />
+
+        <Button
+            android:id="@+id/idAdminSelCategory"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:text="Category"
             android:textColor="@color/black"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="170dp"

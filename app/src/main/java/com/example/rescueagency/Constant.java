@@ -1,7 +1,7 @@
 package com.example.rescueagency;
 
 public class Constant {
-    public static final String LOGIN_AS_USER= "USER";
+    public static final String BASE_URL= "https://2ddc-2409-40f4-4-c15d-1828-be85-59da-efee.ngrok-free.app";
     public static final String LOGIN_AS_AGENCY= "AGENCY";
     public static final String LOGIN_AS_ADMIN= "ADMIN";
     public static final String SF_NAME="SF";

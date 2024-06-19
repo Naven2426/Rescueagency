@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".admin.AdminAddAgencyFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/idAddAgencyTitle"
+        android:text="Add Agency"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:layout_marginTop="60dp">
+    </androidx.appcompat.widget.AppCompatTextView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/idAddAgencyAgencyNameTV"
+        android:text="Agency Name"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="30dp">
+    </androidx.appcompat.widget.AppCompatTextView>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:id="@+id/idAddAgencyAgencyNameET"
+        android:background="@drawable/edittext"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:inputType="textPersonName"
+        android:layout_marginTop="11dp"
+        android:paddingLeft="10dp">
+    </androidx.appcompat.widget.AppCompatEditText>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/idAddAgencyTypeOfServiceTV"
+        android:text="Type of Service"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="11dp"
+        android:layout_marginLeft="30dp">
+    </androidx.appcompat.widget.AppCompatTextView>
+
+    <com.example.rescueagency.admin.spinner.CustomSpinner
+        android:id="@+id/spinnerFruits"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_spinner_fruit"
+        android:spinnerMode="dropdown"
+        android:dropDownVerticalOffset="40dp"
+        android:layout_marginTop="11dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/idAddAgencyMobileTV"
+        android:text="Mobile"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="11dp"
+        android:layout_marginLeft="30dp">
+    </androidx.appcompat.widget.AppCompatTextView>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:id="@+id/idAddAgencyMobileET"
+        android:background="@drawable/edittext"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:inputType="number"
+        android:layout_marginTop="11dp"
+        android:paddingLeft="10dp">
+    </androidx.appcompat.widget.AppCompatEditText>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/idAddAgencyAddressTV"
+        android:text="Address"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="11dp"
+        android:layout_marginLeft="30dp">
+    </androidx.appcompat.widget.AppCompatTextView>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:id="@+id/idAddAgencyAddressET"
+        android:background="@drawable/edittext"
+        android:layout_gravity="center"
+        android:textColor="@color/black"
+        android:inputType="textPostalAddress"
+        android:layout_marginTop="11dp"
+        android:paddingLeft="10dp">
+    </androidx.appcompat.widget.AppCompatEditText>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/idAddAgencyTotalMemberTV"
+        android:text="Total Member"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="11dp"
+        android:layout_marginLeft="30dp">
+    </androidx.appcompat.widget.AppCompatTextView>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:id="@+id/idAddAgencyTotalMemberET"
+        android:background="@drawable/edittext"
+        android:layout_gravity="center"
+        android:inputType="number"
+        android:textColor="@color/black"
+        android:layout_marginTop="11dp">
+
+    </androidx.appcompat.widget.AppCompatEditText>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/idAddAgencyRegisterTV"
+        android:text="Registration proof"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="11dp"
+        android:layout_marginLeft="30dp">
+
+    </androidx.appcompat.widget.AppCompatTextView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="11dp"
+            android:layout_marginLeft="30dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:id="@+id/idAddAgencyRegisterButton"
+            android:text="Choose File"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:background="@drawable/roundstyle3">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/idAddAgencyDescriptionTV"
+            android:text="No file chosen"
+            android:textSize="20dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="15dp">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+
+        </LinearLayout>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/idAddAgencyAgencyEmailTV"
+            android:text="Email"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="11dp"
+            android:layout_marginLeft="30dp">
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:id="@+id/idAddAgencyAgencyEmailET"
+            android:background="@drawable/edittext"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:layout_marginTop="11dp"
+            android:paddingLeft="10dp">
+        </androidx.appcompat.widget.AppCompatEditText>
+
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/idAddAgencyUsernameTV"
+            android:text="Username"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="11dp"
+            android:layout_marginLeft="30dp">
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:id="@+id/idAddAgencyUsernameET"
+            android:background="@drawable/edittext"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:layout_marginTop="11dp"
+            android:paddingLeft="10dp">
+        </androidx.appcompat.widget.AppCompatEditText>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/idAddAgencyPasswordTV"
+            android:text="Password"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="11dp"
+            android:layout_marginLeft="30dp">
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:id="@+id/idAddAgencyPasswordET"
+            android:background="@drawable/edittext"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:layout_marginTop="11dp"
+            android:paddingLeft="10dp">
+        </androidx.appcompat.widget.AppCompatEditText>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/idAddAgencyConfirmPasswordTV"
+            android:text="Confirm Password"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="11dp"
+            android:layout_marginLeft="30dp">
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:id="@+id/idAddAgencyConfirmPasswordET"
+            android:background="@drawable/edittext"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:layout_marginTop="11dp">
+
+        </androidx.appcompat.widget.AppCompatEditText>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/idAddAgencyMarkLocationTV"
+            android:text="Mark Location"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginTop="11dp"
+            android:layout_marginLeft="30dp">
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <fragment
+            android:id="@+id/idAddAgencyMarkLocation"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="349dp"
+            android:layout_height="144dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="11dp"/>
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:id="@+id/idAddAgencyNextButton"
+        android:text="Register"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:background="@drawable/roundstyle"
+        android:layout_gravity="center"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="100dp">
+    </androidx.appcompat.widget.AppCompatButton>
+
+    </LinearLayout>
+
+
+</androidx.core.widget.NestedScrollView>

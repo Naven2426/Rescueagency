@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".agency.AgencyRequestHistoryFragment">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/idAgencyRequestTV"
+        android:text="Request"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="35dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"/>
+
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/idAgencyToggleButtonGroup"
+        android:layout_width="331dp"
+        android:layout_height="60dp"
+        app:singleSelection="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp">
+
+
+        <Button
+            android:id="@+id/idAgencySelApproved"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="165dp"
+            android:layout_height="60dp"
+            android:text="Approved"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="164dp"
+            tools:layout_editor_absoluteY="266dp" />
+
+
+        <Button
+            android:id="@+id/idAgencySelRejected"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="165dp"
+            android:layout_height="60dp"
+            android:text="Rejected"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            tools:layout_editor_absoluteX="170dp"
+            tools:layout_editor_absoluteY="341dp" />
+
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/idAgencyRequestRV"
+        android:layout_marginTop="10dp">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+</LinearLayout>

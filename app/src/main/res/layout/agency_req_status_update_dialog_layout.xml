@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="400dp"
+    android:layout_gravity="center"
+    android:id="@+id/idAgencyAddedDialog"
+    android:background="@color/lightsandal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/idAgencyReqUpdatedIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:src="@mipmap/feedback" />
+
+    <TextView
+        android:id="@+id/idStatusUpdatedTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Status Updated"
+        android:textAlignment="center"
+        android:textColor="@color/hex"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:id="@+id/idBackToRequestButton"
+        android:text="Back To Request"
+        android:textColor="@color/hex"
+        android:background="@drawable/roundstyle3"
+        />
+
+</LinearLayout>

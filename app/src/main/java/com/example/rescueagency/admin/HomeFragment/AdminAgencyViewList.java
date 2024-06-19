@@ -1,4 +1,4 @@
-package com.example.rescueagency.admin;
+package com.example.rescueagency.admin.HomeFragment;
 
 public class AdminAgencyViewList {
 

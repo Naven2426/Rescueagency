@@ -12,7 +12,9 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -47,7 +49,9 @@ public class View_allHolder extends RecyclerView.Adapter<View_allHolder.MyViewHo
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(activity, data.getText(), Toast.LENGTH_SHORT).show();
+                FragmentTransaction transaction=activity.getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frameLayout,new BookingFragment());
+                transaction.addToBackStack("BookingFragment").commit();
             }
         });
     }

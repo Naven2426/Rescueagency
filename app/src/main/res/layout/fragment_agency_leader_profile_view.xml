@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightsandal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+
+            <ImageView
+                android:id="@+id/idAdminAgencyLeaderDetailBackButton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="50dp"
+                android:src="@mipmap/backarrow"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/idAdminAgencyLogoImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:src="@mipmap/agency_logo"
+                app:layout_constraintEnd_toStartOf="@+id/idAdminAgencyLeaderDetail"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/idAdminAgencyLeaderDetailBackButton"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </androidx.appcompat.widget.AppCompatImageView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/idAdminAgencyLeaderDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Apex Aid Alliance"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:textStyle="bold"
+                tools:layout_editor_absoluteX="131dp"
+                tools:layout_editor_absoluteY="46dp">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/idAdminAgencyInfoIV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/info"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/idAdminAgencyLeaderDetail"
+                tools:layout_editor_absoluteY="40dp" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/idAdminAgencyInfoTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="20dp"
+                android:text="About Team Leader"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idAdminAgencyLeaderDetail">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/idAdminAgencyLeaderProfileImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:src="@mipmap/profilename"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idAdminAgencyInfoTV">
+
+            </androidx.appcompat.widget.AppCompatImageView>
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/id_agent_profile_image"
+                android:layout_width="51dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="36dp"
+                android:src="@mipmap/profilename"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/id_profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="Name"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.111"
+                app:layout_constraintStart_toEndOf="@+id/id_agent_profile_image" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/idAgentProfileNameTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Mark"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.157"
+                app:layout_constraintStart_toEndOf="@+id/id_agent_profile_image"
+                app:layout_constraintTop_toBottomOf="@+id/id_profile_name" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/id_agent_profile_mobile"
+                android:layout_width="55dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="35dp"
+                android:src="@mipmap/mobile"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/id_agent_profile_image" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/id_profile_mobile_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Mobile"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.115"
+                app:layout_constraintStart_toEndOf="@+id/id_agent_profile_mobile"
+                app:layout_constraintTop_toBottomOf="@+id/id_profile_name" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/idProfileMobileTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="9876543210"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.2"
+                app:layout_constraintStart_toEndOf="@+id/id_agent_profile_mobile"
+                app:layout_constraintTop_toBottomOf="@+id/id_profile_mobile_number" />
+
+
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/id_agent_profile_email"
+                android:layout_width="46dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="30dp"
+                android:src="@mipmap/email"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/id_agent_profile_mobile" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/id_profile_email_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Email"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.127"
+                app:layout_constraintStart_toEndOf="@+id/id_agent_profile_email"
+                app:layout_constraintTop_toBottomOf="@+id/id_profile_mobile_number" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/idProfileEmailTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="markexa123@gmail.com"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.365"
+                app:layout_constraintStart_toEndOf="@+id/id_agent_profile_email"
+                app:layout_constraintTop_toBottomOf="@+id/id_profile_email_id" />
+
+
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/id_agent_profile_address"
+                android:layout_width="46dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="30dp"
+                android:src="@mipmap/address"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/id_agent_profile_email" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/id_profile_address_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Address"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.141"
+                app:layout_constraintStart_toEndOf="@+id/id_agent_profile_address"
+                app:layout_constraintTop_toBottomOf="@+id/id_profile_email_id" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/idProfileAddressTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Chennai"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.173"
+                app:layout_constraintStart_toEndOf="@+id/id_agent_profile_address"
+                app:layout_constraintTop_toBottomOf="@+id/id_profile_address_id" />
+
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/id_agent_profile_dob"
+                android:layout_width="46dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="56dp"
+                android:layout_marginTop="30dp"
+                android:src="@mipmap/dob"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/id_agent_profile_address" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/id_profile_dob_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="D.O.B"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.127"
+                app:layout_constraintStart_toEndOf="@+id/id_agent_profile_dob"
+                app:layout_constraintTop_toBottomOf="@+id/id_profile_address_id" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/idProfileDOBTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="12-12-1999"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.191"
+                app:layout_constraintStart_toEndOf="@+id/id_agent_profile_dob"
+                app:layout_constraintTop_toBottomOf="@+id/id_profile_dob_id" />
+
+
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/id_agent_profile_roll"
+                android:layout_width="55dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="52dp"
+                android:layout_marginTop="30dp"
+                android:src="@mipmap/roll"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/id_agent_profile_dob" />
+
+
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/id_agent_profile_eof"
+                android:layout_width="55dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="30dp"
+                android:src="@mipmap/yoe"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/id_agent_profile_roll" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/id_profile_roll_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:text="Role"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.106"
+                app:layout_constraintStart_toEndOf="@+id/id_agent_profile_roll"
+                app:layout_constraintTop_toBottomOf="@+id/id_profile_dob_id" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/idProfileRollTV"
+                android:layout_marginStart="36dp"
+                android:text="Admin"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                app:layout_constraintStart_toEndOf="@+id/id_agent_profile_roll"
+                app:layout_constraintTop_toBottomOf="@+id/id_profile_roll_id" />
+
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/idProfileYOETV"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:text="Year of Experience"
+                android:textColor="@color/black"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/id_agent_profile_eof"
+                app:layout_constraintTop_toBottomOf="@+id/id_profile_roll_id" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:text="2 Year of Experience"
+                android:textColor="@color/black"
+                android:textSize="17dp"
+                app:layout_constraintStart_toEndOf="@+id/id_agent_profile_eof"
+                app:layout_constraintTop_toBottomOf="@+id/idProfileYOETV" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="339dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/roundstyle"
+            android:text="Update Profile"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_profile_roll_id" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

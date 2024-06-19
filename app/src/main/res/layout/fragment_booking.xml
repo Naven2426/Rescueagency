@@ -53,15 +53,25 @@
 
     </androidx.cardview.widget.CardView>
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rescue Team"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"/>
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/id_request_choose_team_button"
-        android:layout_width="300dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="60dp"
+        android:layout_width="339dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         android:background="@drawable/roundstyle"
-        android:text="Choose Rescue team"
+        android:text="Choose Rescue Agency"
         android:textColor="@color/white" >
     </androidx.appcompat.widget.AppCompatButton>
 
@@ -77,13 +87,13 @@
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/id_edittext_request_describe"
-        android:layout_width="350dp"
-        android:layout_height="150dp"
+        android:layout_width="339dp"
+        android:layout_height="122dp"
         android:layout_marginTop="5dp"
         android:layout_gravity="center"
         android:background="@drawable/edittext"
-        android:paddingLeft="5dp"
-        android:paddingTop="5dp"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
         android:inputType="textMultiLine"
         android:gravity="top"
         android:textColor="@color/black"
@@ -100,8 +110,9 @@
         android:textColor="@color/black"/>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
+        android:layout_width="339dp"
         android:layout_margin="20dp"
+        android:layout_gravity="center"
         android:background="@drawable/dotted_stoke"
         android:layout_height="120dp">
 
@@ -134,12 +145,12 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/id_request_Submit_button"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
+        android:layout_width="339dp"
+        android:layout_height="50dp"
         android:layout_marginTop="40dp"
-        android:layout_marginLeft="50dp"
+        android:layout_gravity="center"
         android:background="@drawable/roundstyle"
-        android:text="Submit Request"
+        android:text="Submit"
         android:textColor="@color/white" >
     </androidx.appcompat.widget.AppCompatButton>
 

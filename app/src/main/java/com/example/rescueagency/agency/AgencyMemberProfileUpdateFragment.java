@@ -11,14 +11,12 @@ import android.view.ViewGroup;
 import com.example.rescueagency.R;
 
 
-public class AgencyHomeFragment extends Fragment {
-
-
+public class AgencyMemberProfileUpdateFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_agency_home, container, false);
+        return inflater.inflate(R.layout.fragment_agency_member_profile_update, container, false);
     }
 }

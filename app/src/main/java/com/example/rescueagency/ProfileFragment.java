@@ -20,7 +20,9 @@ import com.example.rescueagency.LoginActivityFragments.LoginFragment;
 
 public class ProfileFragment extends Fragment {
 
-    AppCompatButton logoutButton;
+
+
+
     AppCompatButton updateButton;
     AppCompatButton changepassword;
     //imageview
@@ -29,6 +31,8 @@ public class ProfileFragment extends Fragment {
     AppCompatImageView profilephone;
     AppCompatImageView profileaddress;
     AppCompatImageView profiledob;
+
+    AppCompatImageView logoutButton;
     //textview
     AppCompatTextView nameAppCompatTextView;
     AppCompatTextView emailAppCompatTextView;
@@ -48,20 +52,20 @@ public class ProfileFragment extends Fragment {
     private void init(View view){
         //appcompat button
         updateButton = view.findViewById(R.id.id_profile_update_button);
-        logoutButton = view.findViewById(R.id.id_profile_logout);
         changepassword = view.findViewById(R.id.id_profile_change_password_button);
         //textview
-        nameAppCompatTextView= view.findViewById(R.id.id_profile_name);
-        emailAppCompatTextView = view.findViewById(R.id.id_profile_email_id);
-        phoneAppCompatTextView = view.findViewById(R.id.id_profile_mobile_number);
-        addressAppCompatTextView = view.findViewById(R.id.id_profile_address_id);
-        dobAppCompatTextView = view.findViewById(R.id.id_profile_dob_id);
+        nameAppCompatTextView= view.findViewById(R.id.idProfileNameTV);
+        emailAppCompatTextView = view.findViewById(R.id.idProfileEmailTV);
+        phoneAppCompatTextView = view.findViewById(R.id.idProfileMobileTV);
+        addressAppCompatTextView = view.findViewById(R.id.idProfileAddressTV);
+        dobAppCompatTextView = view.findViewById(R.id.idProfileDOBTV);
         //imageview
         profilename = view.findViewById(R.id.id_profile_image);
         profileemail = view.findViewById(R.id.id_profile_email);
         profilephone = view.findViewById(R.id.id_profile_mobile);
         profileaddress = view.findViewById(R.id.id_profile_address);
         profiledob = view.findViewById(R.id.id_profile_dob);
+        logoutButton = view.findViewById(R.id.idProfileLogoutIV);
 
     }
     private void setText(){
@@ -117,4 +121,5 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
+
 }

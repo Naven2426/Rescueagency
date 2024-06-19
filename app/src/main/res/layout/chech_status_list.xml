@@ -1,0 +1,141 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="130dp"
+    android:layout_marginTop="10dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/idCheckStatusCV"
+        android:layout_width="390dp"
+        android:layout_height="140dp"
+        android:radius="16dp"
+        app:cardBackgroundColor="@color/sandal"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:cardMaxElevation="4dp"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idCSLStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:text="Status :"
+            android:textColor="@color/black"
+            android:textSize="17dp">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/idCSLStatusDescription"
+            android:text=" Solved"
+            android:textColor="@color/white"
+            android:textSize="17dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="90dp"
+            android:background="@drawable/status_background">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/idCSLAlertType"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="45dp"
+            android:text="Alert Type :"
+            android:textColor="@color/black"
+            android:textSize="17dp">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/idCSLAlertDescription"
+            android:text="Medical"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginLeft="110dp">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idCSLDateSent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="75dp"
+            android:text="Date Sent :"
+            android:textColor="@color/black"
+            android:textSize="17dp">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idReqLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="105dp"
+            android:text="Location :"
+            android:textColor="@color/black"
+            android:textSize="17dp">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="110dp"
+            android:layout_marginTop="75dp"
+            android:text="12/12/2022"
+            android:textColor="@color/black"
+            android:textSize="17dp">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/idCheckStatusIV"
+            android:src="@mipmap/chat"
+            android:layout_marginLeft="330dp"
+            android:layout_marginTop="45dp">
+
+        </androidx.appcompat.widget.AppCompatImageView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/idCheckStatusCV2"
+            android:layout_width="50dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="105dp"
+            android:layout_marginLeft="110dp"
+            app:cardBackgroundColor="@color/hex"
+            app:cardCornerRadius="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View"
+                android:textColor="@color/white"
+                android:layout_gravity="center">
+
+            </TextView>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

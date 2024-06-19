@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,9 +21,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 public class MapsFragment extends Fragment {
 
+    LatLng tambaram = new LatLng(12.9249,  80.1000);
+    LatLng guindy = new LatLng(13.0067,80.2206);
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
         @Override
@@ -40,6 +44,7 @@ public class MapsFragment extends Fragment {
                     return false;
                 }
             });
+
 
         }
     };

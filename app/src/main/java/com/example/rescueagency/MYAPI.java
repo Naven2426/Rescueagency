@@ -3,10 +3,13 @@ package com.example.rescueagency;
 import com.example.rescueagency.apiresponse.GetCategoryResponse;
 import com.example.rescueagency.apiresponse.SignUpResponse;
 
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Query;
 
 public interface MYAPI {
@@ -26,4 +29,17 @@ public interface MYAPI {
     @GET("/category/getcategory")
     Call<GetCategoryResponse> getCategory();
     //added
+
+    @Multipart
+    @GET("/use/agency_register")
+    Call<SignUpResponse> agencyRegister(@Part("agency_name")String agency_name,
+                                        @Part("type_of_service")String type_of_service,
+                                        @Part("address")String address,
+                                        @Part("mobile")String mobile,
+                                        @Part("total_members")String total_members,
+                                        @Part MultipartBody.Part pdf,
+                                        @Part("email")String email,
+                                        @Part("username")String username,
+                                        @Part("password")String password,
+                                        @Part("user_type")String user_type);
 }

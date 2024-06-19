@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/id_sos_viewall_map"
+        android:id="@+id/idAgencyLocationIV"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="30dp"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/id_viewall_location_text"
+        android:id="@+id/idAgencyLocationTV"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginTop="36dp"
@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/viewAllAgentImageBackPress"
+        android:id="@+id/idSOSReqBackArrowIV"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="28dp"
@@ -39,24 +39,24 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/id_sos_req_text"
+        android:id="@+id/idSOSReqTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="20dp"
-        android:text="SOS Request"
+        android:text="SOS Requests"
         android:textColor="@color/black"
-        android:textSize="25dp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewAllAgentImageBackPress">
-
-    </androidx.appcompat.widget.AppCompatTextView>
+        app:layout_constraintTop_toBottomOf="@+id/idSOSReqBackArrowIV" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/viewAllSOSRecyclerView"
+        android:id="@+id/idSOSReqListRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/id_sos_req_text" />
+        android:layout_height="match_parent"
+        android:layout_marginTop="148dp"
+        app:layout_constraintTop_toBottomOf="@+id/idSOSReqTV"
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

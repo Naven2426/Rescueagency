@@ -29,6 +29,7 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
             android:text="RESCUE AGENCY"
             android:textSize="20dp"
             android:textStyle="bold"
@@ -99,17 +100,6 @@
         android:textColor="@color/black"
         />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/Login_button"
-        android:layout_width="93dp"
-        android:layout_height="35dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginLeft="265dp"
-        android:background="@drawable/roundstyle"
-        android:text="Login"
-        android:textColor="@color/white" >
-    </androidx.appcompat.widget.AppCompatButton>
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -127,8 +117,22 @@
         android:layout_marginTop="1dp"
         android:text="Sign up"
         android:textStyle="bold"
-        android:textColor="@color/hex"
+        android:textColor="@color/dblue"
         android:layout_gravity="center"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/Login_button"
+        android:layout_width="339dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="75dp"
+        android:background="@drawable/roundstyle"
+        android:text="Login"
+        android:textColor="@color/white" >
+    </androidx.appcompat.widget.AppCompatButton>
+
+
 
 
 </LinearLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="CustomToggleButtonSelected" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="backgroundTint">@color/sandal</item>
+        <item name="strokeColor">@color/sandal</item>
+    </style>
+</resources>
