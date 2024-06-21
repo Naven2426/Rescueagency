@@ -54,7 +54,7 @@ public class AgencyProfileFragment extends Fragment {
         data.add(new AgencyProfileList("df", "df"));
         data.add(new AgencyProfileList("df", "df"));
         data.add(new AgencyProfileList("df", "df"));
-        AgencyProfileListHolder adapter = new AgencyProfileListHolder(data);
+        AgencyProfileListHolder adapter = new AgencyProfileListHolder(data,requireActivity());
         binding.idAgencyMemberRecyclerView.setAdapter(adapter);
         binding.idAgencyMemberRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
     }

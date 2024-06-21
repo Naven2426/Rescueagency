@@ -22,7 +22,7 @@ public class RequestHistoryFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentRequestHistoryBinding.inflate(inflater, container, false);
-        setupToggleButtons();
+
         setupRecyclerView();
         return binding.getRoot();
     }
