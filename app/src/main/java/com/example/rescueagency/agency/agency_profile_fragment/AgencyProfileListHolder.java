@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.rescueagency.BookingFragment;
 import com.example.rescueagency.R;
+import com.example.rescueagency.agency.AgencyMemberDetailViewFragment;
 
 import java.util.List;
 
@@ -47,8 +48,8 @@ public class AgencyProfileListHolder extends RecyclerView.Adapter<AgencyProfileL
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction=activity.getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frameLayout,new AgencyProfileFragment());
-                transaction.addToBackStack("AgencyProfileFragment").commit();
+                transaction.replace(R.id.frameLayout,new AgencyMemberDetailViewFragment());
+                transaction.addToBackStack("AgencyMemberDetailViewFragment").commit();
             }
             });
 

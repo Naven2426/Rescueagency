@@ -9,15 +9,21 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.rescueagency.R;
+import com.example.rescueagency.databinding.FragmentAgencyMemberDetailViewBinding;
 
 
 public class AgencyMemberDetailViewFragment extends Fragment {
-
+    FragmentAgencyMemberDetailViewBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_agency_member_detail_view, container, false);
+        binding = FragmentAgencyMemberDetailViewBinding.inflate(inflater, container, false);
+        clickListener();
+        return binding.getRoot();
+    }
+    private void clickListener() {
+        binding.idAgencyMemberDetailViewBackButton.setOnClickListener(v -> getActivity().onBackPressed());
     }
 }
