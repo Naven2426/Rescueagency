@@ -26,7 +26,7 @@
         android:layout_marginTop="20dp"
         android:text="Location Changed"
         android:textAlignment="center"
-        android:textColor="@color/hex"
+        android:textColor="@color/green"
         android:textSize="25sp"
         android:textStyle="bold" />
 
@@ -39,8 +39,8 @@
         android:layout_marginTop="30dp"
         android:id="@+id/idAgencyLocationChangedBTPButton"
         android:text="Back To Profile"
-        android:textColor="@color/hex"
-        android:background="@drawable/roundstyle3"
+        android:textColor="@color/white"
+        android:background="@drawable/roundstyle"
         />
 
 </LinearLayout>

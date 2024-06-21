@@ -16,7 +16,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="163dp"
+            android:layout_height="118dp"
             android:background="@color/sandal">
 
 
@@ -35,14 +35,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginStart="44dp"
-                android:layout_marginTop="32dp"
-                android:text="@string/feedback"
+                android:layout_marginStart="88dp"
+                android:layout_marginTop="44dp"
+                android:text="Feedback"
                 android:textColor="@color/black"
                 android:textSize="25dp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/id_feedback_back_button" />
+                app:layout_constraintStart_toEndOf="@+id/id_feedback_back_button"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -66,7 +66,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="10dp"
-            android:text="Are you Satisfied with the Service?"
+            android:text="Are you Satisfied with our Service?"
             android:textColor="@color/ahs"
             android:textSize="16dp"
             android:textStyle="bold" />
@@ -78,7 +78,9 @@
             android:layout_marginLeft="30dp"
             android:layout_marginTop="20dp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/CustomRatingBar"
+            />
 
 
         <TextView
@@ -97,19 +99,20 @@
             android:layout_width="350dp"
             android:layout_height="200dp"
             android:layout_marginTop="20dp"
-            android:inputType="phone"
+            android:inputType="text"
+            android:gravity="top"
             android:background="@drawable/edittext"
             android:layout_gravity="center"
             android:textColor="@color/black"
             android:paddingLeft="10dp"
-
+            android:paddingTop="9dp"
             />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/id_feedback_submit_button"
             android:layout_width="350dp"
             android:layout_height="40dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="90dp"
             android:layout_gravity="center"
             android:background="@drawable/roundstyle"
             android:text="@string/submit"

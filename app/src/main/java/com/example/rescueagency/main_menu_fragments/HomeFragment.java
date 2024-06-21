@@ -5,10 +5,8 @@ import android.app.Dialog;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatImageView;
-import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,8 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.rescueagency.BookingFragment;
-import com.example.rescueagency.NotificationFragment;
+import com.example.rescueagency.notification_fragment.NotificationFragment;
 import com.example.rescueagency.R;
 import com.example.rescueagency.RestClient;
 import com.example.rescueagency.apiresponse.GetCategoryResponse;

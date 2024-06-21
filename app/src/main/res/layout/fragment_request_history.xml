@@ -15,40 +15,63 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="110dp">
 
 
-            <TextView
-                android:id="@+id/id_req_history_req"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="56dp"
-                android:text="Check Status"
-                android:textColor="@color/black"
-                android:textSize="25dp"
-                android:textStyle="bold"
+            <com.google.android.material.button.MaterialButtonToggleGroup
+                android:id="@+id/idAdminAgencyToggleButtonGroup"
+                android:layout_width="360dp"
+                android:layout_height="66dp"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.49"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.636"
+                app:singleSelection="true">
+
+
+                <Button
+                    android:id="@+id/idAdminSelAgency"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="184dp"
+                    android:layout_height="60dp"
+                    android:text="Check Status"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/idAdminSelUser"
+                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                    android:layout_width="184dp"
+                    android:layout_height="60dp"
+                    android:text="History"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+
+            </com.google.android.material.button.MaterialButtonToggleGroup>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <androidx.core.widget.NestedScrollView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/id_req_history_scrollview"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="644dp">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/id_request_history_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                tools:layout_editor_absoluteX="-16dp">
 
             </androidx.recyclerview.widget.RecyclerView>
 
-        </androidx.core.widget.NestedScrollView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

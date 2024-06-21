@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:layout_marginBottom="50dp"
+    android:background="@color/lightsandal"
     tools:context=".user_agency_member_list_view.RescueTeamDetailFragment">
 
     <androidx.core.widget.NestedScrollView
@@ -22,29 +23,37 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+
             <ImageView
                 android:id="@+id/id_rescue_team_view_back_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="36dp"
+                android:layout_marginStart="22dp"
+                android:layout_marginTop="35dp"
                 android:src="@mipmap/backarrow"/>
 
             <TextView
                 android:id="@+id/id_rescue_team_view_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="75dp"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="30dp"
                 android:text="Rescue Team"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
+            </LinearLayout>
+
             <TextView
                 android:id="@+id/id_rescue_team_view_team_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
                 android:layout_marginTop="44dp"
                 android:text="A.C. Ambulance Service"
                 android:textColor="@color/black"
@@ -60,7 +69,6 @@
                 android:id="@+id/id_rescue_team_view_rating_card"
                 android:layout_width="60dp"
                 android:layout_height="25dp"
-                android:layout_marginStart="36dp"
                 android:layout_marginTop="12dp"
                 android:radius="10dp"
                 app:cardBackgroundColor="@color/green"
@@ -72,13 +80,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:padding="4dp">
+                    android:padding="1dp">
 
                     <TextView
                         android:id="@+id/id_rescue_team_view_rating_no"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="25dp"
+                        android:layout_height="wrap_content"
                         android:text="4.5"
+                        android:layout_marginLeft="4dp"
                         android:textColor="@color/white"
                         android:textSize="15sp" />
 
@@ -86,6 +95,7 @@
                         android:id="@+id/id_rescue_team_view_rating"
                         android:layout_width="25dp"
                         android:layout_height="20dp"
+                        android:layout_marginTop="1dp"
                         android:src="@mipmap/rating_star" />
 
 
@@ -110,7 +120,6 @@
                 android:id="@+id/id_rescue_team_view_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="36dp"
                 android:layout_marginTop="8dp"
                 android:text=" Anna Salai, Chennai"
                 android:textColor="@color/ahs"
@@ -120,7 +129,6 @@
                 android:id="@+id/id_rescue_team_view_services"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
                 android:layout_marginTop="10dp"
                 android:text="Emergency Services"
                 android:textColor="@color/black"
@@ -130,7 +138,6 @@
                 android:id="@+id/id_rescue_team_view_service_years"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
                 android:layout_marginTop="10dp"
                 android:text="6 years of Service"
                 android:textColor="@color/black"
@@ -145,7 +152,6 @@
                 android:id="@+id/id_rescue_team_view_response_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
                 android:layout_marginTop="8dp"
                 android:text="Response time :"
                 android:textColor="@color/black"
@@ -171,7 +177,6 @@
                 android:id="@+id/id_rescue_team_view_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
                 android:layout_marginTop="10dp"
                 android:text="Phone :"
                 android:textColor="@color/black"
@@ -198,7 +203,6 @@
                 android:id="@+id/id_rescue_team_view_hours"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
                 android:layout_marginTop="10dp"
                 android:text="Hours :"
                 android:textColor="@color/black"
@@ -220,7 +224,6 @@
                 android:id="@+id/id_rescue_team_view_team_members"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
                 android:layout_marginTop="10dp"
                 android:text="Team Members"
                 android:textColor="@color/black"
@@ -230,15 +233,14 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/idRescueTeamRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"/>
+                android:layout_height="wrap_content"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/id_rescue_team_view_confirm_agency"
                 android:layout_width="339dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="50dp"
                 android:background="@drawable/roundstyle"
                 android:text="Confirm Agency"
                 android:textColor="@color/white"

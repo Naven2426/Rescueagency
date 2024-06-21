@@ -9,31 +9,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.rescueagency.databinding.FragmentTrackingMapBinding;
+import com.example.rescueagency.databinding.FragmentUserAgencyChatBinding;
 
 
-public class TrackingMapFragment extends Fragment {
+public class UserAgencyChatFragment extends Fragment {
 
-    FragmentTrackingMapBinding binding;
+    FragmentUserAgencyChatBinding binding;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = FragmentTrackingMapBinding.inflate(inflater, container, false);
+        binding = FragmentUserAgencyChatBinding.inflate(inflater, container, false);
         click();
         return binding.getRoot();
     }
 
-    private void click(){
-        binding.idTrackingMapBackButton.setOnClickListener(new View.OnClickListener() {
+    private void click() {
+        binding.idChatBackButtonIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 FragmentManager transaction = requireActivity().getSupportFragmentManager();
                 transaction.popBackStack();
             }
-
-            });
-
+        });
     }
 }

@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:gravity="center"
-    android:layout_height="130dp"
+    android:layout_height="120dp"
     android:layout_marginTop="10dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/idCheckStatusCV"
-        android:layout_width="390dp"
-        android:layout_height="140dp"
+        android:layout_width="370dp"
+        android:layout_height="110dp"
         android:radius="16dp"
         app:cardBackgroundColor="@color/sandal"
         app:cardCornerRadius="12dp"
@@ -32,10 +32,11 @@
         </androidx.appcompat.widget.AppCompatTextView>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="60dp"
+            android:layout_width="70dp"
             android:layout_height="wrap_content"
             android:id="@+id/idCSLStatusDescription"
-            android:text=" Solved"
+            android:text="Solved"
+            android:paddingLeft="8dp"
             android:textColor="@color/white"
             android:textSize="17dp"
             android:layout_marginTop="15dp"
@@ -80,21 +81,9 @@
 
         </androidx.appcompat.widget.AppCompatTextView>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/idReqLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="105dp"
-            android:text="Location :"
-            android:textColor="@color/black"
-            android:textSize="17dp">
-
-        </androidx.appcompat.widget.AppCompatTextView>
-
-
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idCSLDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="110dp"
@@ -108,27 +97,27 @@
 
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:id="@+id/idCheckStatusIV"
             android:src="@mipmap/chat"
-            android:layout_marginLeft="330dp"
-            android:layout_marginTop="45dp">
+            android:layout_marginLeft="310dp"
+            android:layout_marginTop="25dp">
 
         </androidx.appcompat.widget.AppCompatImageView>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/idCheckStatusCV2"
-            android:layout_width="50dp"
-            android:layout_height="20dp"
-            android:layout_marginTop="105dp"
-            android:layout_marginLeft="110dp"
+            android:layout_width="110dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="73dp"
+            android:layout_marginLeft="250dp"
             app:cardBackgroundColor="@color/hex"
             app:cardCornerRadius="10dp">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="View"
+                android:text="Track Agency"
                 android:textColor="@color/white"
                 android:layout_gravity="center">
 

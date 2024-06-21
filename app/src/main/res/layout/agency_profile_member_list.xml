@@ -6,13 +6,13 @@
     android:layout_width="match_parent"
     android:gravity="center"
     android:background="@color/lightsandal"
-    android:layout_height="130dp"
+    android:layout_height="150dp"
     android:layout_marginTop="10dp">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="170dp"
+        android:layout_width="128dp"
         android:id="@+id/AgencyProfileCardView"
-        android:layout_height="120dp"
+        android:layout_height="144dp"
         android:layout_alignParentStart="true"
         app:cardBackgroundColor="@color/sandal"
         app:cardCornerRadius="10dp"

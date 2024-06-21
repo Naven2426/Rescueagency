@@ -14,8 +14,9 @@ import android.view.MenuItem;
 import com.example.rescueagency.admin.AdminAddAgencyFragment;
 import com.example.rescueagency.admin.HomeFragment.AdminHomeFragment;
 import com.example.rescueagency.agency.SOSRequestRVFragment.AgencyHomeFragment;
-import com.example.rescueagency.agency.AgencyProfileFragment;
+import com.example.rescueagency.agency.agency_profile_fragment.AgencyProfileFragment;
 import com.example.rescueagency.agency.AgencyRequestHistoryFragment;
+import com.example.rescueagency.check_status_fragment.RequestHistoryFragment;
 import com.example.rescueagency.main_menu_fragments.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
