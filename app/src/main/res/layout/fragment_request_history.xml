@@ -16,43 +16,46 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="110dp">
-
-
-            <com.google.android.material.button.MaterialButtonToggleGroup
-                android:id="@+id/idAdminAgencyToggleButtonGroup"
-                android:layout_width="360dp"
-                android:layout_height="66dp"
-                android:gravity="center"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.49"
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="334dp"
+                android:layout_height="60dp"
+                android:layout_margin="10dp"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.636"
-                app:singleSelection="true">
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:cardBackgroundColor="#7a87a4"
+                app:cardCornerRadius="10dp">
 
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:backgroundTint="@android:color/transparent"
+                    android:layout_margin="1dp"
+                    app:tabGravity="fill"
+                    app:tabMode="fixed"
+                    app:tabIndicatorColor="@android:color/transparent"
+                    app:tabIndicatorHeight="0dp"
+                    app:tabRippleColor="@android:color/transparent"
+                    app:tabTextColor="@android:color/black"
+                    app:tabSelectedTextColor="@android:color/black"
+                    app:tabBackground="@drawable/tabs_selector"
+                    app:tabTextAppearance="@style/CustomTabTextAppearance">
 
-                <Button
-                    android:id="@+id/idAdminSelAgency"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="184dp"
-                    android:layout_height="60dp"
-                    android:text="Check Status"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Check Status" />
 
-                <Button
-                    android:id="@+id/idAdminSelUser"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="184dp"
-                    android:layout_height="60dp"
-                    android:text="History"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="By Location Name" />
 
+                </com.google.android.material.tabs.TabLayout>
 
-            </com.google.android.material.button.MaterialButtonToggleGroup>
-
+            </com.google.android.material.card.MaterialCardView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

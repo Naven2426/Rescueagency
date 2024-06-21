@@ -3,6 +3,7 @@ package com.example.rescueagency.agency;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +25,12 @@ public class AgencyMemberDetailViewFragment extends Fragment {
         return binding.getRoot();
     }
     private void clickListener() {
-        binding.idAgencyMemberDetailViewBackButton.setOnClickListener(v -> getActivity().onBackPressed());
+        binding.idAgencyMemberDetailViewBackButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager transaction = requireActivity().getSupportFragmentManager();
+                transaction.popBackStack();
+            }
+        });
     }
 }

@@ -24,7 +24,7 @@ public class AgencyProfileListHolder extends RecyclerView.Adapter<AgencyProfileL
 
     List<AgencyProfileList> list;
     FragmentActivity activity;
-    public AgencyProfileListHolder(List<AgencyProfileList> list) {
+    public AgencyProfileListHolder(List<AgencyProfileList> list,FragmentActivity activity) {
         this.list = list;
         this.activity = activity;
     }
