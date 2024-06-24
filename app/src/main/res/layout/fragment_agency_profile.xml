@@ -69,7 +69,7 @@
             android:layout_marginTop="36dp"
             android:text="Name :"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/idAgentProfileImageIV"
             app:layout_constraintTop_toBottomOf="@+id/idAgencyNamePofile">
 
@@ -84,7 +84,7 @@
             android:layout_marginTop="36dp"
             android:text="xxxxxx"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/idAgencyLeaderName"
             app:layout_constraintTop_toBottomOf="@+id/idAgencyNamePofile">
 
@@ -98,7 +98,7 @@
             android:layout_marginTop="8dp"
             android:text="Year of Experience :"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/idAgentProfileImageIV"
             app:layout_constraintTop_toBottomOf="@+id/idAgencyLeaderName">
 
@@ -112,7 +112,7 @@
             android:layout_marginTop="8dp"
             android:text="10"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/idAgencyLeaderEOF"
             app:layout_constraintTop_toBottomOf="@+id/idAgencyLeaderNameTV">
 
@@ -124,10 +124,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:text="Case Solved"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/idAgentProfileImageIV"
             app:layout_constraintTop_toBottomOf="@+id/idAgencyLeaderEOF">
 
@@ -141,7 +141,7 @@
             android:layout_marginTop="4dp"
             android:text="30"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/idAgencyCaseSolved"
             app:layout_constraintTop_toBottomOf="@+id/idAgencyLeaderEOFTV">
 
@@ -153,10 +153,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="132dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:text="Team Leader"
             android:textColor="@color/hex"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/idAgencyCaseSolved">
 
@@ -168,9 +168,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="48dp"
             android:layout_marginTop="20dp"
-            android:text="Member List"
+            android:text="Team Members"
             android:textColor="@color/black"
-            android:textSize="25dp"
+            android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/idAgencyTeamLeaderTV">
@@ -182,8 +182,8 @@
             android:id="@+id/idAgencyReviews"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="132dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginStart="116dp"
+            android:layout_marginTop="25dp"
             android:text="Review"
             android:textColor="@color/hex"
             android:textSize="15dp"
@@ -192,15 +192,45 @@
 
         </androidx.appcompat.widget.AppCompatTextView>
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/idAgencyMemberRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="420dp"
+            android:layout_height="450dp"
             android:layout_marginTop="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/idAgencyMemberList"
-            tools:layout_editor_absoluteX="-3dp" />
+            app:layout_constraintVertical_bias="0.0"
+            tools:layout_editor_absoluteX="0dp" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/idAgencyAddMemberCV"
+            android:layout_width="57dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="64dp"
+            app:cardBackgroundColor="@color/sandal"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.901"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/idAgencyAddMember"
+                android:layout_width="37dp"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:src="@mipmap/adduser"
+                tools:layout_editor_absoluteX="358dp"
+                tools:layout_editor_absoluteY="640dp">
+
+            </androidx.appcompat.widget.AppCompatImageView>
+
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    
 
 
 

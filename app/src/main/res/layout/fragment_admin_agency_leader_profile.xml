@@ -33,10 +33,9 @@
                 android:id="@+id/idAdminAgencyLogoImage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="35dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="36dp"
                 android:src="@mipmap/agency_logo"
-                app:layout_constraintEnd_toStartOf="@+id/idAdminAgencyLeaderDetail"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toEndOf="@+id/idAdminAgencyLeaderDetailBackButton"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -47,24 +46,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="44dp"
                 android:text="Apex Aid Alliance"
                 android:textColor="@color/black"
                 android:textSize="25dp"
                 android:textStyle="bold"
-                tools:layout_editor_absoluteX="131dp"
-                tools:layout_editor_absoluteY="46dp">
+                app:layout_constraintStart_toEndOf="@+id/idAdminAgencyLogoImage"
+                app:layout_constraintTop_toTopOf="parent">
 
             </androidx.appcompat.widget.AppCompatTextView>
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/idAdminAgencyInfoIV"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/info"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/idAdminAgencyLeaderDetail"
-                tools:layout_editor_absoluteY="40dp" />
-
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/idAdminAgencyInfoTV"

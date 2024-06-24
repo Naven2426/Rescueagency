@@ -31,490 +31,78 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/GfG_full_loo"
+        android:id="@+id/idChatIV"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="48dp"
-        android:src="@mipmap/bell"
+        android:src="@mipmap/chat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
     </androidx.appcompat.widget.AppCompatImageView>
 
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/id_agency_sos_req"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SOS Request"
-        android:textColor="@color/black"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_agency_name">
-
-    </androidx.appcompat.widget.AppCompatTextView>
-
-    <LinearLayout
-        android:id="@+id/id_sos_req_layout"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/id_agency_sos_req"
+        android:layout_height="110dp"
+        app:layout_constraintTop_toBottomOf="@+id/id_agency_name"
         tools:layout_editor_absoluteX="0dp">
 
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/id_home_sos_req_card"
-            android:layout_width="300dp"
-            android:layout_height="80dp"
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="374dp"
+            android:layout_height="60dp"
             android:layout_margin="10dp"
             app:cardBackgroundColor="@color/sandal"
             app:cardCornerRadius="10dp"
-            app:cardElevation="10dp"
-            app:cardMaxElevation="12dp">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="1dp"
+                android:backgroundTint="@android:color/transparent"
+                app:tabBackground="@drawable/tabs_selector"
+                app:tabGravity="fill"
+                app:tabIndicatorColor="@android:color/transparent"
+                app:tabIndicatorHeight="0dp"
+                app:tabMode="fixed"
+                app:tabRippleColor="@android:color/transparent"
+                app:tabSelectedTextColor="@android:color/black"
+                app:tabTextAppearance="@style/CustomTabTextAppearance1"
+                app:tabTextColor="@android:color/black">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/id_agency_sos_req_name"
-                android:text="Name :"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="15dp"
-                android:textColor="@color/black"
-                 />
-
-            <TextView
-                android:id="@+id/id_agency_sos_req_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date Sent :"
-                android:textColor="@color/black"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="15dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/id_agency_sos_req_location"
-                android:text="Location :"
-                android:layout_marginTop="52dp"
-                android:layout_marginLeft="15dp"
-                android:textColor="@color/black"
-                 />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/id_agency_sos_req_name_detail"
-                android:text="ABC"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="65dp"
-                android:textColor="@color/black">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/id_agency_sos_req_date_detail"
-                android:text="12/12/2022"
-                android:textColor="@color/black"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="90dp">
-
-            </TextView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="50dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="52dp"
-                android:layout_marginLeft="90dp"
-                app:cardBackgroundColor="@color/hex"
-                app:cardCornerRadius="10dp">
-                <TextView
+                <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="View"
-                    android:textColor="@color/white"
-                    android:layout_gravity="center">
+                    android:text="SOS Request" />
 
-                </TextView>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/idAgencySosReqInfo"
-                android:layout_width="30dp"
-                android:layout_height="28dp"
-                android:layout_marginLeft="235dp"
-                android:layout_marginTop="25dp"
-                android:src="@mipmap/info">
-
-            </androidx.appcompat.widget.AppCompatImageView>
-
-
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/id_home_sos_req_card2"
-            android:layout_width="300dp"
-            android:layout_height="80dp"
-            android:layout_margin="10dp"
-            app:cardBackgroundColor="@color/sandal"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="10dp"
-            app:cardMaxElevation="12dp">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/id_agency_sos_req_name2"
-                android:text="Name :"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="15dp"
-                android:textColor="@color/black"
-                />
-
-            <TextView
-                android:id="@+id/id_agency_sos_req_date2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date Sent :"
-                android:textColor="@color/black"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="15dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/id_agency_sos_req_location2"
-                android:text="Location :"
-                android:layout_marginTop="52dp"
-                android:layout_marginLeft="15dp"
-                android:textColor="@color/black"
-                />
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/id_agency_sos_req_name_detail2"
-                android:text="ABC"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="65dp"
-                android:textColor="@color/black">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/id_agency_sos_req_date_detail2"
-                android:text="12/12/2022"
-                android:textColor="@color/black"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="90dp">
-
-            </TextView>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="50dp"
-                android:layout_height="20dp"
-                android:layout_marginTop="52dp"
-                android:layout_marginLeft="90dp"
-                app:cardBackgroundColor="@color/hex"
-                app:cardCornerRadius="10dp">
-                <TextView
+                <com.google.android.material.tabs.TabItem
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="View"
-                    android:textColor="@color/white"
-                    android:layout_gravity="center">
+                    android:foregroundGravity="center"
+                    android:text="Emergency Request"
+                    android:textAlignment="center" />
 
-                </TextView>
+            </com.google.android.material.tabs.TabLayout>
 
-            </androidx.cardview.widget.CardView>
+        </com.google.android.material.card.MaterialCardView>
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/idAgencySosReqInfo2"
-                android:layout_width="30dp"
-                android:layout_height="28dp"
-                android:layout_marginLeft="235dp"
-                android:layout_marginTop="25dp"
-                android:src="@mipmap/info">
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            </androidx.appcompat.widget.AppCompatImageView>
-
-
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/idAgencySosReqViewAll"
-            android:layout_width="186dp"
-            android:layout_height="37dp"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            app:cardBackgroundColor="@color/sandal"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="10dp"
-            app:cardMaxElevation="12dp"
-            app:layout_constraintTop_toBottomOf="@+id/id_sos_req_layout">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="View All"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-        </androidx.cardview.widget.CardView>
-
-
-
-    </LinearLayout>
-
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/id_agency_emergency_req"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Emergency Request"
-        android:textColor="@color/black"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_sos_req_layout">
-
-    </androidx.appcompat.widget.AppCompatTextView>
-
-
-    <LinearLayout
-        android:id="@+id/id_agency_emergency_req_layout"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/idHomeSOSReqListRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@+id/id_agency_emergency_req"
-        tools:layout_editor_absoluteX="0dp">
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/id_home_emergency_req_card"
-            android:layout_width="300dp"
-            android:layout_height="80dp"
-            android:layout_margin="10dp"
-            app:cardBackgroundColor="@color/sandal"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="10dp"
-            app:cardMaxElevation="12dp">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/id_agency_emergency_req_name"
-                android:text="Name :"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="15dp"
-                android:textColor="@color/black"
-                />
-
-            <TextView
-                android:id="@+id/id_agency_emergency_req_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date Sent :"
-                android:textColor="@color/black"
-                android:layout_marginTop="52dp"
-                android:layout_marginLeft="15dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/id_agency_emergency_req_alert_type"
-                android:text="Alert Type :"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="15dp"
-                android:textColor="@color/black"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/id_agency_emergency_req_alert_type_detail"
-                android:text="Medical"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="95dp"
-                android:textColor="@color/black">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/id_agency_emergency_req_name_detail"
-                android:text="ABC"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="65dp"
-                android:textColor="@color/black">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/id_agency_emergency_req_date_detail"
-                android:text="12/12/2022"
-                android:textColor="@color/black"
-                android:layout_marginTop="52dp"
-                android:layout_marginLeft="90dp">
-
-            </TextView>
-
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/idAgencyEmergencyReqInfo"
-                android:layout_width="30dp"
-                android:layout_height="28dp"
-                android:layout_marginLeft="235dp"
-                android:layout_marginTop="25dp"
-                android:src="@mipmap/info">
-
-            </androidx.appcompat.widget.AppCompatImageView>
-
-
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/id_home_emergency_req_card2"
-            android:layout_width="300dp"
-            android:layout_height="80dp"
-            android:layout_margin="10dp"
-            app:cardBackgroundColor="@color/sandal"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="10dp"
-            app:cardMaxElevation="12dp">
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/id_agency_emergency_req_name2"
-                android:text="Name :"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="15dp"
-                android:textColor="@color/black"
-                />
-
-            <TextView
-                android:id="@+id/id_agency_emergency_req_date2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Date Sent :"
-                android:textColor="@color/black"
-                android:layout_marginTop="52dp"
-                android:layout_marginLeft="15dp"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/id_agency_emergency_req_alert_type2"
-                android:text="Alert Type :"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="15dp"
-                android:textColor="@color/black"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/id_agency_emergency_req_alert_type_detail2"
-                android:text="Medical"
-                android:layout_marginTop="30dp"
-                android:layout_marginLeft="95dp"
-                android:textColor="@color/black">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/id_agency_emergency_req_name_detail2"
-                android:text="ABC"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="65dp"
-                android:textColor="@color/black">
-
-            </TextView>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/id_agency_emergency_req_date_detail2"
-                android:text="12/12/2022"
-                android:textColor="@color/black"
-                android:layout_marginTop="52dp"
-                android:layout_marginLeft="90dp">
-
-            </TextView>
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/idAgencyEmergencyReqInfo2"
-                android:layout_width="30dp"
-                android:layout_height="28dp"
-                android:layout_marginLeft="235dp"
-                android:layout_marginTop="25dp"
-                android:src="@mipmap/info">
-
-            </androidx.appcompat.widget.AppCompatImageView>
-
-
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/idAgencyEmergencyReqViewAll"
-            android:layout_width="186dp"
-            android:layout_height="37dp"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            app:cardBackgroundColor="@color/sandal"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="10dp"
-            app:cardMaxElevation="12dp"
-            app:layout_constraintTop_toBottomOf="@+id/id_emergency_req_layout">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="View All"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-
-        </androidx.cardview.widget.CardView>
-
-
-
-    </LinearLayout>
-
-
-
+        android:layout_height="550dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.039"
+        tools:layout_editor_absoluteX="0dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -17,7 +17,7 @@
             android:layout_width="match_parent"
             android:layout_height="110dp">
             <com.google.android.material.card.MaterialCardView
-                android:layout_width="334dp"
+                android:layout_width="374dp"
                 android:layout_height="60dp"
                 android:layout_margin="10dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
                     app:tabTextColor="@android:color/black"
                     app:tabSelectedTextColor="@android:color/black"
                     app:tabBackground="@drawable/tabs_selector"
-                    app:tabTextAppearance="@style/CustomTabTextAppearance">
+                    app:tabTextAppearance="@style/CustomTabTextAppearance1">
 
                     <com.google.android.material.tabs.TabItem
                         android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
                     <com.google.android.material.tabs.TabItem
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="By Location Name" />
+                        android:text="History" />
 
                 </com.google.android.material.tabs.TabLayout>
 
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                tools:layout_editor_absoluteX="-16dp">
+                tools:layout_editor_absoluteX="-30dp">
 
             </androidx.recyclerview.widget.RecyclerView>
 

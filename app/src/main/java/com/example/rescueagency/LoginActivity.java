@@ -19,7 +19,7 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         SharedPreferences sf=getSharedPreferences(Constant.SF_NAME,MODE_PRIVATE);
 
-        sf.edit().clear().commit();
+//        sf.edit().clear().commit();
         String user_id=sf.getString(Constant.SF_USERID,null);
         if(user_id!=null)
         {

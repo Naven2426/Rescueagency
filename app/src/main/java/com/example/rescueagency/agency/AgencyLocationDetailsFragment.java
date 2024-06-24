@@ -3,13 +3,18 @@ package com.example.rescueagency.agency;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.rescueagency.R;
+import com.example.rescueagency.admin.ChooseAgencyLocationFragment;
+import com.example.rescueagency.databinding.FragmentAgencyLocationDetailsBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -19,17 +24,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class AgencyLocationDetailsFragment extends Fragment {
 
+    FragmentAgencyLocationDetailsBinding binding;
+
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
-        /**
-         * Manipulates the map once available.
-         * This callback is triggered when the map is ready to be used.
-         * This is where we can add markers or lines, add listeners or move the camera.
-         * In this case, we just add a marker near Sydney, Australia.
-         * If Google Play services is not installed on the device, the user will be prompted to
-         * install it inside the SupportMapFragment. This method will only be triggered once the
-         * user has installed Google Play services and returned to the app.
-         */
+
         @Override
         public void onMapReady(GoogleMap googleMap) {
             LatLng sydney = new LatLng(-34, 151);
@@ -43,7 +42,51 @@ public class AgencyLocationDetailsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_agency_location_details, container, false);
+        binding = FragmentAgencyLocationDetailsBinding.inflate(inflater, container, false);
+        click();
+        return binding.getRoot();
+    }
+    private void click() {
+        binding.idAgencyLocationDetailBackButIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager transaction = requireActivity().getSupportFragmentManager();
+                transaction.popBackStack();
+            }
+        });
+
+        binding.idAgencyLocationDetailSaveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.agency_profile_update_dialog_layout);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.setCancelable(false);
+                dialog.show();
+
+                androidx.appcompat.widget.AppCompatButton okay_text = dialog.findViewById(R.id.idAgencyProfileDialogButton);
+
+                okay_text.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+
+                    }
+                });
+            }
+        });
+
+        binding.idAgencyLocationDetailChangeLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frameLayout, new ChooseAgencyLocationFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
+
     }
 
     @Override

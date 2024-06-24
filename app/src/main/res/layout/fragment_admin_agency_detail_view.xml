@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="70dp"
     android:orientation="vertical"
     tools:context=".agency.agency_profile_fragment.AgencyProfileFragment">
 
@@ -11,12 +12,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/appCompatImageView"
+            android:id="@+id/idAdminAgencyBackArrowIV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="68dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="56dp"
             android:src="@mipmap/backarrow"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -28,10 +30,10 @@
             android:id="@+id/idAdminAgencyProfileLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="44dp"
             android:src="@mipmap/agency_logo"
-            app:layout_constraintStart_toEndOf="@+id/appCompatImageView"
+            app:layout_constraintStart_toEndOf="@+id/idAdminAgencyBackArrowIV"
             app:layout_constraintTop_toTopOf="parent">
 
         </androidx.appcompat.widget.AppCompatImageView>
@@ -40,24 +42,34 @@
             android:id="@+id/idAdminAgencyNamePofile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="52dp"
             android:text="Apex Allies Agency"
             android:textColor="@color/black"
-            android:textSize="30dp"
+            android:textSize="25dp"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/idAdminAgencyProfileLogo"
             app:layout_constraintTop_toTopOf="parent">
 
         </androidx.appcompat.widget.AppCompatTextView>
 
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/idAdminAgencyInfoIV"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="56dp"
+            android:src="@mipmap/info"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toEndOf="@+id/idAdminAgencyNamePofile"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/idAdminAgentProfileImageIV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="41dp"
+            android:layout_height="43dp"
             android:layout_marginStart="48dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="60dp"
             android:src="@mipmap/profilename"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/idAdminAgencyProfileLogo">
@@ -69,16 +81,15 @@
             android:id="@+id/idAdminAgencyLeaderName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
+            android:layout_marginStart="36dp"
             android:layout_marginTop="56dp"
             android:text="Name :"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/idAdminAgentProfileImageIV"
             app:layout_constraintTop_toBottomOf="@+id/idAdminAgencyNamePofile">
 
         </androidx.appcompat.widget.AppCompatTextView>
-
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/idAgencyLeaderNameTV"
@@ -88,7 +99,7 @@
             android:layout_marginTop="56dp"
             android:text="xxxxxx"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/idAdminAgencyLeaderName"
             app:layout_constraintTop_toBottomOf="@+id/idAdminAgencyNamePofile">
 
@@ -99,16 +110,15 @@
             android:id="@+id/idAgencyLeaderEOF"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
+            android:layout_marginStart="36dp"
             android:layout_marginTop="8dp"
             android:text="Year of Experience :"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/idAdminAgentProfileImageIV"
             app:layout_constraintTop_toBottomOf="@+id/idAdminAgencyLeaderName">
 
         </androidx.appcompat.widget.AppCompatTextView>
-
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/idAgencyLeaderEOFTV"
@@ -118,21 +128,22 @@
             android:layout_marginTop="8dp"
             android:text="10"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/idAgencyLeaderEOF"
             app:layout_constraintTop_toBottomOf="@+id/idAgencyLeaderNameTV">
 
         </androidx.appcompat.widget.AppCompatTextView>
 
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/idAgencyCaseSolved"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginStart="36dp"
+            android:layout_marginTop="8dp"
             android:text="Case Solved"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/idAdminAgentProfileImageIV"
             app:layout_constraintTop_toBottomOf="@+id/idAgencyLeaderEOF">
 
@@ -144,10 +155,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="8dp"
             android:text="30"
             android:textColor="@color/black"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/idAgencyCaseSolved"
             app:layout_constraintTop_toBottomOf="@+id/idAgencyLeaderEOFTV">
 
@@ -157,16 +168,15 @@
             android:id="@+id/idAdminAgencyTeamLeaderTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="144dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="124dp"
+            android:layout_marginTop="8dp"
             android:text="Team Leader"
             android:textColor="@color/hex"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/idAgencyCaseSolved">
 
         </androidx.appcompat.widget.AppCompatTextView>
-
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/idAdminAgencyMemberList"
@@ -176,7 +186,7 @@
             android:layout_marginTop="20dp"
             android:text="Team Members"
             android:textColor="@color/black"
-            android:textSize="25dp"
+            android:textSize="20dp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/idAdminAgencyTeamLeaderTV">
@@ -188,11 +198,11 @@
             android:id="@+id/idAgencyReviews"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="92dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginStart="124dp"
+            android:layout_marginTop="24dp"
             android:text="Review"
             android:textColor="@color/hex"
-            android:textSize="20dp"
+            android:textSize="15dp"
             app:layout_constraintStart_toEndOf="@+id/idAdminAgencyMemberList"
             app:layout_constraintTop_toBottomOf="@+id/idAdminAgencyTeamLeaderTV">
 
@@ -227,4 +237,4 @@
 
 
 
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>

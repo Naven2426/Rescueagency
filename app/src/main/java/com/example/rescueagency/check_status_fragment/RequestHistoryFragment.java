@@ -27,35 +27,35 @@ public class RequestHistoryFragment extends Fragment {
         return binding.getRoot();
     }
 
-    private void setupToggleButtons() {
-        buttonCheckStatus = binding.getRoot().findViewById(R.id.idAdminSelAgency);
-        buttonHistory = binding.getRoot().findViewById(R.id.idAdminSelUser);
-
-        // Default selection
-        buttonCheckStatus.setSelected(true);
-        buttonCheckStatus.setBackgroundResource(R.drawable.toggle_checked);
-        buttonHistory.setBackgroundResource(R.drawable.toggle_unchecked);
-
-        buttonCheckStatus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buttonCheckStatus.setSelected(true);
-                buttonHistory.setSelected(false);
-                buttonCheckStatus.setBackgroundResource(R.drawable.toggle_checked);
-                buttonHistory.setBackgroundResource(R.drawable.toggle_unchecked);
-            }
-        });
-
-        buttonHistory.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buttonCheckStatus.setSelected(false);
-                buttonHistory.setSelected(true);
-                buttonCheckStatus.setBackgroundResource(R.drawable.toggle_unchecked);
-                buttonHistory.setBackgroundResource(R.drawable.toggle_checked);
-            }
-        });
-    }
+//    private void setupToggleButtons() {
+//        buttonCheckStatus = binding.getRoot().findViewById(R.id.idAdminSelAgency);
+//        buttonHistory = binding.getRoot().findViewById(R.id.idAdminSelUser);
+//
+//        // Default selection
+//        buttonCheckStatus.setSelected(true);
+//        buttonCheckStatus.setBackgroundResource(R.drawable.toggle_checked);
+//        buttonHistory.setBackgroundResource(R.drawable.toggle_unchecked);
+//
+//        buttonCheckStatus.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                buttonCheckStatus.setSelected(true);
+//                buttonHistory.setSelected(false);
+//                buttonCheckStatus.setBackgroundResource(R.drawable.toggle_checked);
+//                buttonHistory.setBackgroundResource(R.drawable.toggle_unchecked);
+//            }
+//        });
+//
+//        buttonHistory.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                buttonCheckStatus.setSelected(false);
+//                buttonHistory.setSelected(true);
+//                buttonCheckStatus.setBackgroundResource(R.drawable.toggle_unchecked);
+//                buttonHistory.setBackgroundResource(R.drawable.toggle_checked);
+//            }
+//        });
+//    }
 
     private void setupRecyclerView() {
         List<CheckStatusList> data = new ArrayList<>();

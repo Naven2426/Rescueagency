@@ -24,27 +24,27 @@ public class AdminHomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentAdminHomeBinding.inflate(inflater, container, false);
-        toogle();
+//        toogle();
         recyclerview();
         return binding.getRoot();
     }
 
-    private void toogle() {
-        binding.idAdminAgencyToggleButtonGroup.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
-            @Override
-            public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
-                if (isChecked) {
-                    if (checkedId == R.id.idAdminSelAgency) {
-                        showToast("Robot that looks like human.");
-                    } else if (checkedId == R.id.idAdminSelUser) {
-                        showToast("It's a Butterfly thing.");
-                    }
-                } else {
-                    showToast("Nothing Selected");
-                }
-            }
-        });
-    }
+//    private void toogle() {
+//        binding.idAdminAgencyToggleButtonGroup.addOnButtonCheckedListener(new MaterialButtonToggleGroup.OnButtonCheckedListener() {
+//            @Override
+//            public void onButtonChecked(MaterialButtonToggleGroup group, int checkedId, boolean isChecked) {
+//                if (isChecked) {
+//                    if (checkedId == R.id.idAdminSelAgency) {
+//                        showToast("Robot that looks like human.");
+//                    } else if (checkedId == R.id.idAdminSelUser) {
+//                        showToast("It's a Butterfly thing.");
+//                    }
+//                } else {
+//                    showToast("Nothing Selected");
+//                }
+//            }
+//        });
+//    }
 
     private void showToast(String message) {
         Toast.makeText(requireActivity(), message, Toast.LENGTH_SHORT).show();

@@ -18,39 +18,52 @@
         android:layout_gravity="center"
         android:layout_marginTop="40dp"/>
 
-    <com.google.android.material.button.MaterialButtonToggleGroup
-        android:id="@+id/idAgencyToggleButtonGroup"
-        android:layout_width="331dp"
-        android:layout_height="60dp"
-        app:singleSelection="true"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp">
-
-
-        <Button
-            android:id="@+id/idAgencySelApproved"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="165dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="110dp">
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="334dp"
             android:layout_height="60dp"
-            android:text="Approved"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="164dp"
-            tools:layout_editor_absoluteY="266dp" />
+            android:layout_margin="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:cardBackgroundColor="#7a87a4"
+            app:cardCornerRadius="10dp">
 
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="@android:color/transparent"
+                android:layout_margin="1dp"
+                app:tabGravity="fill"
+                app:tabMode="fixed"
+                app:tabIndicatorColor="@android:color/transparent"
+                app:tabIndicatorHeight="0dp"
+                app:tabRippleColor="@android:color/transparent"
+                app:tabTextColor="@android:color/black"
+                app:tabSelectedTextColor="@android:color/white"
+                app:tabBackground="@drawable/tabs_selector2"
+                app:tabTextAppearance="@style/CustomTabTextAppearance1">
 
-        <Button
-            android:id="@+id/idAgencySelRejected"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            android:layout_width="165dp"
-            android:layout_height="60dp"
-            android:text="Rejected"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            tools:layout_editor_absoluteX="170dp"
-            tools:layout_editor_absoluteY="341dp" />
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Accepted"/>
 
-    </com.google.android.material.button.MaterialButtonToggleGroup>
+                <com.google.android.material.tabs.TabItem
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Rejected" />
+
+            </com.google.android.material.tabs.TabLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
     <androidx.recyclerview.widget.RecyclerView

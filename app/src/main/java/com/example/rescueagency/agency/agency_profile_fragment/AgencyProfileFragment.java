@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -16,6 +18,9 @@ import android.view.ViewGroup;
 import com.example.rescueagency.Constant;
 import com.example.rescueagency.LoginActivity;
 import com.example.rescueagency.R;
+import com.example.rescueagency.agency.AgencyAddMemberFragment;
+import com.example.rescueagency.agency.AgencyLeaderProfileViewFragment;
+import com.example.rescueagency.agency.AgencyReviewFragment;
 import com.example.rescueagency.databinding.FragmentAgencyProfileBinding;
 
 import java.util.ArrayList;
@@ -33,6 +38,7 @@ public class AgencyProfileFragment extends Fragment {
         binding = FragmentAgencyProfileBinding.inflate(inflater, container, false);
         logout();
         recycle();
+        leader();
         return binding.getRoot();
     }
     public void logout(){
@@ -47,6 +53,40 @@ public class AgencyProfileFragment extends Fragment {
         });
 
     }
+
+    private void leader() {
+        binding.idAgentProfileImageIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frameLayout, new AgencyLeaderProfileViewFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
+        binding.idAgencyAddMemberCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frameLayout, new AgencyAddMemberFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        });
+
+        binding.idAgencyReviews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frameLayout, new AgencyReviewFragment());
+                transaction.addToBackStack(null);
+                transaction.commit();
+
+            }
+        });
+
+    }
     private void recycle() {
         List<AgencyProfileList> data = new ArrayList<>();
         data.add(new AgencyProfileList("df", "df"));
@@ -56,6 +96,6 @@ public class AgencyProfileFragment extends Fragment {
         data.add(new AgencyProfileList("df", "df"));
         AgencyProfileListHolder adapter = new AgencyProfileListHolder(data,requireActivity());
         binding.idAgencyMemberRecyclerView.setAdapter(adapter);
-        binding.idAgencyMemberRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding.idAgencyMemberRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
     }
 }

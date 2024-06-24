@@ -10,10 +10,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.rescueagency.R;
+import com.example.rescueagency.admin.AdminAgencyDetailViewFragment;
+import com.example.rescueagency.agency.AgencyUserChatFragment;
+import com.example.rescueagency.agency.MessageList.AgencyMessageList;
+import com.example.rescueagency.agency.agency_profile_fragment.AgencyProfileFragment;
 
 import java.util.List;
 
@@ -27,6 +32,8 @@ public class AdminAgencyListHolder extends RecyclerView.Adapter <AdminAgencyList
         this.list = data;
         this.activity = activity;
     }
+
+
 
 
 
@@ -47,7 +54,9 @@ public class AdminAgencyListHolder extends RecyclerView.Adapter <AdminAgencyList
         holder.cardView.setOnClickListener(new View.OnClickListener()  {
             @Override
             public void onClick(View o) {
-                Toast.makeText(activity, data.getAgencyimage(), Toast.LENGTH_SHORT).show();
+                FragmentTransaction transaction=activity.getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.frameLayout,new AdminAgencyDetailViewFragment());
+                transaction.addToBackStack("AdminAgencyDetailViewFragment").commit();
             }
         });
 

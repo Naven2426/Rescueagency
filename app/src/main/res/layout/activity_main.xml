@@ -25,6 +25,7 @@
         android:layout_height="50dp"
         android:layout_marginBottom="10dp"
         android:paddingTop="6dp"
+        android:background="@color/sandal"
         app:itemIconTint="@drawable/icon_tint"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

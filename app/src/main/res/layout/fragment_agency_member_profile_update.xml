@@ -5,6 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="70dp"
     android:background="@color/lightsandal"
     tools:context=".LoginActivityFragments.SignUpFragment">
 
@@ -20,7 +21,7 @@
 
 
             <ImageView
-                android:id="@+id/id_agency_add_member_back_button"
+                android:id="@+id/idAgencyUpdateProfileBackButton"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="30dp"
@@ -30,17 +31,29 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/idAgencyUpdateProfileLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="40dp"
+                android:src="@mipmap/agency_logo"
+                app:layout_constraintStart_toEndOf="@+id/idAgencyUpdateProfileBackButton"
+                app:layout_constraintTop_toTopOf="parent">
+
+            </androidx.appcompat.widget.AppCompatImageView>
+
             <TextView
                 android:id="@+id/id_agency_add_member_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="60dp"
-                android:layout_marginTop="44dp"
-                android:text="Update Profile"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="48dp"
+                android:text="Apex Aid Alliance"
                 android:textColor="@color/black"
                 android:textSize="25dp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toEndOf="@+id/id_agency_add_member_back_button"
+                app:layout_constraintStart_toEndOf="@+id/idAgencyUpdateProfileLogo"
                 app:layout_constraintTop_toTopOf="parent">
 
             </TextView>
@@ -50,15 +63,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:text="Member Details"
                 android:textColor="@color/black"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.231"
+                app:layout_constraintHorizontal_bias="0.128"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/id_agency_add_member_back_button" />
+                app:layout_constraintTop_toBottomOf="@+id/idAgencyUpdateProfileLogo" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/id_agency_add_member_profile_image"
@@ -71,7 +84,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/id_agency_add_member_details">
 
             </androidx.appcompat.widget.AppCompatImageView>
-
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/id_agency_add_member_card"
@@ -120,7 +132,7 @@
 
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/id_edittext_agency_add_name_Text"
+            android:id="@+id/idAgencyMemberUpdateProfileName"
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:inputType="textPersonName"
@@ -143,7 +155,7 @@
             android:textColor="@color/black"/>
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/id_edittext_agent_mobile_Text"
+            android:id="@+id/idAgencyMemberUpdateProfileMobile"
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:inputType="phone"
@@ -168,7 +180,7 @@
             />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/id_edittext_agent_email_Text"
+            android:id="@+id/idAgencyMemberUpdateProfileEmail"
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:inputType="textEmailAddress"
@@ -192,7 +204,7 @@
             />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/id_edittext_agent_address_Text"
+            android:id="@+id/idAgencyMemberUpdateProfileAddress"
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:inputType="textPostalAddress"
@@ -216,13 +228,15 @@
 
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/id_edittext_agency_add_date_Text"
+            android:id="@+id/idAgencyMemberUpdateProfileDob"
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginTop="11dp"
+            android:paddingLeft="10dp"
             android:background="@drawable/edittext"
             android:inputType="date"
+            android:focusable="false"
             android:textColor="@color/black" />
 
 
@@ -239,7 +253,7 @@
             />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/id_edittext_add_member_roll_Text"
+            android:id="@+id/idAgencyMemberUpdateProfileRole"
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:inputType="textPostalAddress"
@@ -262,7 +276,7 @@
             android:textColor="@color/black"/>
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/id_edittext_add_member_yoe_Text"
+            android:id="@+id/idAgencyMemberUpdateProfileYoe"
             android:layout_width="350dp"
             android:layout_height="50dp"
             android:background="@drawable/edittext"
@@ -270,6 +284,7 @@
             android:layout_marginTop="11dp"
             android:inputType="date"
             android:textColor="@color/black"
+            android:paddingLeft="10dp"
             />
 
 

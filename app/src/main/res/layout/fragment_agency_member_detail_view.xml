@@ -5,6 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="70dp"
     android:background="@color/lightsandal">
 
     <LinearLayout
@@ -35,14 +36,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:layout_marginTop="48dp"
                 android:text="Member Details"
                 android:textColor="@color/black"
                 android:textSize="25dp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.179"
+                app:layout_constraintHorizontal_bias="0.19"
                 app:layout_constraintStart_toEndOf="@+id/id_agency_member_detail_view_back_button"
-                tools:layout_editor_absoluteY="46dp">
+                app:layout_constraintTop_toTopOf="parent">
 
             </androidx.appcompat.widget.AppCompatTextView>
 
@@ -81,7 +83,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp">
 
 
@@ -92,7 +94,7 @@
                 android:layout_marginStart="56dp"
                 android:layout_marginTop="36dp"
                 android:src="@mipmap/profilename"
-                app:layout_constraintStart_toStartOf="parent" >
+                app:layout_constraintStart_toStartOf="parent">
 
             </androidx.appcompat.widget.AppCompatImageView>
 
@@ -162,8 +164,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/idAgencyMemberDetailMobileTV" />
 
 
-
-
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/idAgencyMemberDetailEmailIV"
                 android:layout_width="46dp"
@@ -201,8 +201,6 @@
                 app:layout_constraintHorizontal_bias="0.365"
                 app:layout_constraintStart_toEndOf="@+id/idAgencyMemberDetailEmailIV"
                 app:layout_constraintTop_toBottomOf="@+id/idAgencyMemberDetailEmailIdTV" />
-
-
 
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -244,7 +242,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/idAgencyMemberDetailAddressTV" />
 
 
-
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/idAgencyMemberDetailDOBIV"
                 android:layout_width="46dp"
@@ -284,8 +281,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/idAgencyMemberDetailDOBTV" />
 
 
-
-
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/id_agent_profile_roll"
                 android:layout_width="55dp"
@@ -295,8 +290,6 @@
                 android:src="@mipmap/roll"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/idAgencyMemberDetailDOBIV" />
-
-
 
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -325,9 +318,9 @@
                 app:layout_constraintTop_toBottomOf="@+id/idAgencyMemberDetailDOBTV" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/idProfileRollTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/idProfileRollTV"
                 android:layout_marginStart="36dp"
                 android:text="Admin"
                 android:textColor="@color/black"
@@ -337,9 +330,9 @@
 
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/idProfileYOETV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/idProfileYOETV"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="40dp"
                 android:text="Year of Experience"
@@ -364,7 +357,7 @@
 
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/id_agency_add_member_view_next_button"
+            android:id="@+id/idAgencyMemberDetailRemoveMemberButton"
             android:layout_width="350dp"
             android:layout_height="40dp"
             android:layout_marginTop="45dp"

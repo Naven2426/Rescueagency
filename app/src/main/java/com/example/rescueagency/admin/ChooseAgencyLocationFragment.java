@@ -3,6 +3,7 @@ package com.example.rescueagency.admin;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.rescueagency.R;
+import com.example.rescueagency.databinding.FragmentChooseAgencyLocationBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -19,6 +21,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class ChooseAgencyLocationFragment extends Fragment {
 
+    FragmentChooseAgencyLocationBinding binding;
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
         /**
@@ -43,7 +46,19 @@ public class ChooseAgencyLocationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_choose_agency_location, container, false);
+        binding = FragmentChooseAgencyLocationBinding.inflate(inflater, container, false);
+        click();
+        return binding.getRoot();
+    }
+
+    private void click() {
+        binding.idChooseAgencyLocationBackButIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FragmentManager transaction = requireActivity().getSupportFragmentManager();
+                transaction.popBackStack();
+            }
+        });
     }
 
     @Override

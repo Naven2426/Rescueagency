@@ -71,6 +71,7 @@
     </androidx.appcompat.widget.AppCompatEditText>
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/idChatSendButton"
         android:layout_width="79dp"
         android:layout_height="42dp"
         android:layout_marginEnd="16dp"
