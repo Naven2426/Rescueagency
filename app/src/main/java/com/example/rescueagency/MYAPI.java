@@ -42,4 +42,5 @@ public interface MYAPI {
                                         @Part("username")String username,
                                         @Part("password")String password,
                                         @Part("user_type")String user_type);
+    //map
 }
