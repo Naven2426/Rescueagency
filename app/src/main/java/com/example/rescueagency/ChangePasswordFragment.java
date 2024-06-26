@@ -8,6 +8,8 @@ import androidx.fragment.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 
@@ -21,6 +23,10 @@ public class ChangePasswordFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_change_password, container, false);
         ImageView backPressimageView = view.findViewById(R.id.id_change_password_back_button);
+        MainActivity mainActivity=(MainActivity) getActivity();
+        Animation hideAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.hide_bottom_navigation);
+        mainActivity.findViewById(R.id.bottomNavigationView).startAnimation(hideAnimation);
+        mainActivity.findViewById(R.id.bottomNavigationView).setVisibility(View.GONE);
         backPressimageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -2,16 +2,20 @@ package com.example.rescueagency;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.rescueagency.admin.AdminAddAgencyFragment;
+import com.example.rescueagency.admin.AdminAddCategoryFragment;
 import com.example.rescueagency.admin.HomeFragment.AdminHomeFragment;
 import com.example.rescueagency.agency.SOSRequestRVFragment.AgencyHomeFragment;
 import com.example.rescueagency.agency.agency_profile_fragment.AgencyProfileFragment;
@@ -19,12 +23,16 @@ import com.example.rescueagency.agency.AgencyRequestHistoryFragment;
 import com.example.rescueagency.check_status_fragment.RequestHistoryFragment;
 import com.example.rescueagency.main_menu_fragments.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView
         .OnNavigationItemSelectedListener {
 
     private SharedPreferences sf;
     private String userType;
+    Fragment fragment;
+    FragmentTransaction transaction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +50,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         Fragment fragment;
         if(userType.equalsIgnoreCase(Constant.LOGIN_AS_ADMIN)){
             fragment=new AdminHomeFragment();
-            Menu menu=bottomNavigationView.getMenu();
-            menu.findItem(R.id.adminAddAgency).setVisible(true);
+            Menu menu = bottomNavigationView.getMenu();
+            menu.findItem(R.id.addAgency).setVisible(true);
             menu.findItem(R.id.userHistory).setVisible(false);
         }else if(userType.equalsIgnoreCase(Constant.LOGIN_AS_AGENCY)){
             fragment=new AgencyHomeFragment();
@@ -52,12 +60,41 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
          }
         transaction.replace(R.id.frameLayout,fragment).commit();
     }
-    Fragment fragment;
+
+    private void showBottomSheetDialog() {
+        View view = LayoutInflater.from(this).inflate(R.layout.choose_category_dialog_layout, null);
+
+        BottomSheetDialog dialog = new BottomSheetDialog(this);
+        dialog.setContentView(view);
+
+        CardView idChooseCategoryCV = view.findViewById(R.id.idChooseCategoryCV);
+        CardView idChooseCategoryCV2 = view.findViewById(R.id.idChooseCategoryCV2);
+
+        idChooseCategoryCV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AdminAddAgencyFragment adminFragment=new AdminAddAgencyFragment();
+                transaction.replace(R.id.frameLayout,adminFragment).commit();
+                dialog.dismiss();
+            }
+        });
+
+        idChooseCategoryCV2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AdminAddCategoryFragment adminFragment=new AdminAddCategoryFragment();
+                transaction.replace(R.id.frameLayout,adminFragment).commit();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int menu=item.getItemId();
-        FragmentTransaction transaction= getSupportFragmentManager().beginTransaction();
+        transaction= getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right,
                 R.anim.enter_from_right, R.anim.exit_to_left);
         FragmentManager fragmentManager=getSupportFragmentManager();
@@ -96,9 +133,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
             }
             transaction.replace(R.id.frameLayout,fragment).commit();
         }
-        else if(menu==R.id.adminAddAgency){
-            AdminAddAgencyFragment adminFragment=new AdminAddAgencyFragment();
-            transaction.replace(R.id.frameLayout,adminFragment).commit();
+        else if(menu==R.id.addAgency){
+            showBottomSheetDialog();
         }
         return true;
     }
@@ -109,4 +145,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         overridePendingTransition(R.anim.slide_in_left,
                 R.anim.slide_out_right);
     }
+
+
+
 }

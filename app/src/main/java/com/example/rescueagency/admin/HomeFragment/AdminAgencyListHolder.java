@@ -42,6 +42,7 @@ public class AdminAgencyListHolder extends RecyclerView.Adapter <AdminAgencyList
     public MyAdminAgencyListHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.admin_agency_view_list,
                 parent, false);
+
         return new MyAdminAgencyListHolder(view);
     }
 

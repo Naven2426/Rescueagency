@@ -2,6 +2,7 @@ package com.example.rescueagency.main_menu_fragments;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatImageView;
@@ -15,10 +16,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import com.example.rescueagency.notification_fragment.NotificationFragment;
+import com.example.rescueagency.MainActivity;
 import com.example.rescueagency.R;
 import com.example.rescueagency.RestClient;
 import com.example.rescueagency.apiresponse.GetCategoryResponse;
+import com.example.rescueagency.notification_fragment.NotificationActivity;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,6 +42,12 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_home, container, false);
+
+        MainActivity mainActivity=(MainActivity) getActivity();
+        BottomNavigationView bottomNavigationView =mainActivity.findViewById(R.id.bottomNavigationView);
+        if(bottomNavigationView.getVisibility()==View.GONE){
+            bottomNavigationView.setVisibility(View.VISIBLE);
+        }
 
         apiCall(view);
 
@@ -70,9 +79,8 @@ public class HomeFragment extends Fragment {
         notificationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FragmentTransaction transaction=getActivity().getSupportFragmentManager().beginTransaction();
-                transaction.setCustomAnimations(R.anim.enter_from_left,R.anim.exit_to_right);
-                transaction.replace(R.id.frameLayout,new NotificationFragment()).addToBackStack(null).commit();
+
+                startActivity(new Intent(getContext(), NotificationActivity.class));
 
             }
             });

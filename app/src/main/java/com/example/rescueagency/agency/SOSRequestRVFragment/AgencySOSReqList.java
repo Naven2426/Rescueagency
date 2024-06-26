@@ -11,8 +11,10 @@ public class AgencySOSReqList {
     String date;
     String date_sent;
     String location;
+    String alertType;
     String location_id;
     String image;
+    private String status;
 
     public String getName() {
         return name;
@@ -71,7 +73,8 @@ public class AgencySOSReqList {
     }
 
 
-    public AgencySOSReqList(String name, String name_id, String date, String date_sent, String location, String location_id, String image) {
+    public AgencySOSReqList(String name, String name_id, String date, String date_sent, String location, String location_id, String image,String status,
+                            String alertType) {
         this.name = name;
         this.name_id = name_id;
         this.date = date;
@@ -79,7 +82,15 @@ public class AgencySOSReqList {
         this.location = location;
         this.location_id = location_id;
         this.image = image;
+        this.status=status;
+        this.alertType=alertType;
     }
 
+    public String getAlertType() {
+        return alertType;
+    }
 
+    public String getStatus() {
+        return status;
+    }
 }

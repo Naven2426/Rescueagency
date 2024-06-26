@@ -11,7 +11,13 @@ public class CheckStatusList {
     String image;
     String track_agency;
 
-    public CheckStatusList(String status, String status_name, String alert, String alert_type, String date, String date_sent,  String track_agency) {
+    public String getFrom() {
+        return from;
+    }
+
+    private String from;
+
+    public CheckStatusList(String status, String status_name, String alert, String alert_type, String date, String date_sent,  String track_agency, String from) {
         this.status = status;
         this.status_name = status_name;
         this.alert = alert;
@@ -19,6 +25,7 @@ public class CheckStatusList {
         this.date = date;
         this.date_sent = date_sent;
         this.track_agency = track_agency;
+        this.from = from;
     }
 
     public String getStatus() {

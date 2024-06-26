@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.rescueagency.MainActivity;
 import com.example.rescueagency.ProfileFragment;
 import com.example.rescueagency.R;
 import com.example.rescueagency.admin.HomeFragment.AdminAgencyListHolder;
@@ -22,6 +23,8 @@ import com.example.rescueagency.agency.AgencyNotificationFragment;
 import com.example.rescueagency.agency.AgencySOSRequestDetailFragment;
 import com.example.rescueagency.alertsentFragment;
 import com.example.rescueagency.databinding.FragmentAgencyHomeBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,9 +39,60 @@ public class AgencyHomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentAgencyHomeBinding.inflate(inflater, container, false);
-//        recycle();
         click();
+        MainActivity mainActivity=(MainActivity) getActivity();
+        BottomNavigationView bottomNavigationView =mainActivity.findViewById(R.id.bottomNavigationView);
+        if(bottomNavigationView.getVisibility()==View.GONE){
+            bottomNavigationView.setVisibility(View.VISIBLE);
+        }
+        List<AgencySOSReqList> data = new ArrayList<>();
+        data.add(new AgencySOSReqList("Name :","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf","sos","medical") );
+        data.add(new AgencySOSReqList("Name :","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf","sos","medical") );
+        data.add(new AgencySOSReqList("Name :","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf","sos","medical") );
+        data.add(new AgencySOSReqList("Name :","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf","sos","medical") );
+        data.add(new AgencySOSReqList("Name :","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf","sos","medical") );
+        recycle(data);
+        tabLayout();
         return binding.getRoot();
+    }
+    private void tabLayout(){
+        binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if(tab.getPosition()==0){
+
+                        List<AgencySOSReqList> data = new ArrayList<>();
+                        data.add(new AgencySOSReqList("Name :","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf","sos","medical") );
+                        data.add(new AgencySOSReqList("Name :","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf","sos","medical") );
+                        data.add(new AgencySOSReqList("Name :","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf","sos","medical") );
+                        data.add(new AgencySOSReqList("Name :","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf","sos","medical") );
+                        data.add(new AgencySOSReqList("Name :","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf","sos","medical") );
+                        recycle(data);
+                    }
+                  else{
+
+                        List<AgencySOSReqList> data = new ArrayList<>();
+                        data.add(new AgencySOSReqList("Name :","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf","Alert Type :","medical") );
+                        data.add(new AgencySOSReqList("Name :","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf","Alert Type :","medical") );
+                        data.add(new AgencySOSReqList("Name :","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf","Alert Type :","medical") );
+                        data.add(new AgencySOSReqList("Name :","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf","Alert Type :","medical") );
+                        data.add(new AgencySOSReqList("Name :","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf","Alert Type :","medical") );
+                        data.add(new AgencySOSReqList("Name :","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf","Alert Type :","medical") );
+                        recycle(data);
+
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
     }
     private void click(){
         binding.idChatIV.setOnClickListener(new View.OnClickListener() {
@@ -55,13 +109,7 @@ public class AgencyHomeFragment extends Fragment {
 
 
 
-    private void recycle(){
-        List<AgencySOSReqList> data = new ArrayList<>();
-        data.add(new AgencySOSReqList("1234567890","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf") );
-        data.add(new AgencySOSReqList("1234567890","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf") );
-        data.add(new AgencySOSReqList("1234567890","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf") );
-        data.add(new AgencySOSReqList("1234567890","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf") );
-        data.add(new AgencySOSReqList("1234567890","bhjb","jhrgv","zfds","fsdf","sdfs","sdfdf") );
+    private void recycle(List<AgencySOSReqList> data){
         binding.idHomeSOSReqListRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
         binding.idHomeSOSReqListRecyclerView.setAdapter(new AgencySOSReqListHolder(data, requireActivity()));
 

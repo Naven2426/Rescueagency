@@ -3,25 +3,18 @@ package com.example.rescueagency.notification_fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.widget.AppCompatButton;
-import androidx.appcompat.widget.AppCompatImageView;
-import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.rescueagency.FeedbackFragment;
 import com.example.rescueagency.R;
-import com.example.rescueagency.UserAgencyChatFragment;
-import com.example.rescueagency.check_status_fragment.CheckStatusList;
-import com.example.rescueagency.check_status_fragment.CheckStatusListHolder;
 
 import java.util.List;
 

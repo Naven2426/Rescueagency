@@ -34,8 +34,8 @@
         android:layout_centerHorizontal="true">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="339dp"
+            android:layout_height="50dp"
             android:id="@+id/id_sos_done_button"
             android:text="DONE"
             android:textColor="@color/white"

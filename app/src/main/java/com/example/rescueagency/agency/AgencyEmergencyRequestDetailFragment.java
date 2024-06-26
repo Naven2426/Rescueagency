@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.rescueagency.MainActivity;
 import com.example.rescueagency.R;
 import com.example.rescueagency.databinding.FragmentAgencyEmergencyRequestDetailBinding;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -40,6 +41,8 @@ public class AgencyEmergencyRequestDetailFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         binding = FragmentAgencyEmergencyRequestDetailBinding.inflate(inflater, container, false);
         Click();
+        MainActivity mainActivity=(MainActivity) getActivity();
+        mainActivity.findViewById(R.id.bottomNavigationView).setVisibility(View.GONE);
         return binding.getRoot();
     }
 

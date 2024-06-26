@@ -27,6 +27,8 @@ public class BookingFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentBookingBinding.inflate(inflater,container,false);
         clickListener();
+        MainActivity mainActivity=(MainActivity) getActivity();
+        mainActivity.findViewById(R.id.bottomNavigationView).setVisibility(View.GONE);
         return binding.getRoot();
     }
     private void clickListener(){

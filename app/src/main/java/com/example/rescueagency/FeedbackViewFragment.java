@@ -25,6 +25,8 @@ public class FeedbackViewFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentFeedbackViewBinding.inflate(inflater, container, false);
         clickListener();
+        MainActivity mainActivity=(MainActivity) getActivity();
+        mainActivity.findViewById(R.id.bottomNavigationView).setVisibility(View.GONE);
         return binding.getRoot();
 //        return inflater.inflate(R.layout.fragment_feedback_view, container, false);
     }

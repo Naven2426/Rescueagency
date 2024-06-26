@@ -7,8 +7,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.example.rescueagency.MainActivity;
 import com.example.rescueagency.R;
 import com.example.rescueagency.databinding.FragmentRequestHistoryBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabItem;
+import com.google.android.material.tabs.TabLayout;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,54 +23,67 @@ public class RequestHistoryFragment extends Fragment {
 
     private FragmentRequestHistoryBinding binding;
     private Button buttonCheckStatus, buttonHistory;
+    private TabItem history,checkStatus;
+    List<CheckStatusList> data = new ArrayList<>();
+
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentRequestHistoryBinding.inflate(inflater, container, false);
-
-        setupRecyclerView();
+//        binding.checkStatus.setSelected(true);
+        data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","status"));
+        data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","status"));
+        data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","status"));
+        data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","status"));
+        data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","status"));
+        setupRecyclerView(data);
+        tabLayout();
+        MainActivity mainActivity=(MainActivity) getActivity();
+        BottomNavigationView bottomNavigationView =mainActivity.findViewById(R.id.bottomNavigationView);
+        if(bottomNavigationView.getVisibility()==View.GONE){
+            bottomNavigationView.setVisibility(View.VISIBLE);
+        }
         return binding.getRoot();
     }
+    private void tabLayout(){
+        binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if(tab.getPosition() == 0){
+                    List<CheckStatusList> data = new ArrayList<>();
 
-//    private void setupToggleButtons() {
-//        buttonCheckStatus = binding.getRoot().findViewById(R.id.idAdminSelAgency);
-//        buttonHistory = binding.getRoot().findViewById(R.id.idAdminSelUser);
-//
-//        // Default selection
-//        buttonCheckStatus.setSelected(true);
-//        buttonCheckStatus.setBackgroundResource(R.drawable.toggle_checked);
-//        buttonHistory.setBackgroundResource(R.drawable.toggle_unchecked);
-//
-//        buttonCheckStatus.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                buttonCheckStatus.setSelected(true);
-//                buttonHistory.setSelected(false);
-//                buttonCheckStatus.setBackgroundResource(R.drawable.toggle_checked);
-//                buttonHistory.setBackgroundResource(R.drawable.toggle_unchecked);
-//            }
-//        });
-//
-//        buttonHistory.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                buttonCheckStatus.setSelected(false);
-//                buttonHistory.setSelected(true);
-//                buttonCheckStatus.setBackgroundResource(R.drawable.toggle_unchecked);
-//                buttonHistory.setBackgroundResource(R.drawable.toggle_checked);
-//            }
-//        });
-//    }
+                    data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","status"));
+                    data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","status"));
+                    data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","status"));
+                    data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","status"));
+                    data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","status"));
+                    setupRecyclerView(data);
+                }else{
+                    List<CheckStatusList> data = new ArrayList<>();
+                    data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","history"));
+                    data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","history"));
+                    data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","history"));
+                    data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","history"));
+                    data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","history"));
+                    setupRecyclerView(data);
+                }
+            }
 
-    private void setupRecyclerView() {
-        List<CheckStatusList> data = new ArrayList<>();
-        data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs"));
-        data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs"));
-        data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs"));
-        data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs"));
-        data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs"));
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+    }
+
+    private void setupRecyclerView(List<CheckStatusList> data) {
+
         CheckStatusListHolder object = new CheckStatusListHolder(data, requireActivity());
         binding.idRequestHistoryList.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.idRequestHistoryList.setAdapter(object);

@@ -17,11 +17,13 @@ import android.view.ViewGroup;
 
 import com.example.rescueagency.Constant;
 import com.example.rescueagency.LoginActivity;
+import com.example.rescueagency.MainActivity;
 import com.example.rescueagency.R;
 import com.example.rescueagency.agency.AgencyAddMemberFragment;
 import com.example.rescueagency.agency.AgencyLeaderProfileViewFragment;
 import com.example.rescueagency.agency.AgencyReviewFragment;
 import com.example.rescueagency.databinding.FragmentAgencyProfileBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,10 +34,14 @@ public class AgencyProfileFragment extends Fragment {
     FragmentAgencyProfileBinding binding;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentAgencyProfileBinding.inflate(inflater, container, false);
+        MainActivity mainActivity=(MainActivity) getActivity();
+        BottomNavigationView bottomNavigationView =mainActivity.findViewById(R.id.bottomNavigationView);
+        if(bottomNavigationView.getVisibility()==View.GONE){
+            bottomNavigationView.setVisibility(View.VISIBLE);
+        }
         logout();
         recycle();
         leader();

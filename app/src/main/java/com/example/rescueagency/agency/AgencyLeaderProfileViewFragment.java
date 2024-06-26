@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.rescueagency.MainActivity;
 import com.example.rescueagency.ProfileFragment;
 import com.example.rescueagency.R;
 import com.example.rescueagency.databinding.FragmentAgencyLeaderProfileViewBinding;
@@ -27,6 +28,8 @@ public class AgencyLeaderProfileViewFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentAgencyLeaderProfileViewBinding.inflate(inflater, container, false);
         clickListeners();
+        MainActivity mainActivity=(MainActivity) getActivity();
+        mainActivity.findViewById(R.id.bottomNavigationView).setVisibility(View.GONE);
         return binding.getRoot();
     }
     private void clickListeners() {

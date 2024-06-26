@@ -24,6 +24,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.rescueagency.FileUtils;
+import com.example.rescueagency.MainActivity;
 import com.example.rescueagency.R;
 import com.example.rescueagency.admin.spinner.CustomSpinner;
 import com.example.rescueagency.admin.spinner.Data;
@@ -48,6 +49,8 @@ public class AdminAddAgencyFragment extends Fragment  implements CustomSpinner.O
         binding = FragmentAdminAddAgencyBinding.inflate(inflater, container, false);
         addAgency();
         dropDown();
+        MainActivity mainActivity=(MainActivity) getActivity();
+        mainActivity.findViewById(R.id.bottomNavigationView).setVisibility(View.GONE);
         return binding.getRoot();
     }
     private void dropDown(){

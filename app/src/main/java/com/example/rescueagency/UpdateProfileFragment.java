@@ -25,6 +25,8 @@ public class UpdateProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentUpdateProfileBinding.inflate(inflater, container, false);
         click();
+        MainActivity mainActivity=(MainActivity) getActivity();
+        mainActivity.findViewById(R.id.bottomNavigationView).setVisibility(View.GONE);
         return binding.getRoot();
     }
     private  void click(){
