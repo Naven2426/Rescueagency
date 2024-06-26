@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.rescueagency.MainActivity;
 import com.example.rescueagency.R;
 import com.example.rescueagency.agency.agency_profile_fragment.AgencyProfileFragment;
 import com.example.rescueagency.databinding.FragmentAgencyMemberDetailViewBinding;
@@ -24,6 +25,8 @@ public class AgencyMemberDetailViewFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentAgencyMemberDetailViewBinding.inflate(inflater, container, false);
         clickListener();
+        MainActivity mainActivity=(MainActivity) getActivity();
+        mainActivity.findViewById(R.id.bottomNavigationView).setVisibility(View.GONE);
         return binding.getRoot();
     }
     private void clickListener() {

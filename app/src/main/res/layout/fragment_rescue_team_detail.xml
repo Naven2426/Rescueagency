@@ -20,13 +20,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
+            android:orientation="vertical">
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="1dp"
+                android:paddingLeft="16dp">
 
 
             <ImageView
@@ -58,12 +58,14 @@
                 android:text="A.C. Ambulance Service"
                 android:textColor="@color/black"
                 android:textSize="25sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:paddingLeft="16dp"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="16dp">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/id_rescue_team_view_rating_card"
@@ -123,7 +125,8 @@
                 android:layout_marginTop="8dp"
                 android:text=" Anna Salai, Chennai"
                 android:textColor="@color/ahs"
-                android:textSize="17sp"/>
+                android:textSize="17sp"
+                android:paddingLeft="16dp"/>
 
             <TextView
                 android:id="@+id/id_rescue_team_view_services"
@@ -132,7 +135,8 @@
                 android:layout_marginTop="10dp"
                 android:text="Emergency Services"
                 android:textColor="@color/black"
-                android:textSize="17sp"/>
+                android:textSize="17sp"
+                android:paddingLeft="16dp"/>
 
             <TextView
                 android:id="@+id/id_rescue_team_view_service_years"
@@ -141,12 +145,14 @@
                 android:layout_marginTop="10dp"
                 android:text="6 years of Service"
                 android:textColor="@color/black"
-                android:textSize="17sp"/>
+                android:textSize="17sp"
+                android:paddingLeft="16dp"/>
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="16dp">
 
             <TextView
                 android:id="@+id/id_rescue_team_view_response_time"
@@ -180,7 +186,8 @@
                 android:layout_marginTop="10dp"
                 android:text="Phone :"
                 android:textColor="@color/black"
-                android:textSize="17sp"/>
+                android:textSize="17sp"
+                android:paddingLeft="16dp"/>
 
     <TextView
         android:id="@+id/id_rescue_team_view_phone_number"
@@ -197,7 +204,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingLeft="16dp">
 
             <TextView
                 android:id="@+id/id_rescue_team_view_hours"
@@ -228,12 +236,14 @@
                 android:text="Team Members"
                 android:textColor="@color/black"
                 android:textSize="25sp"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:paddingLeft="16dp"/>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/idRescueTeamRecyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="200dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/id_rescue_team_view_confirm_agency"

@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:gravity="center"
-    android:layout_height="105dp"
+    android:layout_height="109dp"
     android:layout_marginTop="10dp">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/idSOSReqListCV"
+        android:id="@+id/idAgencyReqHistoryListCV"
         android:layout_width="348dp"
         android:layout_height="101dp"
         android:radius="16dp"
@@ -20,49 +20,11 @@
 
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/idReqName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:text="Name :"
-            android:textColor="@color/black"
-            android:textSize="17dp">
-
-        </androidx.appcompat.widget.AppCompatTextView>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/idReqDate"
+            android:id="@+id/idAgencyAlertTypeTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="40dp"
-            android:text="Date Sent :"
-            android:textColor="@color/black"
-            android:textSize="17dp">
-
-        </androidx.appcompat.widget.AppCompatTextView>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/idReqLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="70dp"
-            android:text="Location :"
-            android:textColor="@color/black"
-            android:textSize="17dp">
-
-        </androidx.appcompat.widget.AppCompatTextView>
-
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/idReqAlertType"
-            android:visibility="gone"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="70dp"
             android:text="Alert Type :"
             android:textColor="@color/black"
             android:textSize="17dp">
@@ -70,12 +32,35 @@
         </androidx.appcompat.widget.AppCompatTextView>
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idAgencyReqDate"
             android:layout_width="wrap_content"
-            android:visibility="gone"
             android:layout_height="wrap_content"
-            android:id="@+id/idReqAlertValue"
-            android:layout_marginLeft="110dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="70dp"
+            android:text="Date Sent :"
+            android:textColor="@color/black"
+            android:textSize="17dp">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idAgencyStatusTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Status :"
+            android:textColor="@color/black"
+            android:textSize="17dp">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idAgencyAlertNameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="40dp"
             android:text="Medical"
             android:textColor="@color/black"
             android:textSize="17dp">
@@ -83,44 +68,32 @@
         </androidx.appcompat.widget.AppCompatTextView>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/idReqNameTV"
+            android:id="@+id/idAgencyReqDateTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="10dp"
-            android:text="ABC"
+            android:layout_marginLeft="110dp"
+            android:layout_marginTop="70dp"
+            android:text="12/12/2022"
             android:textColor="@color/black"
             android:textSize="17dp">
 
         </androidx.appcompat.widget.AppCompatTextView>
 
-       <androidx.appcompat.widget.AppCompatTextView
-           android:id="@+id/idReqDateTV"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:layout_marginLeft="110dp"
-           android:layout_marginTop="40dp"
-           android:text="12/12/2022"
-           android:textColor="@color/black"
-           android:textSize="17dp">
-
-       </androidx.appcompat.widget.AppCompatTextView>
-
         <androidx.cardview.widget.CardView
-            android:id="@+id/idViewCV"
-            android:layout_width="50dp"
-            android:layout_height="25dp"
-            android:layout_marginTop="70dp"
+            android:id="@+id/idAgencyReqAcceptViewCV"
+            android:layout_width="80dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="10dp"
             app:cardCornerRadius="12dp"
-            app:cardBackgroundColor="@color/hex"
-            android:layout_marginLeft="110dp">
+            app:cardBackgroundColor="@color/green"
+            android:layout_marginLeft="90dp">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/idViewTV"
+                android:id="@+id/idAgencyReqAcceptViewTV"
                 android:layout_gravity="center"
-                android:text="View"
+                android:text="Accepted"
                 android:textColor="@color/white"
                 android:textSize="15dp">
 
@@ -128,15 +101,15 @@
 
         </androidx.cardview.widget.CardView>
 
-<androidx.appcompat.widget.AppCompatImageView
-    android:layout_width="30dp"
-    android:layout_height="30dp"
-    android:id="@+id/idSOSReqInfoIV"
-    android:src="@mipmap/info"
-    android:layout_marginLeft="290dp"
-    android:layout_marginTop="37dp">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/idAgencyReqAcceptViewIV"
+            android:src="@mipmap/view"
+            android:layout_marginLeft="290dp"
+            android:layout_marginTop="37dp">
 
-</androidx.appcompat.widget.AppCompatImageView>
+        </androidx.appcompat.widget.AppCompatImageView>
 
     </androidx.cardview.widget.CardView>
 

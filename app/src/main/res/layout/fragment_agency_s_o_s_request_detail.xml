@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.core.widget.NestedScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:orientation="vertical"
-    android:background="@color/sandal"
+    android:background="@color/lightsandal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginBottom="70dp"
     tools:context=".MapsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/sandal">
+        android:layout_height="match_parent"
+        android:background="@color/lightsandal">
 
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/idAgencySOSReqDetailBackButIV"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="56dp"
             android:src="@mipmap/backarrow"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -29,8 +30,8 @@
             android:id="@+id/idAgencySOSReqDetailTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="80dp"
-            android:layout_marginTop="44dp"
+            android:layout_marginLeft="70dp"
+            android:layout_marginTop="51dp"
             android:text="SOS Request"
             android:textColor="@color/black"
             android:textSize="25dp"
@@ -43,7 +44,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="45dp"
             android:text="Name :"
             android:textColor="@color/black"
             android:textSize="17dp"
@@ -52,11 +53,11 @@
             app:layout_constraintTop_toBottomOf="@+id/idAgencySOSReqDetailBackButIV" />
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idAgencySOSReqDetailName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/idAgencySOSReqDetailName"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="45dp"
             android:text="mark"
             android:textColor="@color/black"
             android:textSize="17dp"
@@ -68,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="11dp"
             android:text="Date :"
             android:textColor="@color/black"
             android:textSize="17dp"
@@ -95,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="11dp"
             android:text="Location :"
             android:textColor="@color/black"
             android:textSize="17dp"
@@ -105,43 +106,67 @@
 
         </androidx.appcompat.widget.AppCompatTextView>
 
+        <fragment
+            android:id="@+id/idAgencySOSReqMap"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="355dp"
+            android:layout_height="405dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="11dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idAgencySOSReqDetailLocation" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/idAgencySOSReqCollaborateRequest"
+            android:layout_width="339dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="34dp"
+            android:background="@drawable/roundstyle"
+            android:text="Request Collaborate"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idAgencySOSReqMap">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/idAgencySOSReqAcceptRequest"
+            android:layout_width="339dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/roundstyle"
+            android:text="Accept Request"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idAgencySOSReqCollaborateRequest">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/idAgencySOSReqRejectRequest"
+            android:layout_width="339dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/roundstyle4"
+            android:text="Reject Request"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/idAgencySOSReqAcceptRequest">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 
-    <fragment
-        android:id="@+id/idAgencySOSReqMap"
-        android:name="com.google.android.gms.maps.SupportMapFragment"
-        android:layout_width="350dp"
-        android:layout_height="360dp"
-        android:layout_gravity="center"
-        />
-
-<androidx.appcompat.widget.AppCompatButton
-    android:id="@+id/idAgencySOSReqAcceptRequest"
-    android:layout_width="339dp"
-    android:layout_height="50dp"
-    android:layout_gravity="center"
-    android:layout_marginTop="10dp"
-    android:background="@drawable/roundstyle"
-    android:text="Accept Request"
-    android:textColor="@color/white">
-
-</androidx.appcompat.widget.AppCompatButton>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/idAgencySOSReqRejectRequest"
-        android:layout_width="339dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/roundstyle4"
-        android:text="Reject Request"
-        android:textColor="@color/white">
-
-    </androidx.appcompat.widget.AppCompatButton>
-
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>
 
 

@@ -9,8 +9,10 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.rescueagency.MainActivity;
 import com.example.rescueagency.R;
 import com.example.rescueagency.databinding.FragmentAdminHomeBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 
 import java.util.ArrayList;
@@ -25,7 +27,11 @@ public class AdminHomeFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentAdminHomeBinding.inflate(inflater, container, false);
 //        toogle();
-        recyclerview();
+        recyclerview();MainActivity mainActivity=(MainActivity) getActivity();
+        BottomNavigationView bottomNavigationView =mainActivity.findViewById(R.id.bottomNavigationView);
+        if(bottomNavigationView.getVisibility()==View.GONE){
+            bottomNavigationView.setVisibility(View.VISIBLE);
+        }
         return binding.getRoot();
     }
 

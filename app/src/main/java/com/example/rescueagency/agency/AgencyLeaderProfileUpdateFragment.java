@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 
+import com.example.rescueagency.MainActivity;
 import com.example.rescueagency.ProfileFragment;
 import com.example.rescueagency.R;
 import com.example.rescueagency.agency.agency_profile_fragment.AgencyProfileFragment;
@@ -31,6 +32,8 @@ public class AgencyLeaderProfileUpdateFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentAgencyLeaderProfileUpdateBinding.inflate(inflater, container, false);
         clickListeners();
+        MainActivity mainActivity=(MainActivity) getActivity();
+        mainActivity.findViewById(R.id.bottomNavigationView).setVisibility(View.GONE);
         return binding.getRoot();
     }
 

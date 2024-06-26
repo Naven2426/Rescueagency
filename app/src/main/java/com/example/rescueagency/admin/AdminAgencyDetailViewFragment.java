@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.rescueagency.MainActivity;
 import com.example.rescueagency.R;
 import com.example.rescueagency.admin.AdminAgencyViewDetailList.AdminAgencyViewDetailList;
 import com.example.rescueagency.admin.AdminAgencyViewDetailList.AdminAgencyViewDetailListHolder;
@@ -33,6 +34,8 @@ FragmentAdminAgencyDetailViewBinding binding;
         binding = FragmentAdminAgencyDetailViewBinding.inflate(inflater,container,false);
         click();
         recyclerView();
+        MainActivity mainActivity=(MainActivity) getActivity();
+        mainActivity.findViewById(R.id.bottomNavigationView).setVisibility(View.GONE);
         return binding.getRoot();
     }
     private void click() {

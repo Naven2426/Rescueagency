@@ -15,8 +15,11 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.example.rescueagency.LoginActivityFragments.LoginFragment;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfileFragment extends Fragment {
 
@@ -47,6 +50,13 @@ public class ProfileFragment extends Fragment {
         init(view);
         clickListener();
         setText();
+        MainActivity mainActivity=(MainActivity) getActivity();
+        BottomNavigationView bottomNavigationView =mainActivity.findViewById(R.id.bottomNavigationView);
+        if(bottomNavigationView.getVisibility()==View.GONE){
+            Animation showAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.show_bottom_navigation);
+            bottomNavigationView.startAnimation(showAnimation);
+            bottomNavigationView.setVisibility(View.VISIBLE);
+        }
         return view;
     }
     private void init(View view){

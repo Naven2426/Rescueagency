@@ -70,6 +70,8 @@ public class AgencyLocationDetailsFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         dialog.dismiss();
+                        FragmentManager transaction = requireActivity().getSupportFragmentManager();
+                        transaction.popBackStack();
 
                     }
                 });

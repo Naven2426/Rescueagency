@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="317dp"
+    android:layout_width="match_parent"
     android:layout_height="442dp"
     android:layout_gravity="center"
+    android:background="@color/lightsandal"
     android:id="@+id/id_feedback_submitted">
 
     <ImageView

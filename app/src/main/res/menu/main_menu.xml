@@ -11,12 +11,11 @@
         android:title=""
         android:icon="@drawable/check_status"
         />
-    <item
-        android:id="@+id/adminAddAgency"
+    <item android:id="@+id/addAgency"
         android:title=""
         android:visible="false"
-        android:icon="@drawable/add_agency"
-        />
+        android:icon="@drawable/add_agency"/>
+
     <item
         android:id="@+id/profile"
         android:title=""

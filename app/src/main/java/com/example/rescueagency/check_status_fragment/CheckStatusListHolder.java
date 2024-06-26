@@ -1,10 +1,12 @@
 package com.example.rescueagency.check_status_fragment;
 
+import static androidx.core.content.ContextCompat.getObbDirs;
+import static androidx.core.content.ContextCompat.startActivity;
+
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,10 +18,9 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.rescueagency.BookingFragment;
 import com.example.rescueagency.R;
-import com.example.rescueagency.TrackingMapFragment;
-import com.example.rescueagency.UserAgencyChatFragment;
+import com.example.rescueagency.TrackingMapActivity;
+import com.example.rescueagency.UserAgencyChatActivity;
 
 import java.util.List;
 
@@ -46,25 +47,29 @@ public class CheckStatusListHolder extends RecyclerView.Adapter<CheckStatusListH
 
         CheckStatusList data=list.get(position);
         holder.textstatus_name.setText(data.getStatus_name());
+
+        if(data.getFrom().equalsIgnoreCase("history")){
+            holder.track_agency.setVisibility(View.GONE);
+            holder.imageView.setVisibility(View.GONE);
+        }else{
+            holder.track_agency.setVisibility(View.VISIBLE);
+            holder.imageView.setVisibility(View.VISIBLE);
+        }
         Glide.with(activity).load(data.getImage()).placeholder(R.mipmap.chat)
                 .error(R.mipmap.chat).into(holder.imageView);
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(activity, data.getStatus(), Toast.LENGTH_SHORT).show();
-                FragmentTransaction transaction=activity.getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frameLayout,new UserAgencyChatFragment());
-                transaction.addToBackStack("UserAgencyChatFragment").commit();
+                activity.startActivity(new Intent(activity, UserAgencyChatActivity.class));
+
             }
         });
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction transaction=activity.getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frameLayout,new TrackingMapFragment());
-                transaction.addToBackStack("TrackingMapFragment").commit();
-
+               activity.startActivity(new Intent(activity, TrackingMapActivity.class));
             }
         });
     }

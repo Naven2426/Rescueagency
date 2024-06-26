@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.rescueagency.MainActivity;
 import com.example.rescueagency.R;
 import com.example.rescueagency.admin.HomeFragment.AdminAgencyListHolder;
 import com.example.rescueagency.agency.MessageList.AgencyMessageList;
@@ -31,6 +32,8 @@ FragmentAgencyNotificationBinding binding;
         binding = FragmentAgencyNotificationBinding.inflate(inflater, container, false);
         click();
         recycleView();
+        MainActivity mainActivity=(MainActivity) getActivity();
+        mainActivity.findViewById(R.id.bottomNavigationView).setVisibility(View.GONE);
         return binding.getRoot();
     }
     private void click(){

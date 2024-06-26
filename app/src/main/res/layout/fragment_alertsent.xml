@@ -19,8 +19,8 @@
 
         <ImageView
             android:id="@+id/id_alert_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="163dp"
+            android:layout_height="154dp"
             android:layout_gravity="center"
             android:src="@mipmap/msgsent" />
 
