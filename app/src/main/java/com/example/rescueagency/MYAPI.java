@@ -1,7 +1,12 @@
 package com.example.rescueagency;
 
+import com.example.rescueagency.apiresponse.GetAgencies;
 import com.example.rescueagency.apiresponse.GetCategoryResponse;
 import com.example.rescueagency.apiresponse.SignUpResponse;
+import com.example.rescueagency.apiresponse.map.GoogleMapResponse;
+import com.example.rescueagency.apiresponse.map.ditance.DitanceAndDurationRoot;
+
+import java.util.Map;
 
 import okhttp3.MultipartBody;
 import retrofit2.Call;
@@ -11,6 +16,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 public interface MYAPI {
 
@@ -42,5 +48,11 @@ public interface MYAPI {
                                         @Part("username")String username,
                                         @Part("password")String password,
                                         @Part("user_type")String user_type);
+    @GET("/use/get_agency")
+    Call<GetAgencies> getAgencies(@Query("category_id")int agentID);
+
     //map
+    @GET("distancematrix/json")
+    Call<GoogleMapResponse> getDistanceInfo(@QueryMap Map<String, String> parameters);
+//    Call<GoogleMapResponse> getDistanceInfo1(@QueryMap Map<String, String> parameters);
 }
