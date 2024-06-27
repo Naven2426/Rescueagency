@@ -2,6 +2,7 @@ package com.example.rescueagency.main_menu_fragments;
 
 import static android.app.PendingIntent.getActivity;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -50,7 +51,11 @@ public class View_allHolder extends RecyclerView.Adapter<View_allHolder.MyViewHo
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction=activity.getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frameLayout,new BookingFragment());
+                Bundle bundle=new Bundle();
+                bundle.putString("categoryId",data.getId());
+                BookingFragment bookingFragment=new BookingFragment();
+                bookingFragment.setArguments(bundle);
+                transaction.replace(R.id.frameLayout,bookingFragment);
                 transaction.addToBackStack("BookingFragment").commit();
             }
         });

@@ -22,11 +22,15 @@ import com.example.rescueagency.main_menu_fragments.HomeFragment;
 
 public class BookingFragment extends Fragment {
     FragmentBookingBinding binding;
+    String categoryId;
+    Bundle bundle;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentBookingBinding.inflate(inflater,container,false);
         clickListener();
+         bundle=getArguments();
+//         categoryId= bundle.getString("categoryId",null);
         MainActivity mainActivity=(MainActivity) getActivity();
         mainActivity.findViewById(R.id.bottomNavigationView).setVisibility(View.GONE);
         return binding.getRoot();
@@ -48,7 +52,9 @@ public class BookingFragment extends Fragment {
                 FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
                 transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right,
                         R.anim.enter_from_right, R.anim.exit_to_left);
-                transaction.replace(R.id.frameLayout, new MapsFragment()).addToBackStack("RescueTeamSelcetionInMapFragment").commit();
+                MapsFragment mapsFragment=new MapsFragment();
+                mapsFragment.setArguments(bundle);
+                transaction.replace(R.id.frameLayout, mapsFragment).addToBackStack("RescueTeamSelcetionInMapFragment").commit();
 //                Intent intent=new Intent(requireContext(),MapsActivity.class);
 //                startActivity(intent);
             }

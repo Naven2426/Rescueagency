@@ -63,7 +63,7 @@ public class View_allFragment extends Fragment {
                         List<View_all> dataList=new ArrayList<>();
                         for(int i=0;i<imageResponse.getData().size();i++){
                             GetCategoryResponse.Data data = response.body().getData().get(i);
-                            dataList.add(new View_all(data.getCategory_name(),data.getImage()));
+                            dataList.add(new View_all(data.getCategory_name(),data.getImage(),data.getCategory_id()));
                         }
                         GridLayoutManager grid=new GridLayoutManager(getContext(),2);
                         recyclerView.setLayoutManager(grid);
