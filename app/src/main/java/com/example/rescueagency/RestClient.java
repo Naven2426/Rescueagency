@@ -16,6 +16,17 @@ public class RestClient {
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client).build();
     }
+    public static Retrofit getMapInstance(){
+        HttpLoggingInterceptor interceptor=new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        OkHttpClient client=new OkHttpClient.Builder().addInterceptor(interceptor).build();
+        return new Retrofit.Builder().baseUrl(Constant.MAP_BASE_URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(client).build();
+    }
+    public static MYAPI makeMapAPI(){
+        return getMapInstance().create(MYAPI.class);
+    }
     public static MYAPI makeAPI() {
         return getInstance().create(MYAPI.class);
     }
