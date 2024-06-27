@@ -5,7 +5,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="70dp"
     android:background="@color/lightsandal"
     tools:context=".LoginActivityFragments.SignUpFragment">
 
@@ -24,8 +23,8 @@
                 android:id="@+id/id_agency_add_member_back_button"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="56dp"
                 android:src="@mipmap/backarrow"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -36,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="44dp"
                 android:src="@mipmap/agency_logo"
                 app:layout_constraintStart_toEndOf="@+id/id_agency_add_member_back_button"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -48,8 +47,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="44dp"
-                android:text="A.C.Ambulence"
+                android:layout_marginTop="52dp"
+                android:text="Apex Allies Agency"
                 android:textColor="@color/black"
                 android:textSize="25dp"
                 android:textStyle="bold"

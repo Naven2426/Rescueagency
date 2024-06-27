@@ -12,7 +12,8 @@
         android:id="@+id/Starting_image"
         android:layout_width="wrap_content"
         android:layout_height="300dp"
-        android:src="@mipmap/starting_image" />
+        android:layout_gravity="center"
+        android:src="@mipmap/applogos" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/startingFragmentGet_Start"

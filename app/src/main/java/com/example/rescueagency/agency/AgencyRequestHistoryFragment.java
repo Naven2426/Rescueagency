@@ -8,6 +8,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.example.rescueagency.MainActivity;
 import com.example.rescueagency.R;
@@ -33,6 +35,8 @@ FragmentAgencyRequestHistoryBinding binding;
         MainActivity mainActivity=(MainActivity) getActivity();
         BottomNavigationView bottomNavigationView =mainActivity.findViewById(R.id.bottomNavigationView);
         if(bottomNavigationView.getVisibility()==View.GONE){
+            Animation Animation = AnimationUtils.loadAnimation(getContext(), R.anim.show_bottom_navigation);
+            mainActivity.findViewById(R.id.bottomNavigationView).startAnimation(Animation);
             bottomNavigationView.setVisibility(View.VISIBLE);
         }
         return binding.getRoot();
@@ -40,13 +44,13 @@ FragmentAgencyRequestHistoryBinding binding;
     }
     private void recycle() {
         List<AgencyReqHistoryList> data = new ArrayList<>();
-        data.add(new AgencyReqHistoryList("dskjn","dsf","sdf","Sdf","sdf","wefwe","weeerc"));
-        data.add(new AgencyReqHistoryList("dskjn","dsf","sdf","Sdf","sdf","wefwe","weeerc"));
-        data.add(new AgencyReqHistoryList("dskjn","dsf","sdf","Sdf","sdf","wefwe","weeerc"));
-        data.add(new AgencyReqHistoryList("dskjn","dsf","sdf","Sdf","sdf","wefwe","weeerc"));
-        data.add(new AgencyReqHistoryList("dskjn","dsf","sdf","Sdf","sdf","wefwe","weeerc"));
-        data.add(new AgencyReqHistoryList("dskjn","dsf","sdf","Sdf","sdf","wefwe","weeerc"));
-        data.add(new AgencyReqHistoryList("dskjn","dsf","sdf","Sdf","sdf","wefwe","weeerc"));
+        data.add(new AgencyReqHistoryList("Status :","dsf","sdf","Sdf","sdf","wefwe","weeerc"));
+        data.add(new AgencyReqHistoryList("Status :","dsf","sdf","Sdf","sdf","wefwe","weeerc"));
+        data.add(new AgencyReqHistoryList("Status :","dsf","sdf","Sdf","sdf","wefwe","weeerc"));
+        data.add(new AgencyReqHistoryList("Status :","dsf","sdf","Sdf","sdf","wefwe","weeerc"));
+        data.add(new AgencyReqHistoryList("Status :","dsf","sdf","Sdf","sdf","wefwe","weeerc"));
+        data.add(new AgencyReqHistoryList("Status :","dsf","sdf","Sdf","sdf","wefwe","weeerc"));
+        data.add(new AgencyReqHistoryList("Status :","dsf","sdf","Sdf","sdf","wefwe","weeerc"));
 
         binding.idAgencyRequestRV.setLayoutManager(new LinearLayoutManager(requireActivity()));
         binding.idAgencyRequestRV.setAdapter(new AgencyReqHistoryListHolder(data, requireActivity()));

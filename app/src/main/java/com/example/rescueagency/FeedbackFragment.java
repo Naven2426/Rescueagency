@@ -62,8 +62,7 @@ public class FeedbackFragment extends Fragment {
                     public void onClick(View v) {
 
                             dialog.dismiss();
-                            FragmentManager transaction = requireActivity().getSupportFragmentManager();
-                            transaction.popBackStack();
+                            getActivity().finish();
 
                     }
                 });

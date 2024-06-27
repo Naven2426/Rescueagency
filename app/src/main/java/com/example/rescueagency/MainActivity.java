@@ -67,23 +67,27 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         BottomSheetDialog dialog = new BottomSheetDialog(this);
         dialog.setContentView(view);
 
-        CardView idChooseCategoryCV = view.findViewById(R.id.idChooseCategoryCV);
-        CardView idChooseCategoryCV2 = view.findViewById(R.id.idChooseCategoryCV2);
+        CardView idAddAgency = view.findViewById(R.id.idChooseCategoryCV2);
+        CardView idAddCategory = view.findViewById(R.id.idChooseCategoryCV);
 
-        idChooseCategoryCV.setOnClickListener(new View.OnClickListener() {
+        idAddAgency.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AdminAddAgencyFragment adminFragment=new AdminAddAgencyFragment();
-                transaction.replace(R.id.frameLayout,adminFragment).commit();
+                transaction.replace(R.id.frameLayout,adminFragment);
+                transaction.addToBackStack("AdminAddAgencyFragment");
+                transaction.commit();
                 dialog.dismiss();
             }
         });
 
-        idChooseCategoryCV2.setOnClickListener(new View.OnClickListener() {
+        idAddCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 AdminAddCategoryFragment adminFragment=new AdminAddCategoryFragment();
-                transaction.replace(R.id.frameLayout,adminFragment).commit();
+                transaction.replace(R.id.frameLayout,adminFragment);
+                transaction.addToBackStack("AdminAddCategoryFragment");
+                transaction.commit();
                 dialog.dismiss();
             }
         });

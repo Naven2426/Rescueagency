@@ -32,11 +32,11 @@ public class RequestHistoryFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentRequestHistoryBinding.inflate(inflater, container, false);
 //        binding.checkStatus.setSelected(true);
-        data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","status"));
-        data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","status"));
-        data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","status"));
-        data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","status"));
-        data.add(new CheckStatusList("bsd","Solved","dsfc","sddsf","dfsdf","8287","sdfs","status"));
+        data.add(new CheckStatusList("bsd","Accepted","dsfc","sddsf","dfsdf","8287","sdfs","status"));
+        data.add(new CheckStatusList("bsd","Accepted","dsfc","sddsf","dfsdf","8287","sdfs","status"));
+        data.add(new CheckStatusList("bsd","Accepted","dsfc","sddsf","dfsdf","8287","sdfs","status"));
+        data.add(new CheckStatusList("bsd","Accepted","dsfc","sddsf","dfsdf","8287","sdfs","status"));
+        data.add(new CheckStatusList("bsd","Accepted","dsfc","sddsf","dfsdf","8287","sdfs","status"));
         setupRecyclerView(data);
         tabLayout();
         MainActivity mainActivity=(MainActivity) getActivity();

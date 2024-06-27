@@ -40,10 +40,10 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/idLogoutIV"
-            android:layout_width="31dp"
-            android:layout_height="36dp"
+            android:layout_width="27dp"
+            android:layout_height="27dp"
             android:layout_marginStart="28dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="54dp"
             android:src="@mipmap/logout"
             app:layout_constraintStart_toEndOf="@+id/idAgencyNamePofile"
             app:layout_constraintTop_toTopOf="parent" />
@@ -196,12 +196,12 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/idAgencyMemberRecyclerView"
             android:layout_width="match_parent"
-            android:layout_height="450dp"
+            android:layout_height="435dp"
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/idAgencyMemberList"
             app:layout_constraintVertical_bias="0.0"
-            tools:layout_editor_absoluteX="0dp" />
+            tools:layout_editor_absoluteX="-1dp" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/idAgencyAddMemberCV"

@@ -22,8 +22,8 @@ public class NotificationListHolder extends RecyclerView.Adapter<NotificationLis
 
     List<NotificationList> list;
     FragmentActivity activity;
-    public NotificationListHolder(List<NotificationList> list,FragmentActivity activity)
-    {
+
+    public NotificationListHolder(List<NotificationList> list, FragmentActivity activity) {
         this.list = list;
         this.activity = activity;
     }
@@ -31,34 +31,32 @@ public class NotificationListHolder extends RecyclerView.Adapter<NotificationLis
     @NonNull
     @Override
     public MyNotificationListHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.notification_request_list,
-                parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.notification_request_list, parent, false);
         return new MyNotificationListHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyNotificationListHolder holder, int position) {
-        NotificationList data=list.get(position);
+        NotificationList data = list.get(position);
         holder.textfeedback.setText(data.getStatus_name());
 
         holder.send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(activity, data.getStatus(), Toast.LENGTH_SHORT).show();
-                FragmentTransaction transaction=activity.getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frameLayout,new FeedbackFragment());
+                FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.notificationFrameLayout, new FeedbackFragment());
                 transaction.addToBackStack("FeedbackFragment").commit();
             }
         });
-
-
-
     }
 
     @Override
-    public int getItemCount() {return list.size();}
+    public int getItemCount() {
+        return list.size();
+    }
 
-    public class MyNotificationListHolder extends RecyclerView.ViewHolder{
+    public class MyNotificationListHolder extends RecyclerView.ViewHolder {
         TextView textstatus;
         TextView textalert;
         TextView textalert_type;
@@ -74,10 +72,10 @@ public class NotificationListHolder extends RecyclerView.Adapter<NotificationLis
             cardView = itemView.findViewById(R.id.id_notifiaction_card_view);
             textstatus = itemView.findViewById(R.id.id_notification_status);
             textstatus_name = itemView.findViewById(R.id.id_notification_status_view);
-            textalert= itemView.findViewById(R.id.id_notification_alert_type);
-            textalert_type= itemView.findViewById(R.id.id_notification_alert_type_text);
-            textdate= itemView.findViewById(R.id.id_notification_date);
-            textdate_sent= itemView.findViewById(R.id.id_notification_date_text);
+            textalert = itemView.findViewById(R.id.id_notification_alert_type);
+            textalert_type = itemView.findViewById(R.id.id_notification_alert_type_text);
+            textdate = itemView.findViewById(R.id.id_notification_date);
+            textdate_sent = itemView.findViewById(R.id.id_notification_date_text);
             textfeedback = itemView.findViewById(R.id.id_notification_feedback);
             send = itemView.findViewById(R.id.idNotificationFeedbackButton);
         }

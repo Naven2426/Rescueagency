@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.example.rescueagency.MainActivity;
 import com.example.rescueagency.ProfileFragment;
@@ -43,6 +45,8 @@ public class AgencyHomeFragment extends Fragment {
         MainActivity mainActivity=(MainActivity) getActivity();
         BottomNavigationView bottomNavigationView =mainActivity.findViewById(R.id.bottomNavigationView);
         if(bottomNavigationView.getVisibility()==View.GONE){
+            Animation showAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.show_bottom_navigation);
+            bottomNavigationView.startAnimation(showAnimation);
             bottomNavigationView.setVisibility(View.VISIBLE);
         }
         List<AgencySOSReqList> data = new ArrayList<>();

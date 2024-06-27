@@ -16,15 +16,15 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="120dp">
+            android:layout_height="90dp">
 
 
             <ImageView
                 android:id="@+id/id_update_profile_back_button"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="50dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="56dp"
                 android:src="@mipmap/backarrow"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginStart="64dp"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="52dp"
                 android:text="@string/update_profile"
                 android:textColor="@color/black"
                 android:textSize="25dp"

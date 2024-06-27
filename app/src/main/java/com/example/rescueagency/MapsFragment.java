@@ -71,6 +71,21 @@ public class MapsFragment extends Fragment {
                 transaction.popBackStack();
             }
         });
+
+//      binding.someSelectionButton.setOnClickListener(new View.OnClickListener() { // replace with your actual selection event
+//          @Override
+//          public void onClick(View v) {
+//              String selectedAgency = "Selected Agency Name"; // Replace with actual selected agency name
+//
+//              // Send the result back to the BookingFragment
+//              Bundle result = new Bundle();
+//              result.putString("selectedAgency", selectedAgency);
+//              getParentFragmentManager().setFragmentResult("agencySelection", result);
+//
+//              // Navigate back to the BookingFragment
+//              getParentFragmentManager().popBackStack();
+//          }
+//      });
   }
 
 }

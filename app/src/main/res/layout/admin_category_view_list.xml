@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="70dp"
+    android:layout_marginTop="10dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/idAdminCategoryListCV"
+        android:layout_width="339dp"
+        android:layout_height="50dp"
+        android:radius="16dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:cardMaxElevation="4dp"
+        app:layout_constraintStart_toStartOf="parent">
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/idAdminCategoryImage"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="33dp"
+            android:src="@mipmap/medical">
+
+        </androidx.appcompat.widget.AppCompatImageView>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/idAdminCategoryName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Medical"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="94dp"
+            android:layout_marginTop="10dp">
+
+        </androidx.appcompat.widget.AppCompatTextView>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/idAdminCategoryEdit"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="287dp"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/info">
+
+        </androidx.appcompat.widget.AppCompatImageView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/idAdminCategoryInfoCV"
+        android:layout_width="106dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="215dp"
+        android:layout_marginTop="2dp"
+        android:radius="16dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="4dp"
+        app:cardMaxElevation="4dp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/edit">
+
+        </androidx.appcompat.widget.AppCompatImageView>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginLeft="68dp"
+            android:layout_marginTop="10dp"
+            android:src="@mipmap/trash">
+
+        </androidx.appcompat.widget.AppCompatImageView>
+
+    </androidx.cardview.widget.CardView>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
