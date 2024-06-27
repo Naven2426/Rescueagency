@@ -33,13 +33,13 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/idProfileLogoutIV"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="27dp"
+                android:layout_height="27dp"
                 android:layout_above="@+id/id_profile_change_password_button"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginTop="43dp"
-                android:layout_marginEnd="34dp"
+                android:layout_marginTop="39dp"
+                android:layout_marginEnd="38dp"
                 android:layout_marginBottom="97dp"
                 android:src="@mipmap/logout">
 
@@ -49,8 +49,11 @@
                 android:id="@+id/id_booking_back_arrow"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="150dp"
+                android:layout_marginEnd="150dp"
                 android:src="@mipmap/profilename" />
 
 
@@ -60,9 +63,11 @@
                 android:layout_height="35dp"
                 android:layout_below="@+id/id_booking_back_arrow"
                 android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
                 android:layout_marginStart="38dp"
                 android:layout_marginLeft="40dp"
                 android:layout_marginTop="28dp"
+                android:layout_marginBottom="22dp"
                 android:background="@drawable/roundstyle2"
                 android:text="Update Profile"
                 android:textColor="@color/black"
@@ -75,9 +80,11 @@
                 android:layout_height="35dp"
                 android:layout_below="@+id/id_booking_back_arrow"
                 android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="28dp"
-                android:layout_marginEnd="39dp"
+                android:layout_marginEnd="38dp"
+                android:layout_marginBottom="22dp"
                 android:background="@drawable/roundstyle2"
                 android:text="Change Password"
                 android:textColor="@color/black"

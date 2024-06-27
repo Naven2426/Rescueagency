@@ -14,12 +14,15 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.provider.DocumentsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -50,6 +53,10 @@ public class AdminAddAgencyFragment extends Fragment  implements CustomSpinner.O
         addAgency();
         dropDown();
         MainActivity mainActivity=(MainActivity) getActivity();
+        Animation Animation = AnimationUtils.loadAnimation(getContext(), R.anim.hide_bottom_navigation);
+        mainActivity.findViewById(R.id.bottomNavigationView).startAnimation(Animation);
+        Animation hideAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.hide_bottom_navigation);
+        mainActivity.findViewById(R.id.bottomNavigationView).startAnimation(hideAnimation);
         mainActivity.findViewById(R.id.bottomNavigationView).setVisibility(View.GONE);
         return binding.getRoot();
     }
@@ -99,6 +106,13 @@ public class AdminAddAgencyFragment extends Fragment  implements CustomSpinner.O
 
             }
         });
+        binding.idAddAgencyBackIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager transaction = requireActivity().getSupportFragmentManager();
+                transaction.popBackStack();
+            }
+            });
         binding.idAddAgencyNextButton.setOnClickListener(new View.OnClickListener()
         {
             @Override

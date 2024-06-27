@@ -11,6 +11,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="20dp"
+        android:background="@color/lightsandal"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,7 +22,7 @@
             android:layout_width="390dp"
             android:layout_height="60dp"
             app:cardBackgroundColor="@color/sandal"
-            app:cardCornerRadius="12dp">
+            app:cardCornerRadius="15dp">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
@@ -51,7 +52,7 @@
             android:layout_height="60dp"
             android:layout_marginTop="10dp"
             app:cardBackgroundColor="@color/sandal"
-            app:cardCornerRadius="12dp"
+            app:cardCornerRadius="15dp"
             tools:layout_editor_absoluteX="121dp"
             tools:layout_editor_absoluteY="499dp">
 

@@ -14,6 +14,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.example.rescueagency.Constant;
 import com.example.rescueagency.LoginActivity;
@@ -40,6 +42,8 @@ public class AgencyProfileFragment extends Fragment {
         MainActivity mainActivity=(MainActivity) getActivity();
         BottomNavigationView bottomNavigationView =mainActivity.findViewById(R.id.bottomNavigationView);
         if(bottomNavigationView.getVisibility()==View.GONE){
+            Animation Animation = AnimationUtils.loadAnimation(getContext(), R.anim.show_bottom_navigation);
+            mainActivity.findViewById(R.id.bottomNavigationView).startAnimation(Animation);
             bottomNavigationView.setVisibility(View.VISIBLE);
         }
         logout();
@@ -95,11 +99,16 @@ public class AgencyProfileFragment extends Fragment {
     }
     private void recycle() {
         List<AgencyProfileList> data = new ArrayList<>();
-        data.add(new AgencyProfileList("df", "df"));
-        data.add(new AgencyProfileList("df", "df"));
-        data.add(new AgencyProfileList("df", "df"));
-        data.add(new AgencyProfileList("df", "df"));
-        data.add(new AgencyProfileList("df", "df"));
+        data.add(new AgencyProfileList("Tobi", "df"));
+        data.add(new AgencyProfileList("Tobi", "df"));
+        data.add(new AgencyProfileList("Tobi", "df"));
+        data.add(new AgencyProfileList("Tobi", "df"));
+        data.add(new AgencyProfileList("Tobi", "df"));
+        data.add(new AgencyProfileList("Tobi", "df"));
+        data.add(new AgencyProfileList("Tobi", "df"));
+        data.add(new AgencyProfileList("Tobi", "df"));
+        data.add(new AgencyProfileList("Tobi", "df"));
+        data.add(new AgencyProfileList("Tobi", "df"));
         AgencyProfileListHolder adapter = new AgencyProfileListHolder(data,requireActivity());
         binding.idAgencyMemberRecyclerView.setAdapter(adapter);
         binding.idAgencyMemberRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));

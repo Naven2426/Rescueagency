@@ -9,6 +9,8 @@ import androidx.fragment.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 import com.example.rescueagency.MainActivity;
 import com.example.rescueagency.R;
@@ -26,6 +28,8 @@ FragmentAgencyStatusUpdateBinding binding;
         binding = FragmentAgencyStatusUpdateBinding.inflate(inflater, container, false);
         click();
         MainActivity mainActivity=(MainActivity) getActivity();
+        Animation Animation = AnimationUtils.loadAnimation(getContext(), R.anim.hide_bottom_navigation);
+        mainActivity.findViewById(R.id.bottomNavigationView).startAnimation(Animation);
         mainActivity.findViewById(R.id.bottomNavigationView).setVisibility(View.GONE);
         return binding.getRoot();
     }
