@@ -73,7 +73,9 @@ public class AdminUserListHolder extends RecyclerView.Adapter<AdminUserListHolde
             textusername = itemView.findViewById(R.id.idAdminUserName);
             textusernamet = itemView.findViewById(R.id.idAdminUserNameTV);
             textname = itemView.findViewById(R.id.idAdminUserListName);
+            imageView = itemView.findViewById(R.id.idAdminUserProfile);
             textnamet = itemView.findViewById(R.id.idAdminUserListNameTV);
+
             }
     }
 }
