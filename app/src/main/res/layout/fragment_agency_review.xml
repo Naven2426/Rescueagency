@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightsandal"
+    android:layout_marginBottom="10dp"
     tools:context=".agency.AgencyNotificationFragment">
 
 
@@ -40,9 +41,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/idAgencyReviewRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="638dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idAgencyReviewTextView"
-        tools:layout_editor_absoluteX="-3dp" />
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

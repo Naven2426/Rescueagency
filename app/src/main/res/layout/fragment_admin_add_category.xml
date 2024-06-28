@@ -24,8 +24,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/idAddAgencyIV"
                 android:src="@mipmap/backarrow"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="30dp">
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="56dp">
 
             </androidx.appcompat.widget.AppCompatImageView>
 
@@ -38,7 +38,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:layout_marginLeft="70dp"
-                android:layout_marginTop="30dp" >
+                android:layout_marginTop="53dp" >
             </androidx.appcompat.widget.AppCompatTextView>
 
         </LinearLayout>
@@ -99,7 +99,7 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="12dp"
             android:layout_marginLeft="30dp">
         </androidx.appcompat.widget.AppCompatTextView>
 
@@ -124,7 +124,7 @@
             android:textSize="20dp"
             android:textStyle="bold"
             android:textColor="@color/black"
-            android:layout_marginTop="11dp"
+            android:layout_marginTop="12dp"
             android:layout_marginLeft="30dp">
         </androidx.appcompat.widget.AppCompatTextView>
 
@@ -148,12 +148,12 @@
             android:layout_height="50dp"
             android:id="@+id/idAddAgencyNextButton"
             android:text="Add Category"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:textStyle="bold"
             android:textColor="@color/white"
             android:background="@drawable/roundstyle"
             android:layout_gravity="center"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="160dp">
         </androidx.appcompat.widget.AppCompatButton>
 
     </LinearLayout>

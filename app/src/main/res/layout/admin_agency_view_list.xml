@@ -9,7 +9,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/idAdminAgencyListCV"
-        android:layout_width="337dp"
+        android:layout_width="373dp"
         android:layout_height="160dp"
         android:radius="16dp"
         app:cardBackgroundColor="@color/white"

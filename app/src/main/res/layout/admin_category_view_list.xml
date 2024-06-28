@@ -5,8 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:gravity="center"
-    android:layout_height="70dp"
-    android:layout_marginTop="10dp">
+    android:layout_height="60dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/idAdminCategoryListCV"
@@ -68,6 +67,7 @@
         app:cardMaxElevation="4dp">
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/idAdminCategoryEditIV"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginLeft="16dp"
@@ -77,6 +77,7 @@
         </androidx.appcompat.widget.AppCompatImageView>
 
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/idAdminCategoryTrashIV"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginLeft="68dp"
