@@ -65,7 +65,7 @@ public class AdminAddAgencyNextFragment extends Fragment {
                 if (getTextField()) {
                     RequestBody requestBody=RequestBody.create(MultipartBody.FORM,new File(proof));
                     MultipartBody.Part part=MultipartBody.Part.createFormData("file",new File(proof).getName(),requestBody);
-                   api(agencyName,teamType,mobile,address,totalMember,part,email,username,password, Constant.LOGIN_AS_AGENCY);
+//                   api(agencyName,teamType,mobile,address,totalMember,part,email,username,password, Constant.LOGIN_AS_AGENCY);
                 }
             }
 
@@ -108,34 +108,34 @@ public class AdminAddAgencyNextFragment extends Fragment {
             }
         });
     }
-    private void api(String agencyName, String teamType, String mobile, String address, String totalMember,
-                     MultipartBody.Part part , String email, String userName, String password,String userType){
-
-        Call<SignUpResponse> responseCall= RestClient.makeAPI().agencyRegister(agencyName,teamType,mobile,address,totalMember,part,email,userName,password,userType);
-        responseCall.enqueue(new Callback<SignUpResponse>() {
-            @Override
-            public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
-                if(response.isSuccessful()){
-                    SignUpResponse signUpResponse=response.body();
-                    if(signUpResponse.getStatus()==200){
-                        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-                        transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right,
-                                R.anim.enter_from_right, R.anim.exit_to_left);
-                        transaction.replace(R.id.frameLayout, new AdminHomeFragment()).commit();
-                    }else{
-                        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onFailure(Call<SignUpResponse> call, Throwable t) {
-                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.d("error",t.getMessage());
-            }
-        });
-    }
+//    private void api(String agencyName, String teamType, String mobile, String address, String totalMember,
+//                     MultipartBody.Part part , String email, String userName, String password,String userType){
+//
+//        Call<SignUpResponse> responseCall= RestClient.makeAPI().agencyRegister(agencyName,teamType,mobile,address,totalMember,part,email,userName,password,userType);
+//        responseCall.enqueue(new Callback<SignUpResponse>() {
+//            @Override
+//            public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
+//                if(response.isSuccessful()){
+//                    SignUpResponse signUpResponse=response.body();
+//                    if(signUpResponse.getStatus()==200){
+//                        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+//                        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+//                        transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right,
+//                                R.anim.enter_from_right, R.anim.exit_to_left);
+//                        transaction.replace(R.id.frameLayout, new AdminHomeFragment()).commit();
+//                    }else{
+//                        Toast.makeText(getContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<SignUpResponse> call, Throwable t) {
+//                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+//                Log.d("error",t.getMessage());
+//            }
+//        });
+//    }
 
 
 }
