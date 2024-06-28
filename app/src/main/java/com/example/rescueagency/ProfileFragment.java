@@ -2,6 +2,7 @@ package com.example.rescueagency;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -98,10 +99,33 @@ public class ProfileFragment extends Fragment {
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences sf=getActivity().getSharedPreferences(Constant.SF_NAME,MODE_PRIVATE);
-                sf.edit().clear().apply();
-                getActivity().finish();
-                getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
+
+                Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.logout_dialog_layout);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.setCancelable(false);
+                dialog.show();
+
+                androidx.appcompat.widget.AppCompatButton okay_text = dialog.findViewById(R.id.idAgencyAddedBTNButton);
+                androidx.appcompat.widget.AppCompatButton cancel_text = dialog.findViewById(R.id.idAgencyAddedBTHButton);
+                okay_text.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        SharedPreferences sf=getActivity().getSharedPreferences(Constant.SF_NAME,MODE_PRIVATE);
+                        sf.edit().clear().apply();
+                        getActivity().finish();
+                        getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
+
+                    }
+
+                });
+                cancel_text.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
             }
         });
 

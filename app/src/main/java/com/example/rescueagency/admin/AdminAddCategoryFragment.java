@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,11 +14,14 @@ import android.view.animation.AnimationUtils;
 
 import com.example.rescueagency.MainActivity;
 import com.example.rescueagency.R;
+import com.example.rescueagency.admin.HomeFragment.AdminHomeFragment;
 import com.example.rescueagency.databinding.FragmentAdminAddCategoryBinding;
 
 
 public class AdminAddCategoryFragment extends Fragment {
     FragmentAdminAddCategoryBinding binding;
+
+    private String categoryname,categorydescription;
 
 
     @Override
@@ -40,5 +44,31 @@ public class AdminAddCategoryFragment extends Fragment {
                 fragmentManager.popBackStack();
             }
         });
+
+        binding.idAddAgencyNextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(getTextField()) {
+                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.frameLayout, new AdminHomeFragment());
+                    fragmentTransaction.commit();
+                }
+            }
+        });
+    }
+
+    private boolean getTextField(){
+        categoryname = binding.idAddNameET.getText().toString();
+        categorydescription = binding.idAddTypeET.getText().toString();
+        if(categoryname.isEmpty()){
+            binding.idAddNameET.setError("Enter Category Name");
+            return false;
+        }
+        if(categorydescription.isEmpty()){
+            binding.idAddTypeET.setError("Enter Category Description");
+            return false;
+        }
+        return true;
+
     }
 }
