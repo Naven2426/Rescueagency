@@ -15,11 +15,8 @@ import com.example.rescueagency.databinding.FragmentBookingBinding;
 
 public class BookingFragment extends Fragment {
     FragmentBookingBinding binding;
-
     private String describe;
     private String selectedAgency;
-
-
     String categoryId;
     Bundle bundle;
 

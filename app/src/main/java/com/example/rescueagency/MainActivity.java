@@ -73,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         idAddAgency.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences sf= getSharedPreferences(Constant.SF_LAT_LONG_NAME,0);
+                sf.edit().clear().apply();
                 AdminAddAgencyFragment adminFragment=new AdminAddAgencyFragment();
                 transaction.replace(R.id.frameLayout,adminFragment);
                 transaction.addToBackStack("AdminAddAgencyFragment");
