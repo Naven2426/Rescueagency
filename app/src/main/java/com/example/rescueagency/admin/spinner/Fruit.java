@@ -8,7 +8,7 @@ public class Fruit implements Serializable {
 
     public Fruit() {
     }
-private String id;
+    private String id;
 
     public String getId() {
         return id;

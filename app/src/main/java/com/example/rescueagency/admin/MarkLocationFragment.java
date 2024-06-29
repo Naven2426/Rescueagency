@@ -49,7 +49,7 @@ public class MarkLocationFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentMarkLocationBinding.inflate(inflater,container,false);
         SupportMapFragment mapFragment =  (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-        sharedPreferences=requireContext().getSharedPreferences(Constant.SF_NAME, Context.MODE_PRIVATE);
+        sharedPreferences=requireContext().getSharedPreferences(Constant.SF_LAT_LONG_NAME, Context.MODE_PRIVATE);
         if (mapFragment != null) {
             mapFragment.getMapAsync(callback);
         }
@@ -61,6 +61,7 @@ public class MarkLocationFragment extends Fragment {
                     SharedPreferences.Editor editor=sharedPreferences.edit();
                     editor.putString(Constant.SF_LATITUDE,""+location.latitude);
                     editor.putString(Constant.SF_LONGITUDE,""+location.longitude);
+
                     editor.apply();
                     FragmentManager manager=requireActivity().getSupportFragmentManager();
                     manager.popBackStack();

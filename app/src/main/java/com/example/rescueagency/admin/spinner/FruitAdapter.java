@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -63,7 +64,12 @@ public class FruitAdapter extends BaseAdapter {
 //        image.setImageResource(fruitList.get(i).getImage());
         Glide.with(context).load(fruitList.get(i).getImage()).placeholder(R.mipmap.error)
                 .error(R.mipmap.error).into(image);
-
+//        txtName.setOnClickListener(v->{
+//            Toast.makeText(context, "Toast", Toast.LENGTH_SHORT).show();
+//        });
         return rootView;
     }
+
+
+  
 }

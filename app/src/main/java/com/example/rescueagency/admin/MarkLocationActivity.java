@@ -25,6 +25,8 @@ public class MarkLocationActivity extends FragmentActivity implements OnMapReady
     private ActivityMarkLocationBinding binding;
     private LatLng location;
     private SharedPreferences sharedPreferences;
+    static GoogleMap googleMap;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +39,15 @@ public class MarkLocationActivity extends FragmentActivity implements OnMapReady
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
         sharedPreferences=getSharedPreferences(Constant.SF_LAT_LONG_NAME, Context.MODE_PRIVATE);
         binding.confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(location!=null){
+                    googleMap.addMarker(new MarkerOptions().position(location));
+                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location,14));
+                    Toast.makeText(MarkLocationActivity.this, "lat "+location.latitude+" long "+location.longitude, Toast.LENGTH_SHORT).show();
                     SharedPreferences.Editor editor=sharedPreferences.edit();
                     editor.putString(Constant.SF_LATITUDE,""+location.latitude);
                     editor.putString(Constant.SF_LONGITUDE,""+location.longitude);
