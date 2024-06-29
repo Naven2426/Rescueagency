@@ -47,7 +47,8 @@ public interface MYAPI {
                                         @Part("email")String email,
                                         @Part("username")String username,
                                         @Part("password")String password,
-                                        @Part("user_type")String user_type);
+                                        @Part("user_type")String user_type,@Part("latitude")String latitude,
+                                        @Part("longitude")String longitude,@Part("category_id")String categoryId);
     @GET("/use/get_agency")
     Call<GetAgencies> getAgencies(@Query("category_id")int agentID);
 
