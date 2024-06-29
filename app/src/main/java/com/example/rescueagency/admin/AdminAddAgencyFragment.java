@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 
 import androidx.activity.result.ActivityResult;
@@ -20,6 +21,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
@@ -29,9 +31,13 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.rescueagency.Constant;
 import com.example.rescueagency.FileUtils;
 import com.example.rescueagency.MainActivity;
@@ -79,19 +85,13 @@ public class AdminAddAgencyFragment extends Fragment  implements CustomSpinner.O
     private OnMapReadyCallback mapCallBack= new OnMapReadyCallback() {
         @Override
         public void onMapReady(@NonNull GoogleMap googleMap) {
-            String latitude=sf.getString(Constant.SF_LATITUDE,null);
-            String longitude = sf.getString(Constant.SF_LONGITUDE,null);
-            if(latitude!=null && longitude!=null){
-                LatLng latLng=new LatLng(Double.parseDouble(latitude),Double.parseDouble(longitude));
-                googleMap.addMarker(new MarkerOptions().position(latLng));
-                googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,14));
-            }
             googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
                 @Override
                 public void onMapClick(@NonNull LatLng latLng) {
-                    FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frameLayout,new MarkLocationFragment()).addToBackStack("MarkLocationFragment").commit();
-//                    startActivity(new Intent(requireContext(),MarkLocationActivity.class));
+//                    FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+//                    transaction.replace(R.id.frameLayout,new MarkLocationFragment()).addToBackStack("MarkLocationFragment").commit();
+                    MarkLocationActivity.googleMap=googleMap;
+                    startActivity(new Intent(requireContext(),MarkLocationActivity.class));
                 }
             });
         }
@@ -101,12 +101,10 @@ public class AdminAddAgencyFragment extends Fragment  implements CustomSpinner.O
         
         // Inflate the layout for this fragment
         binding = FragmentAdminAddAgencyBinding.inflate(inflater, container, false);
-        Toast.makeText(requireContext(), "Fragment", Toast.LENGTH_SHORT).show();
         supportMapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.idAddAgencyMarkLocation);
-        sf=requireContext().getSharedPreferences(Constant.SF_LAT_LONG_NAME, Context.MODE_PRIVATE);
-        if (supportMapFragment != null) {
-            supportMapFragment.getMapAsync(mapCallBack);
-        }
+        sf=requireActivity().getSharedPreferences(Constant.SF_LAT_LONG_NAME, Context.MODE_PRIVATE);
+        supportMapFragment.getMapAsync(mapCallBack);
+
         addAgency();
         dropDown();
         MainActivity mainActivity=(MainActivity) getActivity();
@@ -142,10 +140,26 @@ public class AdminAddAgencyFragment extends Fragment  implements CustomSpinner.O
             }
         });
     }
-    private void dropDown(List<Fruit> data){
-        binding.spinnerFruits.setSpinnerEventsListener(this);
+    private void dropDown(List<Fruit> data) {
+//        binding.spinnerFruits.setSpinnerEventsListener(this);
         FruitAdapter adapter = new FruitAdapter(requireContext(), data);
+
         binding.spinnerFruits.setAdapter(adapter);
+        binding.spinnerFruits.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                categoryId=data.get(i).getId();
+                categoryName = data.get(i).getName();
+                Toast.makeText(requireContext(), "id "+categoryId+" name-"+categoryName, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
     }
     private ActivityResultLauncher<Intent> resultLauncher = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
@@ -201,7 +215,14 @@ public class AdminAddAgencyFragment extends Fragment  implements CustomSpinner.O
             @Override
             public void onClick(View view) {
                 if (getTextField()) {
+                    final RequestBody agencyName1=RequestBody.create(MediaType.parse("text/plain"),agencyName);
+                    latitude=sf.getString(Constant.SF_LATITUDE,null);
+                    longitude = sf.getString(Constant.SF_LONGITUDE,null);
+                    Toast.makeText(requireContext(), ""+latitude+" "+longitude+" "+categoryId, Toast.LENGTH_SHORT).show();
 
+                    apiRegisterAgency(agencyName1,categoryName,address,mobile,totalMember,part,email,userName,password,latitude,longitude,Integer.parseInt(categoryId));
+                }else{
+                    Toast.makeText(requireContext(), "empty", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -215,13 +236,12 @@ public class AdminAddAgencyFragment extends Fragment  implements CustomSpinner.O
     public void onPopupWindowClosed(Spinner spinner) {
         binding.spinnerFruits.setBackground(getResources().getDrawable(R.drawable.bg_spinner_fruit));
     }
-    private void apiRegisterAgency(String agencyName,String typeOfService,String address,
+    private void apiRegisterAgency(RequestBody agencyName,String typeOfService,String address,
                                    String mobile,String totalMembers,MultipartBody.Part pdf,String email,
-                                   String userName,String password,String latitude,String longitude,String categoryId){
+                                   String userName,String password,String latitude,String longitude,int categoryId){
         Call<SignUpResponse> responseCall= RestClient.makeAPI().agencyRegister(agencyName,typeOfService,address,
-                mobile,totalMembers,pdf,email,userName,password,"",latitude,longitude,categoryId);
+                mobile,totalMembers,pdf,email,userName,password,"AGENCY",latitude,longitude,categoryId);
         responseCall.enqueue(new Callback<SignUpResponse>() {
-            @Override
             public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
                 if(response.isSuccessful()){
                     if(response.body().getStatus()==200){

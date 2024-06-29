@@ -9,6 +9,7 @@ import com.example.rescueagency.apiresponse.map.ditance.DitanceAndDurationRoot;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -37,8 +38,8 @@ public interface MYAPI {
     //added
 
     @Multipart
-    @GET("/use/agency_register")
-    Call<SignUpResponse> agencyRegister(@Part("agency_name")String agency_name,
+    @POST("/use/rescue_agency_register")
+    Call<SignUpResponse> agencyRegister(@Part("agency_name") RequestBody agency_name,
                                         @Part("type_of_service")String type_of_service,
                                         @Part("address")String address,
                                         @Part("mobile")String mobile,
@@ -48,7 +49,7 @@ public interface MYAPI {
                                         @Part("username")String username,
                                         @Part("password")String password,
                                         @Part("user_type")String user_type,@Part("latitude")String latitude,
-                                        @Part("longitude")String longitude,@Part("category_id")String categoryId);
+                                        @Part("longitude")String longitude,@Part("category_id")int categoryId);
     @GET("/use/get_agency")
     Call<GetAgencies> getAgencies(@Query("category_id")int agentID);
 

@@ -76,7 +76,7 @@
         android:layout_marginLeft="30dp">
     </androidx.appcompat.widget.AppCompatTextView>
 
-    <com.example.rescueagency.admin.spinner.CustomSpinner
+    <Spinner
         android:id="@+id/spinnerFruits"
         android:layout_width="350dp"
         android:layout_height="50dp"
