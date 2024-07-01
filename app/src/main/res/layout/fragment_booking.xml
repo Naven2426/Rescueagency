@@ -120,10 +120,12 @@
         android:textSize="18dp"
         android:textColor="@color/black"/>
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="339dp"
         android:layout_margin="20dp"
         android:layout_gravity="center"
+        android:id="@+id/selectImage"
         android:background="@drawable/dotted_stoke"
         android:layout_height="120dp">
 
@@ -143,7 +145,6 @@
             android:layout_height="26dp"
             android:layout_marginTop="5dp"
             android:gravity="center"
-
             android:text="Add Image"
             android:textColor="@color/ahs"
             android:textStyle="bold"
@@ -155,7 +156,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/id_request_Submit_button"
+        android:id="@+id/submitButton"
         android:layout_width="339dp"
         android:layout_height="50dp"
         android:layout_marginTop="40dp"
@@ -164,8 +165,5 @@
         android:text="Submit"
         android:textColor="@color/white" >
     </androidx.appcompat.widget.AppCompatButton>
-
-
-
 
 </LinearLayout>
