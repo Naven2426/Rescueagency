@@ -1,11 +1,13 @@
 package com.example.rescueagency;
 
+import com.example.rescueagency.agency.NewRequestData;
 import com.example.rescueagency.apiresponse.GetAgencies;
 import com.example.rescueagency.apiresponse.GetCategoryResponse;
 import com.example.rescueagency.apiresponse.SignUpResponse;
 import com.example.rescueagency.apiresponse.map.GoogleMapResponse;
 import com.example.rescueagency.apiresponse.map.ditance.DitanceAndDurationRoot;
 
+import java.util.List;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
@@ -40,7 +42,7 @@ public interface MYAPI {
     @Multipart
     @POST("/use/rescue_agency_register")
     Call<SignUpResponse> agencyRegister(@Part("agency_name") RequestBody agency_name,
-                                        @Part("type_of_service")String type_of_service,
+                                        @Part("type_of_service")RequestBody type_of_service,
                                         @Part("address")String address,
                                         @Part("mobile")String mobile,
                                         @Part("total_members")String total_members,
@@ -52,6 +54,9 @@ public interface MYAPI {
                                         @Part("longitude")String longitude,@Part("category_id")int categoryId);
     @GET("/use/get_agency")
     Call<GetAgencies> getAgencies(@Query("category_id")int agentID);
+    @Multipart
+    @POST("use/new_request")
+    Call<SignUpResponse> newRequest(NewRequestData data, List<MultipartBody.Part> images);
 
     //map
     @GET("distancematrix/json")
