@@ -58,6 +58,13 @@ public class MarkLocationActivity extends FragmentActivity implements OnMapReady
                 }
             }
         });
+
+        binding.idMarkLocationBackArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {

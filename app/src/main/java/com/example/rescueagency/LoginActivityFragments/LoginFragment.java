@@ -104,7 +104,7 @@ public class LoginFragment extends Fragment {
                         editor.putString(Constant.SF_EMAIL,data.getEmail());
                         editor.putString(Constant.SF_PHONE,data.getPhone());
                         editor.putString(Constant.SF_DOB,data.getDob());
-
+                        editor.putString(Constant.SF_GENDER,data.getGender());
                         editor.putString(Constant.SF_ADDRESS,data.getAddress());
                         editor.putString(Constant.USER_TYPE,data.getUser_type());
                         editor.apply();

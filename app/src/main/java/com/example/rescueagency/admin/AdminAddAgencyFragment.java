@@ -93,6 +93,7 @@ public class AdminAddAgencyFragment extends Fragment  implements CustomSpinner.O
 //                    transaction.replace(R.id.frameLayout,new MarkLocationFragment()).addToBackStack("MarkLocationFragment").commit();
                     MarkLocationActivity.googleMap=googleMap;
                     startActivity(new Intent(requireContext(),MarkLocationActivity.class));
+
                 }
             });
         }

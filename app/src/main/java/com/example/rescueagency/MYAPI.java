@@ -4,6 +4,7 @@ import com.example.rescueagency.agency.NewRequestData;
 import com.example.rescueagency.apiresponse.GetAgencies;
 import com.example.rescueagency.apiresponse.GetCategoryResponse;
 import com.example.rescueagency.apiresponse.SignUpResponse;
+import com.example.rescueagency.apiresponse.UpdateProfile;
 import com.example.rescueagency.apiresponse.map.GoogleMapResponse;
 import com.example.rescueagency.apiresponse.map.ditance.DitanceAndDurationRoot;
 
@@ -32,12 +33,25 @@ public interface MYAPI {
                                 @Query("password")String password,@Query("user_type")String user_type);
 
     @GET("/use/login")
-    Call<SignUpResponse> login(@Query("username")String username,
-                                @Query("password")String password);
+    Call<SignUpResponse> login(@Query("username")String username, @Query("password")String password);
 
     @GET("/category/getcategory")
     Call<GetCategoryResponse> getCategory();
+
     //added
+    @Multipart
+    @POST("/category/add_category")
+    Call<SignUpResponse> addCategory(@Part("name") RequestBody categoryname,@Part MultipartBody.Part pdf);
+
+
+
+    @POST("/use/update_profile")
+    Call<SignUpResponse> updateProfile(@Body UpdateProfile updateProfile);
+
+    @GET("/use/change_password")
+    Call<SignUpResponse> changePassword(@Query("old_password")String old_password,
+                                        @Query("new_password")String new_password);
+
 
     @Multipart
     @POST("/use/rescue_agency_register")
