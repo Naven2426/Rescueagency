@@ -226,12 +226,11 @@ public class AdminAddAgencyFragment extends Fragment  implements CustomSpinner.O
                     final RequestBody password1=RequestBody.create(MediaType.parse("text/plain"),password);
                     final RequestBody latitude1=RequestBody.create(MediaType.parse("text/plain"),latitude);
                     final RequestBody longitude1=RequestBody.create(MediaType.parse("text/plain"),longitude);
-
-//                    Toast.makeText(requireContext(), ""+latitude+" "+longitude+" "+categoryId, Toast.LENGTH_SHORT).show();
-
                     apiRegisterAgency(agencyName1,categoryName1,address1,mobile1,totalMember1,part,email1,userName1,password1,latitude1,longitude1,Integer.parseInt(categoryId));
-                }
+                
 
+//                     apiRegisterAgency(agencyName1,categoryName1,address,mobile,totalMember,part,email,userName,password,latitude,longitude,Integer.parseInt(categoryId));
+                }
             }
         });
     }
