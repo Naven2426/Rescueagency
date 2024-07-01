@@ -216,11 +216,12 @@ public class AdminAddAgencyFragment extends Fragment  implements CustomSpinner.O
             public void onClick(View view) {
                 if (getTextField()) {
                     final RequestBody agencyName1=RequestBody.create(MediaType.parse("text/plain"),agencyName);
+                    final RequestBody categoryName1=RequestBody.create(MediaType.parse("text/plain"),categoryName);
                     latitude=sf.getString(Constant.SF_LATITUDE,null);
                     longitude = sf.getString(Constant.SF_LONGITUDE,null);
                     Toast.makeText(requireContext(), ""+latitude+" "+longitude+" "+categoryId, Toast.LENGTH_SHORT).show();
 
-                    apiRegisterAgency(agencyName1,categoryName,address,mobile,totalMember,part,email,userName,password,latitude,longitude,Integer.parseInt(categoryId));
+                    apiRegisterAgency(agencyName1,categoryName1,address,mobile,totalMember,part,email,userName,password,latitude,longitude,Integer.parseInt(categoryId));
                 }else{
                     Toast.makeText(requireContext(), "empty", Toast.LENGTH_SHORT).show();
                 }
@@ -236,7 +237,7 @@ public class AdminAddAgencyFragment extends Fragment  implements CustomSpinner.O
     public void onPopupWindowClosed(Spinner spinner) {
         binding.spinnerFruits.setBackground(getResources().getDrawable(R.drawable.bg_spinner_fruit));
     }
-    private void apiRegisterAgency(RequestBody agencyName,String typeOfService,String address,
+    private void apiRegisterAgency(RequestBody agencyName,RequestBody typeOfService,String address,
                                    String mobile,String totalMembers,MultipartBody.Part pdf,String email,
                                    String userName,String password,String latitude,String longitude,int categoryId){
         Call<SignUpResponse> responseCall= RestClient.makeAPI().agencyRegister(agencyName,typeOfService,address,
