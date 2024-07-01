@@ -40,16 +40,16 @@ public interface MYAPI {
     @Multipart
     @POST("/use/rescue_agency_register")
     Call<SignUpResponse> agencyRegister(@Part("agency_name") RequestBody agency_name,
-                                        @Part("type_of_service")String type_of_service,
-                                        @Part("address")String address,
-                                        @Part("mobile")String mobile,
-                                        @Part("total_members")String total_members,
+                                        @Part("type_of_service")RequestBody type_of_service,
+                                        @Part("address")RequestBody address,
+                                        @Part("mobile")RequestBody mobile,
+                                        @Part("total_members")RequestBody total_members,
                                         @Part MultipartBody.Part pdf,
-                                        @Part("email")String email,
-                                        @Part("username")String username,
-                                        @Part("password")String password,
-                                        @Part("user_type")String user_type,@Part("latitude")String latitude,
-                                        @Part("longitude")String longitude,@Part("category_id")int categoryId);
+                                        @Part("email")RequestBody email,
+                                        @Part("username")RequestBody username,
+                                        @Part("password")RequestBody password,
+                                        @Part("user_type")RequestBody user_type,@Part("latitude")RequestBody latitude,
+                                        @Part("longitude")RequestBody longitude,@Part("category_id")int categoryId);
     @GET("/use/get_agency")
     Call<GetAgencies> getAgencies(@Query("category_id")int agentID);
 

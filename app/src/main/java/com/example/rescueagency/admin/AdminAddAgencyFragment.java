@@ -76,6 +76,7 @@ public class AdminAddAgencyFragment extends Fragment  implements CustomSpinner.O
 
     private String agencyName,mobile,address,totalMember,proofName,email,userName,password
             ,latitude,longitude,confirmPassword,categoryName,categoryId;
+
     private Uri proof;
     private MultipartBody.Part part;
     private static final int CREATE_FILE = 1;
@@ -216,14 +217,21 @@ public class AdminAddAgencyFragment extends Fragment  implements CustomSpinner.O
             public void onClick(View view) {
                 if (getTextField()) {
                     final RequestBody agencyName1=RequestBody.create(MediaType.parse("text/plain"),agencyName);
-                    latitude=sf.getString(Constant.SF_LATITUDE,null);
-                    longitude = sf.getString(Constant.SF_LONGITUDE,null);
-                    Toast.makeText(requireContext(), ""+latitude+" "+longitude+" "+categoryId, Toast.LENGTH_SHORT).show();
+                    final RequestBody categoryName1=RequestBody.create(MediaType.parse("text/plain"),categoryName);
+                    final RequestBody address1=RequestBody.create(MediaType.parse("text/plain"),address);
+                    final RequestBody mobile1=RequestBody.create(MediaType.parse("text/plain"),mobile);
+                    final RequestBody totalMember1=RequestBody.create(MediaType.parse("text/plain"),totalMember);
+                    final RequestBody email1=RequestBody.create(MediaType.parse("text/plain"),email);
+                    final RequestBody userName1=RequestBody.create(MediaType.parse("text/plain"),userName);
+                    final RequestBody password1=RequestBody.create(MediaType.parse("text/plain"),password);
+                    final RequestBody latitude1=RequestBody.create(MediaType.parse("text/plain"),latitude);
+                    final RequestBody longitude1=RequestBody.create(MediaType.parse("text/plain"),longitude);
 
-                    apiRegisterAgency(agencyName1,categoryName,address,mobile,totalMember,part,email,userName,password,latitude,longitude,Integer.parseInt(categoryId));
-                }else{
-                    Toast.makeText(requireContext(), "empty", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(requireContext(), ""+latitude+" "+longitude+" "+categoryId, Toast.LENGTH_SHORT).show();
+
+                    apiRegisterAgency(agencyName1,categoryName1,address1,mobile1,totalMember1,part,email1,userName1,password1,latitude1,longitude1,Integer.parseInt(categoryId));
                 }
+
             }
         });
     }
@@ -236,11 +244,12 @@ public class AdminAddAgencyFragment extends Fragment  implements CustomSpinner.O
     public void onPopupWindowClosed(Spinner spinner) {
         binding.spinnerFruits.setBackground(getResources().getDrawable(R.drawable.bg_spinner_fruit));
     }
-    private void apiRegisterAgency(RequestBody agencyName,String typeOfService,String address,
-                                   String mobile,String totalMembers,MultipartBody.Part pdf,String email,
-                                   String userName,String password,String latitude,String longitude,int categoryId){
+    private void apiRegisterAgency(RequestBody agencyName,RequestBody typeOfService,RequestBody address,
+                                   RequestBody mobile,RequestBody totalMembers,MultipartBody.Part pdf,RequestBody email,
+                                   RequestBody userName,RequestBody password,RequestBody latitude,RequestBody longitude,int categoryId){
+        RequestBody user_type=RequestBody.create(MediaType.parse("text/plain"),"AGENCY");
         Call<SignUpResponse> responseCall= RestClient.makeAPI().agencyRegister(agencyName,typeOfService,address,
-                mobile,totalMembers,pdf,email,userName,password,"AGENCY",latitude,longitude,categoryId);
+                mobile,totalMembers,pdf,email,userName,password,user_type,latitude,longitude,categoryId);
         responseCall.enqueue(new Callback<SignUpResponse>() {
             public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
                 if(response.isSuccessful()){
@@ -272,7 +281,8 @@ public class AdminAddAgencyFragment extends Fragment  implements CustomSpinner.O
         userName=binding.idAddAgencyUsernameET.getText().toString();
         password=binding.idAddAgencyPasswordET.getText().toString();
         confirmPassword=binding.idAddAgencyConfirmPasswordET.getText().toString();
-
+        latitude=sf.getString(Constant.SF_LATITUDE,null);
+        longitude = sf.getString(Constant.SF_LONGITUDE,null);
         if(agencyName.isEmpty()){
             binding.idAddAgencyAgencyNameET.setError("Enter Agency Name");
             return false;
@@ -291,6 +301,33 @@ public class AdminAddAgencyFragment extends Fragment  implements CustomSpinner.O
         }
         if(proof==null){
             Toast.makeText(getContext(), "Please Select Proof", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(email.isEmpty()){
+            binding.idAddAgencyAgencyEmailET.setError("Enter Email");
+            return false;
+        }
+        if(userName.isEmpty()){
+            binding.idAddAgencyUsernameET.setError("Enter User Name");
+            return false;
+        }
+        if(password.isEmpty()){
+            binding.idAddAgencyPasswordET.setError("Enter Password");
+            return false;
+        }
+        if(confirmPassword.isEmpty()){
+            binding.idAddAgencyConfirmPasswordET.setError("Enter Confirm Password");
+        }
+        if(!password.equals(confirmPassword)){
+            binding.idAddAgencyConfirmPasswordET.setError("Password Not Match");
+            return false;
+        }
+        if(categoryId==null){
+            Toast.makeText(getContext(), "Please Select Category", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if(latitude == null || longitude ==null){
+            Toast.makeText(getContext(), "Please Select Location", Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;
