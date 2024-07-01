@@ -1,5 +1,9 @@
 package com.example.rescueagency;
 
+import static android.content.Context.MODE_PRIVATE;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -20,7 +24,8 @@ import com.example.rescueagency.databinding.FragmentUpdateProfileBinding;
 
 public class ChangePasswordFragment extends Fragment {
     FragmentChangePasswordBinding binding;
-    private String oldpassword, newpassword, confirmpassword;
+    private String oldpassword, newpassword, confirmpassword,id;
+    private SharedPreferences sf;
 
 
     @Override
@@ -29,6 +34,8 @@ public class ChangePasswordFragment extends Fragment {
         // Inflate the layout for this fragment
         binding = FragmentChangePasswordBinding.inflate(inflater, container, false);
         click();
+        sf = getActivity().getSharedPreferences(Constant.SF_NAME, MODE_PRIVATE);
+        id = sf.getString(Constant.SF_USERID,"");
         MainActivity mainActivity = (MainActivity) getActivity();
         Animation hideAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.hide_bottom_navigation);
         mainActivity.findViewById(R.id.bottomNavigationView).startAnimation(hideAnimation);
@@ -55,12 +62,15 @@ public class ChangePasswordFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (getTextField()) {
-                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.frameLayout, new ProfileFragment());
-                    fragmentTransaction.commit();
+                    apiCall(oldpassword, newpassword);
                 }
             }
         });
+
+    }
+
+    private void apiCall(String oldpassword, String newpassword) {
+
 
     }
 
@@ -81,7 +91,14 @@ public class ChangePasswordFragment extends Fragment {
             binding.idChangePasswordConfirmText.setError("Enter Confirm Password");
             return false;
         }
+        if (!newpassword.equals(confirmpassword)) {
+            binding.idChangePasswordConfirmText.setError("Password Not Match");
+            return false;
+        }
         return true;
     }
+
+
+
 
 }

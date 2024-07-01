@@ -115,34 +115,6 @@
         </androidx.appcompat.widget.AppCompatEditText>
 
 
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/idAddTypeTV"
-            android:text="Category Type"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:layout_marginTop="12dp"
-            android:layout_marginLeft="30dp">
-        </androidx.appcompat.widget.AppCompatTextView>
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:layout_width="350dp"
-            android:layout_height="50dp"
-            android:id="@+id/idAddTypeET"
-            android:background="@drawable/edittext"
-            android:layout_gravity="center"
-            android:textColor="@color/black"
-            android:layout_marginTop="11dp"
-            android:paddingLeft="10dp">
-        </androidx.appcompat.widget.AppCompatEditText>
-
-
-
-
-
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="350dp"
             android:layout_height="50dp"

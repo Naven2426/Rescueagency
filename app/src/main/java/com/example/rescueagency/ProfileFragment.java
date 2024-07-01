@@ -135,7 +135,7 @@ public class ProfileFragment extends Fragment {
                 // Assuming you want to replace the current ProfileFragment with a new instance
                 Fragment newUpadteProfileFragment = new UpdateProfileFragment();
 
-                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frameLayout, newUpadteProfileFragment ); // replace with the container id of your fragment
                 transaction.addToBackStack(null); // add to back stack if you want to allow 'back' navigation
                 transaction.commit();

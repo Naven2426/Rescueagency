@@ -32,6 +32,7 @@ public class SignUpResponse {
         private String phone;
         private String address;
         private String dob;
+        private String gender;
         private String username;
         private String password;
         private String user_type;
@@ -66,6 +67,10 @@ public class SignUpResponse {
 
         public String getProfile() {
             return profile;
+        }
+
+        public String getGender() {
+            return gender;
         }
 
         public void setProfile(String profile) {
