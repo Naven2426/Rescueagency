@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
+    alias(libs.plugins.jetbrains.kotlin.android)
 }
 
 android {
@@ -53,6 +54,12 @@ dependencies {
     //glide for image loading
     implementation("com.github.bumptech.glide:glide:4.15.1")
     annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
+
     //picasso for image loading
     implementation("com.squareup.picasso:picasso:2.71828")
+
+    //camera
+    implementation("androidx.camera:camera-camera2:1.0.0-beta07")
+    implementation("androidx.camera:camera-lifecycle:1.0.0-beta07")
+    implementation("androidx.camera:camera-view:1.0.0-alpha14")
 }
