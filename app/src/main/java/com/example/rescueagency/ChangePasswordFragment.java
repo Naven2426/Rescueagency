@@ -71,7 +71,6 @@ public class ChangePasswordFragment extends Fragment {
 
     private void apiCall(String oldpassword, String newpassword) {
 
-
     }
 
     private boolean getTextField() {

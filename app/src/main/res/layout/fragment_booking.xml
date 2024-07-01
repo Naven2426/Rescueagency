@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@color/lightsandal"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -120,50 +125,45 @@
         android:textSize="18dp"
         android:textColor="@color/black"/>
 
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="339dp"
-        android:layout_margin="20dp"
-        android:layout_gravity="center"
-        android:id="@+id/selectImage"
-        android:background="@drawable/dotted_stoke"
-        android:layout_height="120dp">
 
-        <ImageView
-            android:id="@+id/id_request_proof_imageView"
-            android:layout_width="93dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:src="@mipmap/imageupload"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/idAddProofCV"
+        android:layout_width="57dp"
+        android:layout_height="50dp"
+        app:cardBackgroundColor="@color/sandal"
+        app:cardCornerRadius="12dp"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="90dp">
 
-        <TextView
-            android:id="@+id/id_request_text_addimage"
-            android:layout_width="92dp"
-            android:layout_height="26dp"
-            android:layout_marginTop="5dp"
-            android:gravity="center"
-            android:text="Add Image"
-            android:textColor="@color/ahs"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/id_request_proof_imageView"
-            tools:ignore="MissingConstraints" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/idAgencyAddMember"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/addimg"
+            tools:layout_editor_absoluteX="358dp"
+            tools:layout_editor_absoluteY="640dp">
+
+        </androidx.appcompat.widget.AppCompatImageView>
+
+    </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/submitButton"
         android:layout_width="339dp"
         android:layout_height="50dp"
-        android:layout_marginTop="40dp"
         android:layout_gravity="center"
+        android:layout_marginTop="10dp"
         android:background="@drawable/roundstyle"
         android:text="Submit"
         android:textColor="@color/white" >
     </androidx.appcompat.widget.AppCompatButton>
 
-</LinearLayout>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

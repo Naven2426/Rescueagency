@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="CustomToggleButtonSelected" parent="Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="backgroundTint">@color/sandal</item>
-        <item name="strokeColor">@color/sandal</item>
+    <!-- Other styles -->
+
+    <style name="DialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_up</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_down</item>
     </style>
 </resources>
