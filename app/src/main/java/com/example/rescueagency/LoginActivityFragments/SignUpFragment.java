@@ -190,7 +190,6 @@ public class SignUpFragment extends Fragment {
                         Toast.makeText(getContext(), signUpResponse.getMessage(), Toast.LENGTH_SHORT).show();
                         FragmentManager manager = getActivity().getSupportFragmentManager();
                         manager.popBackStack();
-                        manager.popBackStack();
                     } else {
                         Toast.makeText(getContext(), signUpResponse.getMessage(), Toast.LENGTH_SHORT).show();
                     }
