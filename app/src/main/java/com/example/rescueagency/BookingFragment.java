@@ -1,10 +1,12 @@
 package com.example.rescueagency;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -12,6 +14,8 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -23,6 +27,7 @@ import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.rescueagency.agency.NewRequestData;
 import com.example.rescueagency.apiresponse.SignUpResponse;
@@ -40,13 +45,23 @@ public class BookingFragment extends Fragment {
     FragmentBookingBinding binding;
     private String describe;
     private String selectedAgency;
+    private static ImagePreviewAdapter imagePreviewAdapter;
     String categoryId;
     Bundle bundle;
+    Context context= getContext();
     List<MultipartBody.Part> images;
+    public static List<Uri> uriImages;
     private final ActivityResultLauncher<PickVisualMediaRequest> pickMedia =
             registerForActivityResult(new ActivityResultContracts.PickMultipleVisualMedia(15), uri -> {
             if (uri != null) {
-                Toast.makeText(requireContext(), "Media Selected", Toast.LENGTH_SHORT).show();
+                uriImages=uri;
+                if(imagePreviewAdapter==null){
+                    imagePreviewAdapter=new ImagePreviewAdapter(uri,requireContext());
+                    binding.showImagesVP.setAdapter(imagePreviewAdapter);
+//                    setImageViewPager(uri,imagePreviewAdapter);
+                }else{
+                    imagePreviewAdapter.setUris(uri);
+                }
             } else {
                 Toast.makeText(requireContext(), "No Media Selected", Toast.LENGTH_SHORT).show();
             }
@@ -76,12 +91,33 @@ public class BookingFragment extends Fragment {
             binding.idRequestChooseTeamButton.setText(selectedAgency);
         });
     }
+    public static void setImageViewPager(List<Uri> uris,Context context,ImagePreviewAdapter adapter){
+        Toast.makeText(context, "Updated", Toast.LENGTH_SHORT).show();
+       if(uriImages==null) {
+           uriImages=uris;
+       }else{
+           uriImages.addAll(uris);
+       }
+       if(imagePreviewAdapter==null){
+           Toast.makeText(context, "new Object created", Toast.LENGTH_SHORT).show();
+           imagePreviewAdapter=adapter;
+       }else{
+           Toast.makeText(context, "data added", Toast.LENGTH_SHORT).show();
+           imagePreviewAdapter.setUris(uris);
+       }
 
+    }
     private void clickListener() {
+        binding.showImagesVP.setOnClickListener(view -> {
+            if(uriImages!=null){
+                ImagePreviewActivity.images=uriImages;
+                startActivity(new Intent(requireContext(),ImagePreviewActivity.class));
+            }
+        });
         binding.idAddProofCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Dialog dialog = new Dialog(getContext());
+                Dialog dialog = new Dialog(requireContext());
                 dialog.setContentView(R.layout.choose_img_upload_dialog_layout);
                 dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 dialog.getWindow().setGravity(Gravity.BOTTOM);
@@ -160,7 +196,7 @@ public class BookingFragment extends Fragment {
             }
         });
     }
-    private void apiNewRequest(NewRequestData data,List<MultipartBody.Part> parts){
+    private void apiNewRequest(NewRequestData data,List<MultipartBody.Part> parts) {
         Call<SignUpResponse> responseCall= RestClient.makeAPI().newRequest(data,parts);
         responseCall.enqueue(new Callback<SignUpResponse>() {
             @Override
@@ -182,9 +218,57 @@ public class BookingFragment extends Fragment {
     private boolean getTextField() {
         describe = Objects.requireNonNull(binding.idEdittextRequestDescribe.getText()).toString().trim();
         if (describe.isEmpty()) {
-            binding.idEdittextRequestDescribe.setError("Please describe your problem");
+            binding.idEdittextRequestDescribe.setError("Please Describe Your Problem");
             return false;
         }
         return true;
     }
+    public static class ImagePreviewAdapter extends PagerAdapter {
+
+        List<Uri> uris;
+        Context context;
+        LayoutInflater mLayoutInflater;
+
+        public ImagePreviewAdapter(List<Uri> uris, Context context) {
+            this.uris = uris;
+            this.context = context;
+            mLayoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        }
+
+        public void setUris(List<Uri> uris){
+            this.uris.addAll(uris);
+            notifyDataSetChanged();
+        }
+        @Override
+        public int getCount() {
+            return uris.size();
+        }
+        @NonNull
+        @Override
+        public Object instantiateItem(@NonNull ViewGroup container, final int position) {
+            // inflating the item.xml
+            View itemView = mLayoutInflater.inflate(R.layout.image_preview_layout, container, false);
+
+            // referencing the image view from the item.xml file
+            ImageView imageView = itemView.findViewById(R.id.imagePreview);
+
+            // setting the image in the imageView
+            imageView.setImageURI(uris.get(position));
+
+            // Adding the View
+            Objects.requireNonNull(container).addView(itemView);
+
+            return itemView;
+        }
+        @Override
+        public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+            return view == ((LinearLayout) object);
+        }
+        @Override
+        public void destroyItem(ViewGroup container, int position, @NonNull Object object) {
+
+            container.removeView((LinearLayout) object);
+        }
+    }
+
 }
