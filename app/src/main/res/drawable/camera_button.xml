@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Outer circle (black) -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#FFFFFF"/> <!-- Set the background color to white -->
+        </shape>
+    </item>
+
+    <!-- Inner circle (black border) -->
+    <item
+        android:left="50dp"
+        android:top="50dp"
+        android:right="50dp"
+        android:bottom="50dp">
+        <shape android:shape="oval">
+            <solid android:color="#000000"/> <!-- Set the border color to black -->
+        </shape>
+    </item>
+
+</layer-list>

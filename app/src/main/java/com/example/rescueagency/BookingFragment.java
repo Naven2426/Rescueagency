@@ -1,8 +1,14 @@
 package com.example.rescueagency;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +19,7 @@ import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -71,13 +78,51 @@ public class BookingFragment extends Fragment {
     }
 
     private void clickListener() {
-        binding.selectImage.setOnClickListener(new View.OnClickListener() {
+        binding.idAddProofCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                startActivity(new Intent(requireContext(),TakePhotoActivity.class));
-                pickMedia.launch(new PickVisualMediaRequest.Builder()
-                        .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
-                        .build());
+                Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.choose_img_upload_dialog_layout);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.getWindow().setGravity(Gravity.BOTTOM);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+                dialog.setCancelable(true); // Make the dialog cancellable
+                dialog.show();
+
+                CardView okay_text = dialog.findViewById(R.id.idCameraCV);
+                CardView cancel_text = dialog.findViewById(R.id.idAlbumsCV);
+
+                okay_text.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        startActivity(new Intent(requireContext(), TakePhotoActivity.class));
+                    }
+                });
+                cancel_text.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                        pickMedia.launch(new PickVisualMediaRequest.Builder()
+                                .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
+                                .build());
+                    }
+                });
+
+// Optional: Handle the back press specifically within the dialog
+                dialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
+                    @Override
+                    public boolean onKey(DialogInterface dialogInterface, int keyCode, KeyEvent event) {
+                        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+                            dialog.dismiss();
+                            return true;
+                        }
+                        return false;
+                    }
+                });
+
+
             }
         });
         binding.submitButton.setOnClickListener(new View.OnClickListener() {
