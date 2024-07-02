@@ -5,6 +5,7 @@ import com.example.rescueagency.apiresponse.GetAgencies;
 import com.example.rescueagency.apiresponse.GetCategoryResponse;
 import com.example.rescueagency.apiresponse.SignUpResponse;
 import com.example.rescueagency.apiresponse.UpdateProfile;
+import com.example.rescueagency.apiresponse.agencyinfo.AgencyInfoRoot;
 import com.example.rescueagency.apiresponse.map.GoogleMapResponse;
 import com.example.rescueagency.apiresponse.map.ditance.DitanceAndDurationRoot;
 
@@ -38,6 +39,9 @@ public interface MYAPI {
     @GET("/category/getcategory")
     Call<GetCategoryResponse> getCategory();
 
+    @GET("/use/get_team")
+    Call<AgencyInfoRoot> getTeam(@Query("agent_id")String id);
+
     //added
     @Multipart
     @POST("/category/add_category")
@@ -50,7 +54,7 @@ public interface MYAPI {
 
     @GET("/use/change_password")
     Call<SignUpResponse> changePassword(@Query("old_password")String old_password,
-                                        @Query("new_password")String new_password);
+                                        @Query("password")String new_password,@Query("user_id")String id);
 
 
     @Multipart

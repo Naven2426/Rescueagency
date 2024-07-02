@@ -1,0 +1,9 @@
+<!-- res/animator/vector_animation.xml -->
+<set xmlns:android="http://schemas.android.com/apk/res/android">
+    <objectAnimator
+        android:duration="500"
+        android:propertyName="fillColor"
+        android:valueFrom="#FFFFFF"
+        android:valueTo="#FF0000"
+        android:valueType="intType"/>
+</set>

@@ -25,7 +25,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="1dp"
-                android:paddingLeft="16dp">
+                android:paddingStart="16dp">
 
 
             <ImageView
@@ -148,6 +148,7 @@
                 android:paddingLeft="16dp"/>
 
             <LinearLayout
+                android:id="@+id/idRescueTeamResponseDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -175,6 +176,7 @@
 
             </LinearLayout>
 <LinearLayout
+    android:id="@+id/idRescueTeamContactDetail"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal">

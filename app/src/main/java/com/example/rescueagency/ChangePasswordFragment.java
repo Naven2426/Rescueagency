@@ -10,16 +10,23 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.rescueagency.admin.HomeFragment.AdminHomeFragment;
+import com.example.rescueagency.apiresponse.SignUpResponse;
 import com.example.rescueagency.databinding.FragmentChangePasswordBinding;
 import com.example.rescueagency.databinding.FragmentUpdateProfileBinding;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class ChangePasswordFragment extends Fragment {
@@ -62,14 +69,44 @@ public class ChangePasswordFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (getTextField()) {
-                    apiCall(oldpassword, newpassword);
+                    apiCall(oldpassword, newpassword,id);
                 }
             }
         });
 
     }
 
-    private void apiCall(String oldpassword, String newpassword) {
+    private void apiCall(String oldpassword, String newpassword, String id) {
+
+        Log.d("checking", "apiCall: old"+oldpassword+"new"+newpassword);
+
+        Call<SignUpResponse> responseCall = RestClient.makeAPI().changePassword(oldpassword,newpassword,id);
+        responseCall.enqueue(new Callback<SignUpResponse>() {
+            @Override
+            public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
+                if (response.isSuccessful()){
+                    SignUpResponse signUpResponse = response.body();
+                    if (signUpResponse.getStatus() == 200){
+                        Toast.makeText(getContext(), signUpResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                        FragmentManager manager = getActivity().getSupportFragmentManager();
+                        manager.popBackStack();
+                    }
+                    else {
+                        Toast.makeText(getContext(), signUpResponse.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Toast.makeText(getContext(), "Response Not Successful", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SignUpResponse> call, Throwable t) {
+                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
 
     }
 
