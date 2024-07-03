@@ -86,9 +86,6 @@ public class RescueTeamDetailFragment extends Fragment {
                         binding.idRescueTeamViewServices.setText(data.getType_of_service());
                         binding.idRescueTeamViewPhoneNumber.setText(""+data.getTeam_contact());
 
-
-
-
                         List<user_rescue_team_member_list> memberList = new ArrayList<>();
                         for(Member member : data.getMember())
                         {

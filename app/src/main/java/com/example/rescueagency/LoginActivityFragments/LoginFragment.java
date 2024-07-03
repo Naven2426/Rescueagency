@@ -100,6 +100,7 @@ public class LoginFragment extends Fragment {
                     if(signUpResponse.getStatus()==200){
                         SignUpResponse.User data=response.body().getUser();
                         editor.putString(Constant.SF_USERID,data.getId());
+                        Toast.makeText(getContext(), data.getId(), Toast.LENGTH_SHORT).show();
                         editor.putString(Constant.SF_NAME,data.getName());
                         editor.putString(Constant.SF_EMAIL,data.getEmail());
                         editor.putString(Constant.SF_PHONE,data.getPhone());
