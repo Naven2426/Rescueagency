@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,18 +7,17 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
         android:layout_width="match_parent"
         android:layout_height="125dp"
         app:cardBackgroundColor="@color/sandal"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp"
-        app:cardMaxElevation="12dp">
+        app:cardMaxElevation="12dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -37,107 +36,152 @@
                 android:id="@+id/new_request"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
                 android:text="New Request"
                 android:textColor="@color/black"
-                android:textStyle="bold"
                 android:textSize="18sp"
-                android:layout_centerInParent="true"/>
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="INFO"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
                 android:layout_below="@id/new_request"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp"
+                android:text="INFO"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>
 
+
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/idBookingTeamName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
         android:text="Rescue Team"
-        android:textSize="25dp"
-        android:textStyle="bold"
         android:textColor="@color/black"
-        android:layout_marginTop="54dp"
-        android:layout_marginLeft="30dp"/>
-
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/id_request_choose_team_button"
         android:layout_width="339dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/roundstyle"
         android:text="Choose Rescue Agency"
         android:textColor="@color/white"
-        >
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idBookingTeamName">
+
     </androidx.appcompat.widget.AppCompatButton>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/idAgencyNameCV"
+            android:layout_width="339dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="12dp"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Agency Name"
+                android:textColor="@color/black"
+                android:textSize="18dp"
+                android:textStyle="bold">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+        </androidx.cardview.widget.CardView>
+
     <androidx.appcompat.widget.AppCompatTextView
-        android:layout_marginTop="14dp"
+        android:id="@+id/teamNameTV"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:visibility="gone"
-        android:id="@+id/teamNameTV"
-        android:textColor="@color/white"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
+        app:layout_constraintBottom_toTopOf="@+id/id_request_describe_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_request_choose_team_button" />
 
     <TextView
         android:id="@+id/id_request_describe_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="60dp"
         android:text="Describe"
+        android:textColor="@color/black"
         android:textSize="18dp"
-        android:textColor="@color/black"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_request_choose_team_button" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/id_edittext_request_describe"
         android:layout_width="339dp"
         android:layout_height="122dp"
-        android:layout_marginTop="5dp"
         android:layout_gravity="center"
+        android:layout_marginTop="32dp"
         android:background="@drawable/edittext"
+        android:gravity="top"
+        android:inputType="textMultiLine"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
-        android:inputType="textMultiLine"
-        android:gravity="top"
         android:textColor="@color/black"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_request_describe_text" />
 
     <TextView
         android:id="@+id/id_request_proof"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="30dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
         android:text="Proof"
+        android:textColor="@color/black"
         android:textSize="18dp"
-        android:textColor="@color/black"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_edittext_request_describe" />
 
     <androidx.viewpager.widget.ViewPager
+        android:id="@+id/showImagesVP"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/idAddProofCV"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/id_request_proof" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/idAddProofCV"
         android:layout_width="57dp"
         android:layout_height="50dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginBottom="16dp"
         app:cardBackgroundColor="@color/sandal"
         app:cardCornerRadius="12dp"
-        android:layout_marginLeft="300dp"
-        android:layout_marginTop="90dp">
+        app:layout_constraintBottom_toTopOf="@+id/submitButton"
+        app:layout_constraintEnd_toEndOf="parent">
 
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -158,12 +202,13 @@
         android:layout_width="339dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/roundstyle"
         android:text="Submit"
-        android:textColor="@color/white" >
-    </androidx.appcompat.widget.AppCompatButton>
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
-    </LinearLayout>
 
-</androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

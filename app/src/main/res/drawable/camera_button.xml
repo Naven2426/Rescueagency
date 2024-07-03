@@ -1,22 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="30dp"
+    android:height="30dp"
+    android:viewportWidth="30"
+    android:viewportHeight="30">
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M14 10.4687L18.375 2.96875C20.2708 3.46875 21.9533 4.38542 23.4225 5.71875C24.8917 7.05208 25.9592 8.63542 26.625 10.4687H14ZM10.5313 13.5937L6.25001 6.09375C7.37501 4.98958 8.68251 4.11458 10.1725 3.46875C11.6625 2.82292 13.2717 2.5 15 2.5C15.2708 2.5 15.5833 2.51583 15.9375 2.5475C16.2917 2.57917 16.6146 2.61542 16.9063 2.65625L10.5313 13.5937ZM2.90626 18.125C2.78126 17.625 2.6821 17.1146 2.60876 16.5937C2.53543 16.0729 2.49918 15.5417 2.50001 15C2.50001 13.5208 2.7396 12.125 3.21876 10.8125C3.69793 9.5 4.37501 8.30208 5.25001 7.21875L11.5625 18.125H2.90626ZM11.6563 27.0312C9.76043 26.5312 8.07293 25.6146 6.59376 24.2812C5.1146 22.9479 4.04168 21.3646 3.37501 19.5312H15.9688L11.6563 27.0312ZM15 27.5C14.6875 27.5 14.3696 27.4792 14.0463 27.4375C13.7229 27.3958 13.4158 27.3542 13.125 27.3125L19.4688 16.4062L23.75 23.9062C22.625 25.0104 21.3179 25.8854 19.8288 26.5312C18.3396 27.1771 16.73 27.5 15 27.5ZM24.75 22.7812L18.4375 11.875H27.0938C27.2188 12.375 27.3179 12.8854 27.3913 13.4062C27.4646 13.9271 27.5008 14.4583 27.5 15C27.5 16.4583 27.245 17.8542 26.735 19.1875C26.225 20.5208 25.5633 21.7187 24.75 22.7812Z"/>
+</vector>
 
-    <!-- Outer circle (black) -->
-    <item>
-        <shape android:shape="oval">
-            <solid android:color="#FFFFFF"/> <!-- Set the background color to white -->
-        </shape>
-    </item>
-
-    <!-- Inner circle (black border) -->
-    <item
-        android:left="50dp"
-        android:top="50dp"
-        android:right="50dp"
-        android:bottom="50dp">
-        <shape android:shape="oval">
-            <solid android:color="#000000"/> <!-- Set the border color to black -->
-        </shape>
-    </item>
-
-</layer-list>

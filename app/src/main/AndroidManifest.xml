@@ -54,7 +54,7 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="YOUR_API_KEY" />
+            android:value="AIzaSyAl1GtFi8AASbb7VJ8Q-UK8gG-o1upmC7M" />
 
         <activity
             android:name=".admin.MarkLocationActivity"
