@@ -2,6 +2,8 @@ package com.example.rescueagency.main_menu_fragments;
 
 import static android.app.PendingIntent.getActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.rescueagency.BookingFragment;
+import com.example.rescueagency.Constant;
 import com.example.rescueagency.LoginActivityFragments.LoginFragment;
 import com.example.rescueagency.R;
 
@@ -52,6 +55,7 @@ public class View_allHolder extends RecyclerView.Adapter<View_allHolder.MyViewHo
             public void onClick(View v) {
                 FragmentTransaction transaction=activity.getSupportFragmentManager().beginTransaction();
                 Bundle bundle=new Bundle();
+                activity.getSharedPreferences(Constant.SF_LAT_LONG_NAME, Context.MODE_PRIVATE).edit().clear().apply();
                 bundle.putString("categoryId",data.getId());
                 BookingFragment bookingFragment=new BookingFragment();
                 bookingFragment.setArguments(bundle);

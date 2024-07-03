@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -23,6 +24,7 @@ import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -33,6 +35,7 @@ import com.example.rescueagency.agency.NewRequestData;
 import com.example.rescueagency.apiresponse.SignUpResponse;
 import com.example.rescueagency.databinding.FragmentBookingBinding;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -48,16 +51,20 @@ public class BookingFragment extends Fragment {
     private static ImagePreviewAdapter imagePreviewAdapter;
     String categoryId;
     Bundle bundle;
-    Context context= getContext();
     List<MultipartBody.Part> images;
-    public static List<Uri> uriImages;
+    public static AppCompatTextView teamName;
+    public static List<Uri> uriImages=new ArrayList<>();
+
     private final ActivityResultLauncher<PickVisualMediaRequest> pickMedia =
             registerForActivityResult(new ActivityResultContracts.PickMultipleVisualMedia(15), uri -> {
             if (uri != null) {
-                uriImages=uri;
+//                if(uriImages==null) {
+//                    uriImages=uri;
+//                }else{
+//                    uriImages.addAll(uri);
+//                }
                 if(imagePreviewAdapter==null){
-                    imagePreviewAdapter=new ImagePreviewAdapter(uri,requireContext());
-                    binding.showImagesVP.setAdapter(imagePreviewAdapter);
+                    binding.showImagesVP.setAdapter(null);
 //                    setImageViewPager(uri,imagePreviewAdapter);
                 }else{
                     imagePreviewAdapter.setUris(uri);
@@ -71,12 +78,24 @@ public class BookingFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentBookingBinding.inflate(inflater, container, false);
         clickListener();
-
          bundle=getArguments();
+         teamName=binding.teamNameTV;
+        SharedPreferences sf= requireActivity().getSharedPreferences(Constant.SF_LAT_LONG_NAME,Context.MODE_PRIVATE);
+        String teamName=sf.getString(Constant.SF_TEAM_NAME_FOR_NEW_REQUEST,null);
+        String agentId=sf.getString(Constant.SF_AGENT_ID_FOR_NEW_REQUEST,null);
+        if(teamName!=null && agentId!=null){
+            binding.agencyNameACTV.setVisibility(View.VISIBLE);
+            binding.agencyNameACTV.setText(teamName);
+        }
 //         categoryId= bundle.getString("categoryId",null);
         MainActivity mainActivity=(MainActivity) getActivity();
-
         assert mainActivity != null;
+
+
+        TakePhotoActivity.fragment=requireContext();
+
+        imagePreviewAdapter=new ImagePreviewAdapter(uriImages,requireContext());
+        binding.showImagesVP.setAdapter(imagePreviewAdapter);
         mainActivity.findViewById(R.id.bottomNavigationView).setVisibility(View.GONE);
         return binding.getRoot();
     }
@@ -92,12 +111,13 @@ public class BookingFragment extends Fragment {
         });
     }
     public static void setImageViewPager(List<Uri> uris,Context context,ImagePreviewAdapter adapter){
-        Toast.makeText(context, "Updated", Toast.LENGTH_SHORT).show();
-       if(uriImages==null) {
-           uriImages=uris;
-       }else{
-           uriImages.addAll(uris);
-       }
+//       if(uriImages==null) {
+//           Toast.makeText(context, "new images of array list", Toast.LENGTH_SHORT).show();
+//           uriImages=uris;
+//       }else{
+//           Toast.makeText(context, "add all array list", Toast.LENGTH_SHORT).show();
+//           uriImages.addAll(uris);
+//       }
        if(imagePreviewAdapter==null){
            Toast.makeText(context, "new Object created", Toast.LENGTH_SHORT).show();
            imagePreviewAdapter=adapter;
@@ -108,12 +128,6 @@ public class BookingFragment extends Fragment {
 
     }
     private void clickListener() {
-        binding.showImagesVP.setOnClickListener(view -> {
-            if(uriImages!=null){
-                ImagePreviewActivity.images=uriImages;
-                startActivity(new Intent(requireContext(),ImagePreviewActivity.class));
-            }
-        });
         binding.idAddProofCV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -178,10 +192,9 @@ public class BookingFragment extends Fragment {
                 FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
                 transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right,
                         R.anim.enter_from_right, R.anim.exit_to_left);
-
                 MapsFragment mapsFragment=new MapsFragment();
                 mapsFragment.setArguments(bundle);
-                transaction.replace(R.id.frameLayout, mapsFragment).addToBackStack("RescueTeamSelcetionInMapFragment").commit();
+                transaction.replace(R.id.frameLayout, mapsFragment).addToBackStack("RescueTeamSelectionInMapFragment").commit();
 //                Intent intent=new Intent(requireContext(),MapsActivity.class);
 //                startActivity(intent);
 

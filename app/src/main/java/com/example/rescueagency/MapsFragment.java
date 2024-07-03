@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.rescueagency.apiresponse.GetAgencies;
 import com.example.rescueagency.apiresponse.map.GoogleMapResponse;
+import com.example.rescueagency.databinding.FragmentBookingBinding;
 import com.example.rescueagency.databinding.FragmentMapsBinding;
 import com.example.rescueagency.user_agency_member_list_view.RescueTeamDetailFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -35,6 +36,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -48,9 +50,9 @@ public class MapsFragment extends Fragment {
     private final int FINE_PERMISSION_CODE = 1;
     private FragmentMapsBinding binding;
     private List<GetAgencies.Data> latlang;
-    private OnMapReadyCallback callback = new OnMapReadyCallback() {
+    private final OnMapReadyCallback callback = new OnMapReadyCallback() {
         @Override
-        public void onMapReady(GoogleMap googleMap) {
+        public void onMapReady(@NonNull GoogleMap googleMap) {
 
             if (ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) !=
                     PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(),
@@ -63,19 +65,20 @@ public class MapsFragment extends Fragment {
                 for(int i=0;i<latlang.size();i++){
                     GetAgencies.Data data=latlang.get(i);
                     MarkerOptions markerOptions=new MarkerOptions().position(new LatLng(data.getLatitude(),data.getLongitude())).title(data.getName());
-                    googleMap.addMarker(markerOptions).setTag(""+data.getId());
+                    Objects.requireNonNull(googleMap.addMarker(markerOptions)).setTag(""+data.getId());
                 }
             }
 //            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlang.get(latlang.size()-1),15));
+            assert latlang != null;
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latlang.get(0).getLatitude(),latlang.get(0).getLongitude()),14));
             googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(@NonNull Marker marker) {
-                    Toast.makeText(requireContext(), ""+Integer.parseInt(marker.getTag().toString()), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(requireContext(), ""+Integer.parseInt(Objects.requireNonNull(marker.getTag()).toString()), Toast.LENGTH_SHORT).show();
                     FragmentTransaction transaction=requireActivity().getSupportFragmentManager().beginTransaction();
                     RescueTeamDetailFragment res =new RescueTeamDetailFragment();
                     Bundle bundle=new Bundle();
-                    bundle.putInt("agentId",Integer.parseInt(marker.getTag().toString()));
+                    bundle.putString("agentId",marker.getTag().toString());
                     res.setArguments(bundle);
                     transaction.replace(R.id.frameLayout,res).addToBackStack("RescueTeamDetailFragment").commit();
                     return false;
@@ -91,8 +94,8 @@ public class MapsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,  @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentMapsBinding.inflate(inflater,container,false);
         mapFragment =  (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
-
         Bundle bundle=getArguments();
+        assert bundle != null;
         String categoryId=bundle.getString("categoryId",null);
         if(categoryId!=null){
             apiCallGetAgencies(categoryId);
@@ -139,7 +142,7 @@ public class MapsFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<GoogleMapResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<GoogleMapResponse> call, Throwable t) {
                 Toast.makeText(requireContext(), "onFailure " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.d("MainActivity", "onFailure : " + t.getMessage());
             }
@@ -156,29 +159,16 @@ public class MapsFragment extends Fragment {
             }
         });
 
-//      binding.someSelectionButton.setOnClickListener(new View.OnClickListener() { // replace with your actual selection event
-//          @Override
-//          public void onClick(View v) {
-//              String selectedAgency = "Selected Agency Name"; // Replace with actual selected agency name
-//
-//              // Send the result back to the BookingFragment
-//              Bundle result = new Bundle();
-//              result.putString("selectedAgency", selectedAgency);
-//              getParentFragmentManager().setFragmentResult("agencySelection", result);
-//
-//              // Navigate back to the BookingFragment
-//              getParentFragmentManager().popBackStack();
-//          }
-//      });
   }
 
   private void apiCallGetAgencies(String categoryId){
       Call<GetAgencies> responseCall=RestClient.makeAPI().getAgencies(Integer.parseInt(categoryId));
       responseCall.enqueue(new Callback<GetAgencies>() {
           @Override
-          public void onResponse(Call<GetAgencies> call, Response<GetAgencies> response) {
+          public void onResponse(@NonNull Call<GetAgencies> call, @NonNull Response<GetAgencies> response) {
               if(response.isSuccessful()){
                   latlang=new ArrayList<>();
+                  assert response.body() != null;
                   latlang.addAll(response.body().getData());
                   if (mapFragment != null) {
                       mapFragment.getMapAsync(callback);
@@ -190,7 +180,7 @@ public class MapsFragment extends Fragment {
 
           @SuppressLint("LongLogTag")
           @Override
-          public void onFailure(Call<GetAgencies> call, Throwable t) {
+          public void onFailure(@NonNull Call<GetAgencies> call, @NonNull Throwable t) {
               Log.e("onFailureGetAgeniesApiCall","onFailureGetAgeniesApiCall "+t.getMessage());
               Toast.makeText(requireContext(), "Response "+t.getMessage(), Toast.LENGTH_SHORT).show();
           }

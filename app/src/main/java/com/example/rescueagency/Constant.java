@@ -20,6 +20,9 @@ public class Constant {
     public static final String SF_LONGITUDE="LONGITUDE";
     public static final String SF_CATEGORY_NAME="CATEGORY_NAME";
     public static final String SF_CATEGORY_ID="CATEGORY_ID";
+    public static final String SF_AGENT_ID_FOR_NEW_REQUEST="SF_AGENT_ID_FOR_NEW_REQUEST";
+    public static final String SF_TEAM_NAME_FOR_NEW_REQUEST="SF_TEAM_NAME_FOR_NEW_REQUEST";
+
 
 
 }
