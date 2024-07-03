@@ -6,6 +6,7 @@ import com.example.rescueagency.apiresponse.GetCategoryResponse;
 import com.example.rescueagency.apiresponse.SignUpResponse;
 import com.example.rescueagency.apiresponse.UpdateProfile;
 import com.example.rescueagency.apiresponse.agencyinfo.AgencyInfoRoot;
+import com.example.rescueagency.apiresponse.agencymemberinfo.MemberDetails;
 import com.example.rescueagency.apiresponse.map.GoogleMapResponse;
 import com.example.rescueagency.apiresponse.map.ditance.DitanceAndDurationRoot;
 
@@ -41,6 +42,9 @@ public interface MYAPI {
 
     @GET("/use/get_team")
     Call<AgencyInfoRoot> getTeam(@Query("agent_id")String id);
+
+    @POST("/use/add_member/add_member")
+    Call<SignUpResponse> addMember(@Body MemberDetails memberDetails);
 
     //added
     @Multipart
@@ -79,5 +83,6 @@ public interface MYAPI {
     //map
     @GET("distancematrix/json")
     Call<GoogleMapResponse> getDistanceInfo(@QueryMap Map<String, String> parameters);
+
 //    Call<GoogleMapResponse> getDistanceInfo1(@QueryMap Map<String, String> parameters);
 }

@@ -35,6 +35,7 @@ public class ImagePreviewActivity extends AppCompatActivity {
         ActivityImagePreviewBinding binding=ActivityImagePreviewBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.viewPager.setAdapter(new ImagePreviewAdapter(images,this));
+        BookingFragment.setImageViewPager(images,this,new BookingFragment.ImagePreviewAdapter(images,ImagePreviewActivity.this));
     }
     private static class ImagePreviewAdapter extends PagerAdapter {
 
@@ -62,7 +63,7 @@ public class ImagePreviewActivity extends AppCompatActivity {
             ImageView imageView = itemView.findViewById(R.id.imagePreview);
 
             // setting the image in the imageView
-            imageView.setImageURI(images.get(position));
+            imageView.setImageURI(uris.get(position));
 
             // Adding the View
             Objects.requireNonNull(container).addView(itemView);
