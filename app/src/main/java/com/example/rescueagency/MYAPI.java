@@ -43,15 +43,18 @@ public interface MYAPI {
     @GET("/use/get_team")
     Call<AgencyInfoRoot> getTeam(@Query("agent_id")String id);
 
+    @Multipart
     @POST("/use/add_member/add_member")
-    Call<SignUpResponse> addMember(@Body MemberDetails memberDetails);
+    Call<SignUpResponse> addMember(@Part("agent_id") RequestBody agent_id,@Part("name") RequestBody name,@Part("mobile") RequestBody mobile,
+                                   @Part("email") RequestBody email,@Part("address") RequestBody address,
+                                   @Part("dob") RequestBody dob,
+                                   @Part("role") RequestBody role,@Part("year_of_experience") RequestBody year_of_experience,
+                                   @Part MultipartBody.Part profilePhoto);
 
     //added
     @Multipart
     @POST("/category/add_category")
     Call<SignUpResponse> addCategory(@Part("name") RequestBody categoryname,@Part MultipartBody.Part pdf);
-
-
 
     @POST("/use/update_profile")
     Call<SignUpResponse> updateProfile(@Body UpdateProfile updateProfile);

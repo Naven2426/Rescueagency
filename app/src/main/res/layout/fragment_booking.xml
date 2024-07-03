@@ -63,8 +63,8 @@
         android:id="@+id/idBookingTeamName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
         android:text="Rescue Team"
         android:textColor="@color/black"
         android:textSize="25sp"
@@ -110,13 +110,8 @@
 
         </androidx.cardview.widget.CardView>
 
-<<<<<<< HEAD
-        <androidx.appcompat.widget.AppCompatTextView
-        android:layout_marginTop="14dp"
-=======
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/teamNameTV"
->>>>>>> 62c6f40784a1223915fb80d9b348c2ca710fcbc1
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -132,10 +127,11 @@
         android:id="@+id/id_request_describe_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="36dp"
         android:text="Describe"
         android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_request_choose_team_button" />
@@ -145,7 +141,7 @@
         android:layout_width="339dp"
         android:layout_height="122dp"
         android:layout_gravity="center"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="11dp"
         android:background="@drawable/edittext"
         android:gravity="top"
         android:inputType="textMultiLine"
@@ -160,10 +156,11 @@
         android:id="@+id/id_request_proof"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="12dp"
         android:text="Proof"
         android:textColor="@color/black"
+        android:textStyle="bold"
         android:textSize="18dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_edittext_request_describe" />
@@ -171,17 +168,11 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/showImagesVP"
         android:layout_width="match_parent"
-<<<<<<< HEAD
-        android:layout_height="wrap_content"
-        android:id="@+id/id_request_proof_imageView"/>
-
-=======
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/idAddProofCV"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/id_request_proof" />
->>>>>>> 62c6f40784a1223915fb80d9b348c2ca710fcbc1
 
     <androidx.cardview.widget.CardView
         android:id="@+id/idAddProofCV"
