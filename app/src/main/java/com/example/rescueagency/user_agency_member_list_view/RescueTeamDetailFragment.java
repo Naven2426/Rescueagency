@@ -30,6 +30,7 @@ import retrofit2.Response;
 
 public class RescueTeamDetailFragment extends Fragment {
 
+
     private String id = "25";
 
     FragmentRescueTeamDetailBinding binding;
