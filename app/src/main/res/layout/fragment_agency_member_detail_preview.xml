@@ -169,6 +169,7 @@
                 app:layout_constraintStart_toEndOf="@+id/id_agent_profile_email"
                 app:layout_constraintTop_toBottomOf="@+id/id_profile_mobile_number" />
 
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/idProfileEmailTV"
                 android:layout_width="wrap_content"
@@ -178,12 +179,9 @@
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.365"
+                app:layout_constraintHorizontal_bias="0.391"
                 app:layout_constraintStart_toEndOf="@+id/id_agent_profile_email"
                 app:layout_constraintTop_toBottomOf="@+id/id_profile_email_id" />
-
-
-
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/id_agent_profile_address"
@@ -210,6 +208,7 @@
                 app:layout_constraintStart_toEndOf="@+id/id_agent_profile_address"
                 app:layout_constraintTop_toBottomOf="@+id/id_profile_email_id" />
 
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/idProfileAddressTV"
                 android:layout_width="wrap_content"
@@ -219,11 +218,9 @@
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.173"
+                app:layout_constraintHorizontal_bias="0.19"
                 app:layout_constraintStart_toEndOf="@+id/id_agent_profile_address"
                 app:layout_constraintTop_toBottomOf="@+id/id_profile_address_id" />
-
-
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/id_agent_profile_dob"
@@ -250,6 +247,7 @@
                 app:layout_constraintStart_toEndOf="@+id/id_agent_profile_dob"
                 app:layout_constraintTop_toBottomOf="@+id/id_profile_address_id" />
 
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/idProfileDOBTV"
                 android:layout_width="wrap_content"
@@ -259,12 +257,9 @@
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.191"
+                app:layout_constraintHorizontal_bias="0.209"
                 app:layout_constraintStart_toEndOf="@+id/id_agent_profile_dob"
                 app:layout_constraintTop_toBottomOf="@+id/id_profile_dob_id" />
-
-
-
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/id_agent_profile_roll"
@@ -304,17 +299,17 @@
                 app:layout_constraintStart_toEndOf="@+id/id_agent_profile_roll"
                 app:layout_constraintTop_toBottomOf="@+id/id_profile_dob_id" />
 
+
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/idProfileRollTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/idProfileRollTV"
-                android:layout_marginStart="36dp"
+                android:layout_marginStart="40dp"
                 android:text="Admin"
                 android:textColor="@color/black"
                 android:textSize="17dp"
                 app:layout_constraintStart_toEndOf="@+id/id_agent_profile_roll"
                 app:layout_constraintTop_toBottomOf="@+id/id_profile_roll_id" />
-
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
@@ -330,9 +325,10 @@
                 app:layout_constraintTop_toBottomOf="@+id/id_profile_roll_id" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/idProfileYOETV2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
+                android:layout_marginStart="32dp"
                 android:text="2 Year of Experience"
                 android:textColor="@color/black"
                 android:textSize="17dp"
