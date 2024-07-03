@@ -88,27 +88,22 @@
     </androidx.appcompat.widget.AppCompatButton>
 
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/idAgencyNameCV"
-            android:layout_width="339dp"
-            android:layout_height="50dp"
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="12dp"
-            android:visibility="gone">
+            android:text="Agency Name"
+            android:id="@+id/agencyNameACTV"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/id_request_choose_team_button"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
 
-            <androidx.appcompat.widget.AppCompatTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Agency Name"
-                android:textColor="@color/black"
-                android:textSize="18dp"
-                android:textStyle="bold">
 
-            </androidx.appcompat.widget.AppCompatTextView>
-
-        </androidx.cardview.widget.CardView>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/teamNameTV"

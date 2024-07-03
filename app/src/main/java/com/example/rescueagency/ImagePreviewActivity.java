@@ -1,5 +1,6 @@
 package com.example.rescueagency;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 
@@ -28,6 +30,10 @@ import java.util.Objects;
 public class ImagePreviewActivity extends AppCompatActivity {
 
     static List<Uri> images;
+    @SuppressLint("StaticFieldLeak")
+    static TakePhotoActivity takePhotoActivity;
+    @SuppressLint("StaticFieldLeak")
+    static Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,7 +41,14 @@ public class ImagePreviewActivity extends AppCompatActivity {
         ActivityImagePreviewBinding binding=ActivityImagePreviewBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.viewPager.setAdapter(new ImagePreviewAdapter(images,this));
-        BookingFragment.setImageViewPager(images,this,new BookingFragment.ImagePreviewAdapter(images,ImagePreviewActivity.this));
+        binding.doneACB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                BookingFragment.setImageViewPager(images,context,new BookingFragment.ImagePreviewAdapter(images,context));
+                finish();
+                takePhotoActivity.finish();
+            }
+        });
     }
     private static class ImagePreviewAdapter extends PagerAdapter {
 
