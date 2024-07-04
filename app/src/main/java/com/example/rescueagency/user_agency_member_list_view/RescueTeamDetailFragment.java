@@ -66,7 +66,7 @@ public class RescueTeamDetailFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(agentId!=null && teamName!=null ){
-                    SharedPreferences.Editor editor=sf.edit();
+                    SharedPreferences.Editor editor = sf.edit();
                     editor.putString(Constant.SF_AGENT_ID_FOR_NEW_REQUEST,agentId);
                     editor.putString(Constant.SF_TEAM_NAME_FOR_NEW_REQUEST,teamName);
                     editor.apply();

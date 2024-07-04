@@ -85,7 +85,11 @@ public interface MYAPI {
     Call<GetAgencies> getAgencies(@Query("category_id")int agentID);
     @Multipart
     @POST("use/new_request")
-    Call<SignUpResponse> newRequest( NewRequestData data, @Part List<MultipartBody.Part> images);
+    Call<SignUpResponse> newRequest(@Part("agent_id")RequestBody agencyId,@Part("agency_name")RequestBody agentName,
+                                    @Part("user_id")RequestBody userId,@Part("user_name")RequestBody userName,@Part("mobile")RequestBody mobile,
+                                    @Part("describe_incident")RequestBody describeIncident,@Part("category_id")RequestBody categoryId,
+                                    @Part("type_of_incident")RequestBody typeOfIncident,@Part("status")RequestBody status,@Part("latitude")RequestBody latitude,
+                                    @Part("longitude")RequestBody longitude, @Part List<MultipartBody.Part> images);
 
     //map
     @GET("distancematrix/json")

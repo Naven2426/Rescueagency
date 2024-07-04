@@ -57,6 +57,7 @@ public class View_allHolder extends RecyclerView.Adapter<View_allHolder.MyViewHo
                 Bundle bundle=new Bundle();
                 activity.getSharedPreferences(Constant.SF_LAT_LONG_NAME, Context.MODE_PRIVATE).edit().clear().apply();
                 bundle.putString("categoryId",data.getId());
+                bundle.putString("categoryName",data.getText());
                 BookingFragment bookingFragment=new BookingFragment();
                 bookingFragment.setArguments(bundle);
                 transaction.replace(R.id.frameLayout,bookingFragment);
