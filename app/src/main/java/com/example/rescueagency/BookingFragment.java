@@ -172,7 +172,6 @@ public class BookingFragment extends Fragment {
                     }
                 });
 
-
             }
         });
         binding.submitButton.setOnClickListener(new View.OnClickListener() {
