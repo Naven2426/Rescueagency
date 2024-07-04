@@ -17,6 +17,7 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -50,7 +51,8 @@ public interface MYAPI {
                                    @Part("dob") RequestBody dob,
                                    @Part("role") RequestBody role,@Part("year_of_experience") RequestBody year_of_experience,
                                    @Part MultipartBody.Part profilePhoto);
-
+    @DELETE("/use/add_member/delete_member")
+    Call<SignUpResponse> deleteMember(@Query("id")String id);
     //added
     @Multipart
     @POST("/category/add_category")
@@ -62,6 +64,8 @@ public interface MYAPI {
     @GET("/use/change_password")
     Call<SignUpResponse> changePassword(@Query("old_password")String old_password,
                                         @Query("password")String new_password,@Query("user_id")String id);
+
+
 
 
     @Multipart

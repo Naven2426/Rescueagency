@@ -1,7 +1,7 @@
 package com.example.rescueagency.apiresponse;
 
 public class UpdateProfile {
-    private String name,phone,email,address,dob,gender,id;
+    private String name,phone,email,address,dob,gender,id,role,year;
 
     public void setName(String name) {
         this.name = name;
@@ -30,4 +30,8 @@ public class UpdateProfile {
     public void setId(String id) {
         this.id = id;
     }
+
+    public void setRole(String role) {this.role = role;}
+
+    public void setYear(String year) { this.year = year; }
 }
