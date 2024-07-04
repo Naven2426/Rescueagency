@@ -1,14 +1,21 @@
 package com.example.rescueagency;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Looper;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
@@ -18,43 +25,76 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+import android.Manifest;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.cardview.widget.CardView;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.PagerAdapter;
 
-import com.example.rescueagency.agency.NewRequestData;
 import com.example.rescueagency.apiresponse.SignUpResponse;
 import com.example.rescueagency.databinding.FragmentBookingBinding;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 public class BookingFragment extends Fragment {
     FragmentBookingBinding binding;
-    private String describe;
+
     private String selectedAgency;
     private static ImagePreviewAdapter imagePreviewAdapter;
-    String categoryId;
     Bundle bundle;
-    List<MultipartBody.Part> images;
+    int PERMISSION_ID = 44;
     public static AppCompatTextView teamName;
+    List<MultipartBody.Part> images;
+    private String agentId,agentName,userId,userName,userMobile,description,categoryId,typeOfIncident,status,latitude,longitude;
     public static List<Uri> uriImages=new ArrayList<>();
+    private FusedLocationProviderClient mFusedLocationClient;
+    SharedPreferences sf;
+    private boolean getTextField() {
+        SharedPreferences sharedPreferences= requireActivity().getSharedPreferences(Constant.SF_NAME,Context.MODE_PRIVATE);
+        description = Objects.requireNonNull(binding.idEdittextRequestDescribe.getText()).toString().trim();
+        status = "NEW";
+        userId = sharedPreferences.getString(Constant.SF_USERID, null);
+        userName = sharedPreferences.getString(Constant.SF_USERNAME, null);
+        userMobile = sharedPreferences.getString(Constant.SF_PHONE, null);
+        if (description.isEmpty()) {
+            binding.idEdittextRequestDescribe.setError("Please Describe Your Problem");
+            return false;
+        }
+        return true;
+    }
+    private LocationCallback mLocationCallback = new LocationCallback() {
 
+        @Override
+        public void onLocationResult(LocationResult locationResult) {
+            Location mLastLocation = locationResult.getLastLocation();
+//            latitudeTextView.setText("Latitude: " + mLastLocation.getLatitude() + "");
+//            longitTextView.setText("Longitude: " + mLastLocation.getLongitude() + "");
+        }
+    };
     private final ActivityResultLauncher<PickVisualMediaRequest> pickMedia =
             registerForActivityResult(new ActivityResultContracts.PickMultipleVisualMedia(15), uri -> {
             if (uri != null) {
@@ -80,17 +120,21 @@ public class BookingFragment extends Fragment {
         clickListener();
          bundle=getArguments();
          teamName=binding.teamNameTV;
-        SharedPreferences sf= requireActivity().getSharedPreferences(Constant.SF_LAT_LONG_NAME,Context.MODE_PRIVATE);
-        String teamName=sf.getString(Constant.SF_TEAM_NAME_FOR_NEW_REQUEST,null);
-        String agentId=sf.getString(Constant.SF_AGENT_ID_FOR_NEW_REQUEST,null);
+        assert bundle != null;
+        categoryId = bundle.getString("categoryId",null);
+        typeOfIncident = bundle.getString("categoryName",null);
+         sf= requireActivity().getSharedPreferences(Constant.SF_LAT_LONG_NAME,Context.MODE_PRIVATE);
+         agentName = sf.getString(Constant.SF_TEAM_NAME_FOR_NEW_REQUEST,null);
+         agentId   = sf.getString(Constant.SF_AGENT_ID_FOR_NEW_REQUEST,null);
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
+        getLastLocation();
         if(teamName!=null && agentId!=null){
             binding.agencyNameACTV.setVisibility(View.VISIBLE);
-            binding.agencyNameACTV.setText(teamName);
+            binding.agencyNameACTV.setText(agentName);
         }
 //         categoryId= bundle.getString("categoryId",null);
         MainActivity mainActivity=(MainActivity) getActivity();
         assert mainActivity != null;
-
 
         TakePhotoActivity.fragment=requireContext();
 
@@ -100,16 +144,6 @@ public class BookingFragment extends Fragment {
         return binding.getRoot();
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        // Listen for the result from MapsFragment
-        getParentFragmentManager().setFragmentResultListener("agencySelection", this, (requestKey, result) -> {
-            selectedAgency = result.getString("selectedAgency");
-            binding.idRequestChooseTeamButton.setText(selectedAgency);
-        });
-    }
     public static void setImageViewPager(List<Uri> uris,Context context,ImagePreviewAdapter adapter){
 //       if(uriImages==null) {
 //           Toast.makeText(context, "new images of array list", Toast.LENGTH_SHORT).show();
@@ -178,9 +212,10 @@ public class BookingFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (getTextField()) {
-                    FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
-                    transaction.replace(R.id.frameLayout, new alertsentFragment()).commit();
+
+//                    FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+//                    transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
+//                    transaction.replace(R.id.frameLayout, new alertsentFragment()).commit();
                 }
             }
         });
@@ -208,8 +243,10 @@ public class BookingFragment extends Fragment {
             }
         });
     }
-    private void apiNewRequest(NewRequestData data,List<MultipartBody.Part> parts) {
-        Call<SignUpResponse> responseCall= RestClient.makeAPI().newRequest(data,parts);
+    private void apiNewRequest(RequestBody agentId, RequestBody agentName, RequestBody userId, RequestBody userName, RequestBody userMobile,
+                               RequestBody description,RequestBody categoryId, RequestBody typeOfIncident, RequestBody status, RequestBody latitude
+            , RequestBody longitude, List<MultipartBody.Part> parts) {
+        Call<SignUpResponse> responseCall= RestClient.makeAPI().newRequest(agentId,agentName,userId,userName,userMobile,description,categoryId,typeOfIncident,status,latitude,longitude,parts);
         responseCall.enqueue(new Callback<SignUpResponse>() {
             @Override
             public void onResponse(@NonNull Call<SignUpResponse> call, @NonNull Response<SignUpResponse> response) {
@@ -226,15 +263,82 @@ public class BookingFragment extends Fragment {
             }
         });
     }
+    @SuppressLint("MissingPermission")
+    private void requestNewLocationData() {
 
-    private boolean getTextField() {
-        describe = Objects.requireNonNull(binding.idEdittextRequestDescribe.getText()).toString().trim();
-        if (describe.isEmpty()) {
-            binding.idEdittextRequestDescribe.setError("Please Describe Your Problem");
-            return false;
-        }
-        return true;
+        // Initializing LocationRequest
+        // object with appropriate methods
+        LocationRequest mLocationRequest = new LocationRequest();
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setInterval(5);
+        mLocationRequest.setFastestInterval(0);
+        mLocationRequest.setNumUpdates(1);
+
+        // setting LocationRequest
+        // on FusedLocationClient
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
+        mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
     }
+    private boolean checkPermissions() {
+        return ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+    }
+        // if location is enabled
+    private boolean isLocationEnabled() {
+        LocationManager locationManager = (LocationManager) requireActivity().getSystemService(Context.LOCATION_SERVICE);
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+    }
+    @SuppressLint("MissingPermission")
+    private void getLastLocation() {
+        // check if permissions are given
+        if (checkPermissions()) {
+
+            // check if location is enabled
+            if (isLocationEnabled()) {
+
+                // getting last
+                // location from
+                // FusedLocationClient
+                // object
+                mFusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Location> task) {
+                        Location location = task.getResult();
+                        if (location == null) {
+                            requestNewLocationData();
+                        } else {
+                            latitude = location.getLatitude() + "";
+                            longitude = location.getLongitude() + "";
+                            binding.idEdittextRequestDescribe.setText(latitude+" "+longitude);
+                        }
+                    }
+                });
+            } else {
+                Toast.makeText(requireContext(), "Please turn on your location...", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(intent);
+            }
+        } else {
+            // if permissions aren't available,
+            // request for permissions
+            requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_ID);
+        }
+    }
+    // If everything is alright then
+    @Override
+    public void
+    onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == PERMISSION_ID) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                getLastLocation();
+            }
+        }
+    }
+
+
     public static class ImagePreviewAdapter extends PagerAdapter {
 
         List<Uri> uris;
@@ -249,6 +353,7 @@ public class BookingFragment extends Fragment {
 
         public void setUris(List<Uri> uris){
             this.uris.addAll(uris);
+            uriImages.addAll(uris);
             notifyDataSetChanged();
         }
         @Override

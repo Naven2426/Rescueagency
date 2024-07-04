@@ -13,6 +13,13 @@
         android:layout_height="118dp"
         android:background="@color/sandal">
 
+        <TextView
+            android:id="@+id/showlatlong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/id_map_back_req_but"
