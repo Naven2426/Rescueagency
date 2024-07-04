@@ -1,5 +1,6 @@
 package com.example.rescueagency.agency.agency_profile_fragment;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +49,19 @@ public class AgencyProfileListHolder extends RecyclerView.Adapter<AgencyProfileL
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction=activity.getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frameLayout,new AgencyMemberDetailViewFragment());
+                AgencyMemberDetailViewFragment fragment= new AgencyMemberDetailViewFragment();
+                Bundle bundle=new Bundle();
+                bundle.putString("memberId",data.getMemberID());
+                bundle.putString("memberName",data.getText());
+                bundle.putString("memberProfile",data.getImage());
+                bundle.putString("memberMobile",data.getPhone());
+                bundle.putString("memberEmail",data.getEmail());
+                bundle.putString("memberAddress",data.getAddress());
+                bundle.putString("memberDob",data.getDob());
+                bundle.putString("memberRole",data.getRole());
+                bundle.putString("memberExperience",data.getYearofexperience());
+                fragment.setArguments(bundle);
+                transaction.replace(R.id.frameLayout,fragment);
                 transaction.addToBackStack("AgencyMemberDetailViewFragment").commit();
             }
             });

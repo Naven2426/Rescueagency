@@ -3,7 +3,6 @@ package com.example.rescueagency.agency;
 import android.app.DatePickerDialog;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,11 +26,11 @@ import java.util.List;
 public class AgencyAddMemberFragment extends Fragment {
 
     FragmentAgencyAddMemberBinding binding;
-    public static List<Uri> uriImages;
+    public static List<Uri> uriImages = new ArrayList<>(); // Initialize here
     private final ActivityResultLauncher<String> pickMedia =
             registerForActivityResult(new ActivityResultContracts.GetContent(), uri -> {
                 if (uri != null) {
-                    uriImages = new ArrayList<>();
+                    uriImages.clear();
                     uriImages.add(uri);
                     updateImagePreview();
                 } else {

@@ -84,6 +84,15 @@
 
             </androidx.appcompat.widget.AppCompatImageView>
 
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/showImagesVP"
+                android:layout_width="70dp"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toBottomOf="@+id/id_agency_add_member_details"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
             <androidx.cardview.widget.CardView
                 android:id="@+id/id_agency_add_member_card"
                 android:layout_width="85dp"
