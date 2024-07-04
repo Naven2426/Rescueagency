@@ -11,6 +11,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -54,6 +55,7 @@ public class MapsFragment extends Fragment {
         @Override
         public void onMapReady(@NonNull GoogleMap googleMap) {
 
+
             if (ActivityCompat.checkSelfPermission(requireContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) !=
                     PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(),
                     android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -61,6 +63,14 @@ public class MapsFragment extends Fragment {
                         FINE_PERMISSION_CODE);
                 return;
             }
+            googleMap.setMyLocationEnabled(true);
+            googleMap.setOnMyLocationClickListener(new GoogleMap.OnMyLocationClickListener() {
+                @Override
+                public void onMyLocationClick(@NonNull Location location) {
+                    binding.idChooseYourTeam.setText(""+location.getLatitude()+" "+location.getLongitude());
+                    Log.e("TAG", "onMyLocationClick: " + location.getLatitude() + " " + location.getLongitude());
+                }
+            });
             if(latlang!=null){
                 for(int i=0;i<latlang.size();i++){
                     GetAgencies.Data data=latlang.get(i);
