@@ -63,12 +63,13 @@ public interface MYAPI {
     @POST("/use/update_profile")
     Call<SignUpResponse> updateProfile(@Body UpdateProfile updateProfile);
 
+    @Multipart
+    @POST("/use/change_profile_image")
+    Call<SignUpResponse> updateProfileImage( @Part("user_id") RequestBody userId, @Part MultipartBody.Part image);
+
     @GET("/use/change_password")
     Call<SignUpResponse> changePassword(@Query("old_password")String old_password,
                                         @Query("password")String new_password,@Query("user_id")String id);
-
-
-
 
     @Multipart
     @POST("/use/rescue_agency_register")

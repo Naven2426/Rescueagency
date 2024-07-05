@@ -46,7 +46,7 @@
             </androidx.appcompat.widget.AppCompatImageView>
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/id_booking_back_arrow"
+                android:id="@+id/idProfileImage"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_alignParentStart="true"
