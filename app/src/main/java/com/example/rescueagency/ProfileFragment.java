@@ -5,7 +5,6 @@ import static android.content.Context.MODE_PRIVATE;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -13,10 +12,11 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.PickVisualMediaRequest;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,10 +39,17 @@ import retrofit2.Response;
 
 public class ProfileFragment extends Fragment {
 
-    private FragmentProfileBinding binding;
-    private String userId;
-    private ActivityResultLauncher<PickVisualMediaRequest> pickMediaLauncher;
-    private MYAPI apiService;
+
+
+
+    AppCompatButton updateButton;
+    AppCompatButton changepassword;
+    //imageview
+    AppCompatImageView profilename;
+    AppCompatImageView profileemail;
+    AppCompatImageView profilephone;
+    AppCompatImageView profileaddress;
+    AppCompatImageView profiledob;
 
     AppCompatImageView logoutButton;
     //textview
@@ -70,20 +77,15 @@ public class ProfileFragment extends Fragment {
         sf=getActivity().getSharedPreferences(Constant.SF_NAME,MODE_PRIVATE);
         clickListener();
         setText();
-        // Load the saved image URI
-        MainActivity mainActivity = (MainActivity) getActivity();
-        BottomNavigationView bottomNavigationView = mainActivity.findViewById(R.id.bottomNavigationView);
-        if (bottomNavigationView.getVisibility() == View.GONE) {
+        MainActivity mainActivity=(MainActivity) getActivity();
+        BottomNavigationView bottomNavigationView =mainActivity.findViewById(R.id.bottomNavigationView);
+        if(bottomNavigationView.getVisibility()==View.GONE){
             Animation showAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.show_bottom_navigation);
             bottomNavigationView.startAnimation(showAnimation);
             bottomNavigationView.setVisibility(View.VISIBLE);
         }
-
-        initPickMediaLauncher();
-        clickListener();
         return view;
     }
-
     private void init(View view){
         //appcompat button
         updateButton = view.findViewById(R.id.id_profile_update_button);
@@ -103,26 +105,23 @@ public class ProfileFragment extends Fragment {
         profiledob = view.findViewById(R.id.id_profile_dob);
         logoutButton = view.findViewById(R.id.idProfileLogoutIV);
 
-
-    private void setText() {
-        SharedPreferences sf = getActivity().getSharedPreferences(Constant.SF_NAME, MODE_PRIVATE);
-        userId = sf.getString(Constant.SF_USERID, null);
-        binding.idProfileNameTV.setText(sf.getString(Constant.SF_NAME, ""));
-        binding.idProfileEmailTV.setText(sf.getString(Constant.SF_EMAIL, ""));
-        binding.idProfileMobileTV.setText(sf.getString(Constant.SF_PHONE, ""));
-        binding.idProfileAddressTV.setText(sf.getString(Constant.SF_ADDRESS, ""));
-        binding.idProfileDOBTV.setText(sf.getString(Constant.SF_DOB, ""));
     }
+    private void setText(){
+        SharedPreferences sf=getActivity().getSharedPreferences(Constant.SF_NAME,MODE_PRIVATE);
+        userId=sf.getString(Constant.SF_USERID,null);
+        String name=sf.getString(Constant.SF_NAME,null);
+        String email=sf.getString(Constant.SF_EMAIL,null);
+        String phone=sf.getString(Constant.SF_PHONE,null);
+        String address=sf.getString(Constant.SF_ADDRESS,null);
+        String dob=sf.getString(Constant.SF_DOB,null);
+        String username=sf.getString(Constant.SF_USERNAME,null);
+        nameAppCompatTextView.setText(name);
+        emailAppCompatTextView.setText(email);
+        phoneAppCompatTextView.setText(phone);
+        addressAppCompatTextView.setText(address);
+        dobAppCompatTextView.setText(dob);
 
-    private void loadSavedImage() {
-        SharedPreferences sf = getActivity().getSharedPreferences(Constant.SF_NAME, MODE_PRIVATE);
-        String imageUriString = sf.getString(Constant.SF_PROFILE_IMAGE_URI, null);
-        if (imageUriString != null) {
-            Uri imageUri = Uri.parse(imageUriString);
-            binding.idProfileImage.setImageURI(imageUri);
-        }
     }
-
     private void profileImageUpdateApi(Uri uri){
         String userId=sf.getString(Constant.SF_USERID,null);
         assert userId != null;
@@ -149,40 +148,38 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
+    private void clickListener(){
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-    private void clickListener() {
-        binding.idProfileLogoutIV.setOnClickListener(v -> {
-            Dialog dialog = new Dialog(getContext());
-            dialog.setContentView(R.layout.logout_dialog_layout);
-            dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            dialog.setCancelable(false);
-            dialog.show();
+                Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(R.layout.logout_dialog_layout);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.setCancelable(false);
+                dialog.show();
 
-            AppCompatButton okayButton = dialog.findViewById(R.id.idAgencyAddedBTNButton);
-            AppCompatButton cancelButton = dialog.findViewById(R.id.idAgencyAddedBTHButton);
-            okayButton.setOnClickListener(v1 -> {
-                SharedPreferences sf = getActivity().getSharedPreferences(Constant.SF_NAME, MODE_PRIVATE);
-                sf.edit().clear().apply();
-                getActivity().finish();
-                getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
-            });
-            cancelButton.setOnClickListener(v12 -> dialog.dismiss());
-        });
+                androidx.appcompat.widget.AppCompatButton okay_text = dialog.findViewById(R.id.idAgencyAddedBTNButton);
+                androidx.appcompat.widget.AppCompatButton cancel_text = dialog.findViewById(R.id.idAgencyAddedBTHButton);
+                okay_text.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        SharedPreferences sf=getActivity().getSharedPreferences(Constant.SF_NAME,MODE_PRIVATE);
+                        sf.edit().clear().apply();
+                        getActivity().finish();
+                        getActivity().startActivity(new Intent(getActivity(), LoginActivity.class));
 
-        binding.idProfileUpdateButton.setOnClickListener(v -> {
-            Fragment newUpdateProfileFragment = new UpdateProfileFragment();
-            FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frameLayout, newUpdateProfileFragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
-        });
+                    }
 
-        binding.idProfileChangePasswordButton.setOnClickListener(v -> {
-            Fragment newChangePasswordFragment = new ChangePasswordFragment();
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.frameLayout, newChangePasswordFragment);
-            transaction.addToBackStack(null);
-            transaction.commit();
+                });
+                cancel_text.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+            }
         });
 
         imageView.setOnClickListener(new View.OnClickListener() {
@@ -198,17 +195,26 @@ public class ProfileFragment extends Fragment {
             public void onClick(View v) {
                 // Assuming you want to replace the current ProfileFragment with a new instance
                 Fragment newUpadteProfileFragment = new UpdateProfileFragment();
-              FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+
+                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
                 transaction.replace(R.id.frameLayout, newUpadteProfileFragment ); // replace with the container id of your fragment
                 transaction.addToBackStack(null); // add to back stack if you want to allow 'back' navigation
                 transaction.commit();
             }
         });
+
+        changepassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment newChangePasswordFragment = new ChangePasswordFragment();
+
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.frameLayout, newChangePasswordFragment ); // replace with the container id of your fragment
+                transaction.addToBackStack(null); // add to back stack if you want to allow 'back' navigation
+                transaction.commit();
+
+            }
+        });
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
 }
