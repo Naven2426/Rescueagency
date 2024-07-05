@@ -1,11 +1,14 @@
 package com.example.rescueagency.main_menu_fragments;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -38,26 +41,29 @@ public class HomeFragment extends Fragment {
 
     AppCompatImageView sos_main_emergency;
     AppCompatImageView notificationButton;
+    public static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+    private boolean checkPermissions() {
+        return ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+    }
     @SuppressLint("MissingInflatedId")
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view= inflater.inflate(R.layout.fragment_home, container, false);
-
+        if(!checkPermissions()){
+            ActivityCompat.requestPermissions(requireActivity(),new String[]{Manifest.permission.ACCESS_FINE_LOCATION},LOCATION_PERMISSION_REQUEST_CODE);
+        }
         MainActivity mainActivity=(MainActivity) getActivity();
+        assert mainActivity != null;
         BottomNavigationView bottomNavigationView =mainActivity.findViewById(R.id.bottomNavigationView);
         if(bottomNavigationView.getVisibility()==View.GONE){
             bottomNavigationView.setVisibility(View.VISIBLE);
             Animation Animation = AnimationUtils.loadAnimation(getContext(), R.anim.show_bottom_navigation);
             bottomNavigationView.startAnimation(Animation);
-
-
         }
-
         apiCall(view);
-
-
         sos_main_emergency=view.findViewById(R.id.id_sos_alert_img);
         notificationButton=view.findViewById(R.id.GfG_full_loo);
         sos_main_emergency.setOnClickListener(new View.OnClickListener() {
@@ -90,9 +96,6 @@ public class HomeFragment extends Fragment {
 
             }
             });
-
-
-
 
         return view;
     }
