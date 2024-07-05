@@ -25,6 +25,8 @@
         android:layout_marginBottom="84dp"
         android:text="confirm"
         android:id="@+id/confirm"
+        android:textColor="@color/white"
+        android:background="@drawable/roundstyle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

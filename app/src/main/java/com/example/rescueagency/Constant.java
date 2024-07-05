@@ -2,7 +2,7 @@ package com.example.rescueagency;
 
 public class Constant {
 
-    public static final String BASE_URL= "https://01bb-2409-40f4-33-1c80-ac5f-6f5d-6d69-6b91.ngrok-free.app";
+    public static final String BASE_URL= "https://55ed-152-58-204-11.ngrok-free.app";
     public static final String MAP_BASE_URL = "https://maps.googleapis.com/maps/api/";
     public static final String LOGIN_AS_AGENCY= "AGENCY";
     public static final String LOGIN_AS_ADMIN= "ADMIN";
@@ -24,5 +24,5 @@ public class Constant {
     public static final String SF_TEAM_NAME_FOR_NEW_REQUEST="SF_TEAM_NAME_FOR_NEW_REQUEST";
 
 
-
+    public static final String SF_PROFILE_IMAGE_URI = "SF_PROFILE_IMAGE_URI";
 }

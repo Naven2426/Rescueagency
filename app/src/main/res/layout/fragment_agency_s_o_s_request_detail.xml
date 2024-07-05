@@ -7,7 +7,6 @@
     android:background="@color/lightsandal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="70dp"
     tools:context=".MapsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
