@@ -43,7 +43,9 @@ public interface MYAPI {
 
     @GET("/use/get_team")
     Call<AgencyInfoRoot> getTeam(@Query("agent_id")String id);
-
+    @Multipart
+    @POST("/use/change_profile_image")
+    Call<SignUpResponse> updateProfileImage( @Part("user_id") RequestBody userId, @Part MultipartBody.Part image);
     @Multipart
     @POST("/use/add_member/add_member")
     Call<SignUpResponse> addMember(@Part("agent_id") RequestBody agent_id,@Part("name") RequestBody name,@Part("mobile") RequestBody mobile,

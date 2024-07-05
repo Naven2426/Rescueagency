@@ -49,10 +49,12 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -63,28 +65,35 @@ import retrofit2.Response;
 public class BookingFragment extends Fragment {
     FragmentBookingBinding binding;
 
-    private String selectedAgency;
     private static ImagePreviewAdapter imagePreviewAdapter;
-    Bundle bundle;
+    private Bundle bundle;
     int PERMISSION_ID = 44;
-    public static AppCompatTextView teamName;
-    List<MultipartBody.Part> images;
+    List<MultipartBody.Part> images=new ArrayList<>();
     private String agentId,agentName,userId,userName,userMobile,description,categoryId,typeOfIncident,status,latitude,longitude;
-    public static List<Uri> uriImages=new ArrayList<>();
+    public  List<Uri> uriImages=new ArrayList<>();
     private FusedLocationProviderClient mFusedLocationClient;
+    SharedPreferences sharedPreferences;
     SharedPreferences sf;
+
     private boolean getTextField() {
-        SharedPreferences sharedPreferences= requireActivity().getSharedPreferences(Constant.SF_NAME,Context.MODE_PRIVATE);
         description = Objects.requireNonNull(binding.idEdittextRequestDescribe.getText()).toString().trim();
         status = "NEW";
         userId = sharedPreferences.getString(Constant.SF_USERID, null);
-        userName = sharedPreferences.getString(Constant.SF_USERNAME, null);
+        userName = sharedPreferences.getString(Constant.SF_NAME, null);
         userMobile = sharedPreferences.getString(Constant.SF_PHONE, null);
+        addMultipartObjects(imagePreviewAdapter.getUris());
         if (description.isEmpty()) {
             binding.idEdittextRequestDescribe.setError("Please Describe Your Problem");
             return false;
         }
         return true;
+    }
+    private void addMultipartObjects(List<Uri> uris){
+         for(Uri uri:uris) {
+             File file= new File(FileUtils.getPath(requireContext(),uri));
+             RequestBody requestBody= RequestBody.create(MediaType.parse("*/*"),file);
+             images.add(MultipartBody.Part.createFormData("file",file.getName(),requestBody));
+         }
     }
     private LocationCallback mLocationCallback = new LocationCallback() {
 
@@ -105,7 +114,6 @@ public class BookingFragment extends Fragment {
 //                }
                 if(imagePreviewAdapter==null){
                     binding.showImagesVP.setAdapter(null);
-//                    setImageViewPager(uri,imagePreviewAdapter);
                 }else{
                     imagePreviewAdapter.setUris(uri);
                 }
@@ -118,8 +126,8 @@ public class BookingFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentBookingBinding.inflate(inflater, container, false);
         clickListener();
+        sharedPreferences= getActivity().getSharedPreferences(Constant.SF_NAME,Context.MODE_PRIVATE);
          bundle=getArguments();
-         teamName=binding.teamNameTV;
         assert bundle != null;
         categoryId = bundle.getString("categoryId",null);
         typeOfIncident = bundle.getString("categoryName",null);
@@ -128,7 +136,7 @@ public class BookingFragment extends Fragment {
          agentId   = sf.getString(Constant.SF_AGENT_ID_FOR_NEW_REQUEST,null);
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
         getLastLocation();
-        if(teamName!=null && agentId!=null){
+        if(agentName!=null && agentId!=null){
             binding.agencyNameACTV.setVisibility(View.VISIBLE);
             binding.agencyNameACTV.setText(agentName);
         }
@@ -145,13 +153,6 @@ public class BookingFragment extends Fragment {
     }
 
     public static void setImageViewPager(List<Uri> uris,Context context,ImagePreviewAdapter adapter){
-//       if(uriImages==null) {
-//           Toast.makeText(context, "new images of array list", Toast.LENGTH_SHORT).show();
-//           uriImages=uris;
-//       }else{
-//           Toast.makeText(context, "add all array list", Toast.LENGTH_SHORT).show();
-//           uriImages.addAll(uris);
-//       }
        if(imagePreviewAdapter==null){
            Toast.makeText(context, "new Object created", Toast.LENGTH_SHORT).show();
            imagePreviewAdapter=adapter;
@@ -208,17 +209,7 @@ public class BookingFragment extends Fragment {
 
             }
         });
-        binding.submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (getTextField()) {
 
-//                    FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-//                    transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
-//                    transaction.replace(R.id.frameLayout, new alertsentFragment()).commit();
-                }
-            }
-        });
 
         binding.idRequestChooseTeamButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -234,6 +225,25 @@ public class BookingFragment extends Fragment {
 
             }
         });
+        binding.submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (getTextField()) {
+                    RequestBody categoryIdRB = RequestBody.create(MediaType.parse("text/plain"), categoryId);
+                    RequestBody agentIdRB = RequestBody.create(MediaType.parse("text/plain"), agentId);
+                    RequestBody agentNameRB = RequestBody.create(MediaType.parse("text/plain"), agentName);
+                    RequestBody userIdRB = RequestBody.create(MediaType.parse("text/plain"), userId);
+                    RequestBody userNameRB = RequestBody.create(MediaType.parse("text/plain"), ""+userName);
+                    RequestBody userMobileRB = RequestBody.create(MediaType.parse("text/plain"), userMobile);
+                    RequestBody descriptionRB = RequestBody.create(MediaType.parse("text/plain"), description);
+                    RequestBody typeOfIncidentRB = RequestBody.create(MediaType.parse("text/plain"), typeOfIncident);
+                    RequestBody statusRB = RequestBody.create(MediaType.parse("text/plain"), status);
+                    RequestBody latitudeRB = RequestBody.create(MediaType.parse("text/plain"), latitude);
+                    RequestBody longitudeRB = RequestBody.create(MediaType.parse("text/plain"), longitude);
+                    apiNewRequest(agentIdRB,agentNameRB,userIdRB,userNameRB,userMobileRB,descriptionRB,categoryIdRB,typeOfIncidentRB,statusRB,latitudeRB,longitudeRB,images);
+                }
+            }
+        });
 
         binding.idBookingBackArrow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -243,6 +253,7 @@ public class BookingFragment extends Fragment {
             }
         });
     }
+
     private void apiNewRequest(RequestBody agentId, RequestBody agentName, RequestBody userId, RequestBody userName, RequestBody userMobile,
                                RequestBody description,RequestBody categoryId, RequestBody typeOfIncident, RequestBody status, RequestBody latitude
             , RequestBody longitude, List<MultipartBody.Part> parts) {
@@ -252,6 +263,9 @@ public class BookingFragment extends Fragment {
             public void onResponse(@NonNull Call<SignUpResponse> call, @NonNull Response<SignUpResponse> response) {
                 if(response.isSuccessful()){
                     assert response.body() != null;
+                    FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+                    transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
+                    transaction.replace(R.id.frameLayout, new alertsentFragment()).commit();
                     Toast.makeText(requireContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -353,8 +367,11 @@ public class BookingFragment extends Fragment {
 
         public void setUris(List<Uri> uris){
             this.uris.addAll(uris);
-            uriImages.addAll(uris);
+//            uriImages.addAll(uris);
             notifyDataSetChanged();
+        }
+        public List<Uri> getUris(){
+            return uris;
         }
         @Override
         public int getCount() {

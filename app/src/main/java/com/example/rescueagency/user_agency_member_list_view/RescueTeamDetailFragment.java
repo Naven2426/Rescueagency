@@ -49,7 +49,6 @@ public class RescueTeamDetailFragment extends Fragment {
         rever();
         apishow(id);
         return binding.getRoot();
-
     }
 
 
