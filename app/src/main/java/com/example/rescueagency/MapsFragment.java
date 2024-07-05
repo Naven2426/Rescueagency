@@ -6,13 +6,19 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,10 +26,16 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.rescueagency.apiresponse.GetAgencies;
+import com.example.rescueagency.apiresponse.agencyinfo.AgencyInfoRoot;
+import com.example.rescueagency.apiresponse.agencyinfo.Data;
+import com.example.rescueagency.apiresponse.agencyinfo.Member;
 import com.example.rescueagency.apiresponse.map.GoogleMapResponse;
 import com.example.rescueagency.databinding.FragmentBookingBinding;
 import com.example.rescueagency.databinding.FragmentMapsBinding;
+import com.example.rescueagency.databinding.FragmentRescueTeamDetailBinding;
 import com.example.rescueagency.user_agency_member_list_view.RescueTeamDetailFragment;
+import com.example.rescueagency.user_agency_member_list_view.UserRescueTeamMemberListHolder;
+import com.example.rescueagency.user_agency_member_list_view.user_rescue_team_member_list;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -45,12 +57,13 @@ import retrofit2.Response;
 
 public class MapsFragment extends Fragment {
 
-    LatLng tambaram = new LatLng(12.9249,  80.1000);
-    LatLng guindy = new LatLng(13.0067,80.2206);
     private SupportMapFragment mapFragment;
     private final int FINE_PERMISSION_CODE = 1;
     private FragmentMapsBinding binding;
     private List<GetAgencies.Data> latlang;
+    SharedPreferences sf;
+    private String teamName,agentId;
+
     private final OnMapReadyCallback callback = new OnMapReadyCallback() {
         @Override
         public void onMapReady(@NonNull GoogleMap googleMap) {
@@ -67,7 +80,7 @@ public class MapsFragment extends Fragment {
             googleMap.setOnMyLocationClickListener(new GoogleMap.OnMyLocationClickListener() {
                 @Override
                 public void onMyLocationClick(@NonNull Location location) {
-                    binding.idChooseYourTeam.setText(""+location.getLatitude()+" "+location.getLongitude());
+//                    binding.idChooseYourTeam.setText(""+location.getLatitude()+" "+location.getLongitude());
                     Log.e("TAG", "onMyLocationClick: " + location.getLatitude() + " " + location.getLongitude());
                 }
             });
@@ -85,18 +98,31 @@ public class MapsFragment extends Fragment {
                 @Override
                 public boolean onMarkerClick(@NonNull Marker marker) {
                     Toast.makeText(requireContext(), ""+Integer.parseInt(Objects.requireNonNull(marker.getTag()).toString()), Toast.LENGTH_SHORT).show();
-                    FragmentTransaction transaction=requireActivity().getSupportFragmentManager().beginTransaction();
-                    RescueTeamDetailFragment res =new RescueTeamDetailFragment();
-                    Bundle bundle=new Bundle();
-                    bundle.putString("agentId",marker.getTag().toString());
-                    res.setArguments(bundle);
-                    transaction.replace(R.id.frameLayout,res).addToBackStack("RescueTeamDetailFragment").commit();
+
+//                            FragmentTransaction transaction=requireActivity().getSupportFragmentManager().beginTransaction();
+//                            RescueTeamDetailFragment res =new RescueTeamDetailFragment();
+//                            Bundle bundle=new Bundle();
+//                            bundle.putString("agentId",marker.getTag().toString());
+//                            res.setArguments(bundle);
+//                            transaction.replace(R.id.frameLayout,res).addToBackStack("RescueTeamDetailFragment").commit();
+                    BottomSheet bottomSheet=new BottomSheet(marker.getTag().toString());
+                    bottomSheet.show(requireActivity().getSupportFragmentManager(),bottomSheet.getTag());
+
                     return false;
                 }
             });
 
         }
     };
+    private boolean checkPermissions() {
+        return ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) ==
+                PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+    }
+    private boolean isLocationEnabled() {
+        LocationManager locationManager = (LocationManager) requireActivity().getSystemService(Context.LOCATION_SERVICE);
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
+    }
 
 
     @Nullable
@@ -105,14 +131,30 @@ public class MapsFragment extends Fragment {
         binding = FragmentMapsBinding.inflate(inflater,container,false);
         mapFragment =  (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         Bundle bundle=getArguments();
+        sf=requireActivity().getSharedPreferences(Constant.SF_LAT_LONG_NAME, Context.MODE_PRIVATE);
+        assert getArguments() != null;
+        String id=getArguments().getString("agentId");
+
         assert bundle != null;
         String categoryId=bundle.getString("categoryId",null);
-        if(categoryId!=null){
-            apiCallGetAgencies(categoryId);
+        if(checkPermissions()) {
+            if (isLocationEnabled()) {
+                if(categoryId!=null){
+                    apiCallGetAgencies(categoryId);
+                }
+            } else{
+                Toast.makeText(requireContext(), "Please turn on your location...", Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(intent);
+            }
+        }else{
+            requestPermissions(new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }
+
         Onclick();
         return binding.getRoot();
     }
+
     private void getDistanceInfo(LatLng origin,LatLng destination) {
 
         Map<String, String> myMapQuery = new HashMap<>();
@@ -170,6 +212,7 @@ public class MapsFragment extends Fragment {
         });
 
   }
+
 
   private void apiCallGetAgencies(String categoryId){
       Call<GetAgencies> responseCall=RestClient.makeAPI().getAgencies(Integer.parseInt(categoryId));

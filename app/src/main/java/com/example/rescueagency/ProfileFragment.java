@@ -5,8 +5,12 @@ import static android.content.Context.MODE_PRIVATE;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.PickVisualMediaRequest;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
@@ -18,9 +22,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Toast;
 
 import com.example.rescueagency.LoginActivityFragments.LoginFragment;
+import com.example.rescueagency.apiresponse.SignUpResponse;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.io.File;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProfileFragment extends Fragment {
 
@@ -43,12 +58,23 @@ public class ProfileFragment extends Fragment {
     AppCompatTextView phoneAppCompatTextView;
     AppCompatTextView addressAppCompatTextView;
     AppCompatTextView dobAppCompatTextView;
+    AppCompatImageView imageView;
+    SharedPreferences sf;
+    private final ActivityResultLauncher<PickVisualMediaRequest> pickMedia =
+            registerForActivityResult(new ActivityResultContracts.PickVisualMedia(), uri -> {
+                if (uri != null) {
+                    profileImageUpdateApi(uri);
+                } else {
+                    Toast.makeText(requireContext(), "No Media Selected", Toast.LENGTH_SHORT).show();
+                }
+            });
 
     String userId;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         init(view);
+        sf=getActivity().getSharedPreferences(Constant.SF_NAME,MODE_PRIVATE);
         clickListener();
         setText();
         MainActivity mainActivity=(MainActivity) getActivity();
@@ -73,6 +99,7 @@ public class ProfileFragment extends Fragment {
         //imageview
         profilename = view.findViewById(R.id.id_profile_image);
         profileemail = view.findViewById(R.id.id_profile_email);
+        imageView= view.findViewById(R.id.id_booking_back_arrow);
         profilephone = view.findViewById(R.id.id_profile_mobile);
         profileaddress = view.findViewById(R.id.id_profile_address);
         profiledob = view.findViewById(R.id.id_profile_dob);
@@ -94,6 +121,32 @@ public class ProfileFragment extends Fragment {
         addressAppCompatTextView.setText(address);
         dobAppCompatTextView.setText(dob);
 
+    }
+    private void profileImageUpdateApi(Uri uri){
+        String userId=sf.getString(Constant.SF_USERID,null);
+        assert userId != null;
+        RequestBody requestBody= RequestBody.create(MediaType.parse("text/plain"),userId);
+        File file = new File(FileUtils.getPath(getContext(),uri));
+        RequestBody requestBody1= RequestBody.create(MediaType.parse("image/*"),file);
+        Call<SignUpResponse> responseCall = RestClient.makeAPI().updateProfileImage(requestBody, MultipartBody.Part.createFormData("file",file.getName(),requestBody1));
+        responseCall.enqueue(new Callback<SignUpResponse>() {
+            @Override
+            public void onResponse(Call<SignUpResponse> call, Response<SignUpResponse> response) {
+                if(response.isSuccessful()){
+                    SignUpResponse signUpResponse=response.body();
+
+                        Toast.makeText(getContext(), signUpResponse.getMessage(), Toast.LENGTH_SHORT).show();
+
+                }else{
+                    Toast.makeText(getContext(), "response false", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<SignUpResponse> call, Throwable t) {
+                Toast.makeText(getContext(), "error "+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
     private void clickListener(){
         logoutButton.setOnClickListener(new View.OnClickListener() {
@@ -129,6 +182,14 @@ public class ProfileFragment extends Fragment {
             }
         });
 
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pickMedia.launch(new PickVisualMediaRequest.Builder()
+                        .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly.INSTANCE)
+                        .build());
+            }
+        });
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
