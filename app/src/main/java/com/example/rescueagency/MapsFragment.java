@@ -126,7 +126,6 @@ public class MapsFragment extends Fragment implements Callback<GetDistanceRootRe
             }
             googleMap.setMyLocationEnabled(true);
             googleMap.getUiSettings().setMyLocationButtonEnabled(true);
-
             mFusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
                 @Override
                 public void onComplete(@NonNull Task<Location> task) {
