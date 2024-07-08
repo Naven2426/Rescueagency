@@ -1,14 +1,15 @@
 package com.example.rescueagency;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,16 +24,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.rescueagency.apiresponse.agencyinfo.AgencyInfoRoot;
 import com.example.rescueagency.apiresponse.agencyinfo.Data;
 import com.example.rescueagency.apiresponse.agencyinfo.Member;
+import com.example.rescueagency.apiresponse.map.mydistance.Elements;
+import com.example.rescueagency.apiresponse.map.mydistance.GetDistanceRootResponse;
+import com.example.rescueagency.apiresponse.map.mydistance.Rows;
 import com.example.rescueagency.user_agency_member_list_view.UserRescueTeamMemberListHolder;
 import com.example.rescueagency.user_agency_member_list_view.user_rescue_team_member_list;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 
 public class BottomSheet extends BottomSheetDialogFragment {
@@ -64,15 +73,56 @@ public class BottomSheet extends BottomSheetDialogFragment {
         ConstraintLayout relativeLayout=dialog.findViewById(R.id.parentLayout);
         assert relativeLayout != null;
         relativeLayout.setMinimumHeight(Resources.getSystem().getDisplayMetrics().heightPixels);
+
         apishow(id,dialog);
 
+    }
+    private void calculateDistance(LatLng origin, LatLng destination){
+        Map<String, String> myMapQuery = new HashMap<>();
+        myMapQuery.put("key", Constant.KEY);
+        myMapQuery.put("origins", origin.latitude + "," + origin.longitude);
+        myMapQuery.put("destinations", destination.latitude + "," + destination.longitude);
+        myMapQuery.put("mode", "Driving");
+        Call<GetDistanceRootResponse> responseCall = RestClient.makeMapAPI().getDistanceInfoMyWay(myMapQuery);
+        responseCall.enqueue(new Callback<GetDistanceRootResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<GetDistanceRootResponse> call, @NonNull Response<GetDistanceRootResponse> response) {
+                if(response.isSuccessful()){
+                    GetDistanceRootResponse main=response.body();
+                    assert main != null;
+                    if(main.getStatus().equalsIgnoreCase("OK")){
+                        Rows rows=main.getRows().get(0);
+                        Elements elements=rows.getElements().get(0);
+                        if(elements.getStatus().equalsIgnoreCase("OK")) {
+                            String distance=elements.getDistance().getText();
+                            String duration=elements.getDuration().getText();
+                            Log.e("TAG", "distance : " + distance + " duration: " + duration);
+                            Log.e("TAG", "double value : " + distance);
+                        }
+
+                    }else{
+                        Toast.makeText(requireContext(), main.getError_message(), Toast.LENGTH_SHORT).show();
+                    }
+
+                }else{
+                    Toast.makeText(getContext(), "Response was not successful", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<GetDistanceRootResponse> call, @NonNull Throwable t) {
+                Toast.makeText(requireContext(), "Error "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("Error", Objects.requireNonNull(t.getMessage()));
+            }
+        });
     }
     private void apishow(String id,BottomSheetDialog dialog) {
         Call<AgencyInfoRoot> responseCall = RestClient.makeAPI().getTeam(id);
         responseCall.enqueue(new retrofit2.Callback<AgencyInfoRoot>() {
 
+            @SuppressLint("SetTextI18n")
             @Override
-            public void onResponse(Call<AgencyInfoRoot> call, Response<AgencyInfoRoot> response) {
+            public void onResponse(@NonNull Call<AgencyInfoRoot> call, @NonNull Response<AgencyInfoRoot> response) {
                 if (response.isSuccessful()) {
                     AgencyInfoRoot agencyInfoRoot = response.body();
                     assert agencyInfoRoot != null;
@@ -85,12 +135,17 @@ public class BottomSheet extends BottomSheetDialogFragment {
                         TextView idRescueTeamViewServices = dialog.findViewById(R.id.id_rescue_team_view_services);
                         TextView idRescueTeamViewPhoneNumber = dialog.findViewById(R.id.id_rescue_team_view_phone_number);
 
+                        assert idRescueTeamViewTeamName != null;
                         idRescueTeamViewTeamName.setText(data.getTeam_name());
+                        assert idRescueTeamViewAddress != null;
                         idRescueTeamViewAddress.setText(data.getTeam_address());
+                        assert idRescueTeamViewServices != null;
                         idRescueTeamViewServices.setText(data.getType_of_service());
+                        assert idRescueTeamViewPhoneNumber != null;
                         idRescueTeamViewPhoneNumber.setText(""+data.getTeam_contact());
                         List<user_rescue_team_member_list> memberList = new ArrayList<>();
                         AppCompatButton button=dialog.findViewById(R.id.id_rescue_team_view_confirm_agency);
+                        assert button != null;
                         button.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
@@ -126,8 +181,12 @@ public class BottomSheet extends BottomSheetDialogFragment {
                 }
             }
             @Override
-            public void onFailure (Call <AgencyInfoRoot> call, Throwable t){
-                Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+            public void onFailure (@NonNull Call <AgencyInfoRoot> call, @NonNull Throwable t){
+                try {
+                    Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
             }
         });
     }

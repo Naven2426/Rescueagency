@@ -83,7 +83,6 @@ public class LoginFragment extends Fragment {
             } else {
                 return true;
             }
-
         }
             private void textField(View view) {
                 personName = view.findViewById(R.id.id_edittext_login_username_Text);

@@ -1,5 +1,6 @@
 package com.example.rescueagency.agency.SOSRequestRVFragment;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,26 +35,29 @@ public class AgencySOSReqListHolder extends RecyclerView.Adapter<AgencySOSReqLis
     @NonNull
     @Override
     public MyAgencySOSReqListHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sos_req_list,
-                parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.sos_req_list, parent, false);
         return new MyAgencySOSReqListHolder(view);
     }
     @Override
     public void onBindViewHolder(@NonNull MyAgencySOSReqListHolder holder, int position) {
         AgencySOSReqList sosReqList = list.get(position);
         holder.textname.setText(sosReqList.getName());
-        if(!sosReqList.getStatus().equalsIgnoreCase("sos")){
+        if(!sosReqList.getAlertType().equalsIgnoreCase("sos")){
             holder.location.setVisibility(View.GONE);
             holder.view.setVisibility(View.GONE);
             holder.alertType.setVisibility(View.VISIBLE);
             holder.alertTypeText.setVisibility(View.VISIBLE);
-            holder.alertTypeText.setText(sosReqList.getStatus());
+            holder.alertTypeText.setText(sosReqList.getAlertType());
             holder.info.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(activity,sosReqList.getName(), Toast.LENGTH_SHORT).show();
                     FragmentTransaction transaction=activity.getSupportFragmentManager().beginTransaction();
-                    transaction.replace(R.id.frameLayout,new AgencyEmergencyRequestDetailFragment());
+                    AgencyEmergencyRequestDetailFragment fragment= new AgencyEmergencyRequestDetailFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("requestId",sosReqList.getRequestId());
+                    fragment.setArguments(bundle);
+                    transaction.replace(R.id.frameLayout,fragment);
                     transaction.addToBackStack("AgencyEmergencyRequestDetailFragment").commit();
                 }
             });
@@ -91,7 +95,7 @@ public class AgencySOSReqListHolder extends RecyclerView.Adapter<AgencySOSReqLis
     @Override
     public int getItemCount() { return list.size(); }
 
-    public class MyAgencySOSReqListHolder extends RecyclerView.ViewHolder{
+    public static class MyAgencySOSReqListHolder extends RecyclerView.ViewHolder{
 
         TextView textname;
         TextView textname_id;

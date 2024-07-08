@@ -1,14 +1,15 @@
 package com.example.rescueagency;
 
-import com.example.rescueagency.agency.NewRequestData;
 import com.example.rescueagency.apiresponse.GetAgencies;
 import com.example.rescueagency.apiresponse.GetCategoryResponse;
 import com.example.rescueagency.apiresponse.SignUpResponse;
 import com.example.rescueagency.apiresponse.UpdateProfile;
 import com.example.rescueagency.apiresponse.agencyinfo.AgencyInfoRoot;
-import com.example.rescueagency.apiresponse.agencymemberinfo.MemberDetails;
+import com.example.rescueagency.apiresponse.getnewemergencyrequestinfo.GetNewEmergencyRequestRootClass;
 import com.example.rescueagency.apiresponse.map.GoogleMapResponse;
-import com.example.rescueagency.apiresponse.map.ditance.DitanceAndDurationRoot;
+import com.example.rescueagency.apiresponse.map.getcurrentlocation.CurrentLocationRootClass;
+import com.example.rescueagency.apiresponse.map.mydistance.GetDistanceRootResponse;
+import com.example.rescueagency.apiresponse.newrequest.NewRequestRootClass;
 
 import java.util.List;
 import java.util.Map;
@@ -43,9 +44,7 @@ public interface MYAPI {
 
     @GET("/use/get_team")
     Call<AgencyInfoRoot> getTeam(@Query("agent_id")String id);
-    @Multipart
-    @POST("/use/change_profile_image")
-    Call<SignUpResponse> updateProfileImage( @Part("user_id") RequestBody userId, @Part MultipartBody.Part image);
+
     @Multipart
     @POST("/use/add_member/add_member")
     Call<SignUpResponse> addMember(@Part("agent_id") RequestBody agent_id,@Part("name") RequestBody name,@Part("mobile") RequestBody mobile,
@@ -94,9 +93,18 @@ public interface MYAPI {
                                     @Part("type_of_incident")RequestBody typeOfIncident,@Part("status")RequestBody status,@Part("latitude")RequestBody latitude,
                                     @Part("longitude")RequestBody longitude, @Part List<MultipartBody.Part> images);
 
-    //map
+    @GET("/use/get_request_info")
+    Call<GetNewEmergencyRequestRootClass> getRequestInfo(@Query("request_id")String requestId);
+    @GET("/use/get_new_emergency_request")
+    Call<NewRequestRootClass> getRequest(@Query("agency_id")String agentId);
+    /* Google Map API */
+    // get distance and duration
     @GET("distancematrix/json")
     Call<GoogleMapResponse> getDistanceInfo(@QueryMap Map<String, String> parameters);
-
+    @GET("distancematrix/json")
+    Call<GetDistanceRootResponse> getDistanceInfoMyWay(@QueryMap Map<String, String> parameters);
+    //get current location address
+    @GET("geocode/json")
+    Call<CurrentLocationRootClass> getCurrentLocation(@Query("address")String address,@Query("key")String key);
 //    Call<GoogleMapResponse> getDistanceInfo1(@QueryMap Map<String, String> parameters);
 }
