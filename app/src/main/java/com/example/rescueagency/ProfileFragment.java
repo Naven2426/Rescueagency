@@ -99,7 +99,7 @@ public class ProfileFragment extends Fragment {
         //imageview
         profilename = view.findViewById(R.id.id_profile_image);
         profileemail = view.findViewById(R.id.id_profile_email);
-        imageView= view.findViewById(R.id.id_booking_back_arrow);
+        imageView= view.findViewById(R.id.idProfileImage);
         profilephone = view.findViewById(R.id.id_profile_mobile);
         profileaddress = view.findViewById(R.id.id_profile_address);
         profiledob = view.findViewById(R.id.id_profile_dob);
