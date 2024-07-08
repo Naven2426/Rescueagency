@@ -27,6 +27,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.rescueagency.Constant;
 import com.example.rescueagency.MainActivity;
 import com.example.rescueagency.R;
@@ -56,13 +57,23 @@ public class HomeFragment extends Fragment {
     AppCompatImageView sos_main_emergency;
     AppCompatImageView notificationButton;
     TextView currentLocation;
+    RecyclerView recyclerView;
     private FusedLocationProviderClient fusedLocationClient;
     public static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
-
+    LottieAnimationView lottie;
     private boolean checkPermissions() {
         return ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) ==
                 PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(),
                 Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+    }
+    private void setLoadingAnimation(int visibility){
+        if(lottie.getVisibility()==visibility){
+            lottie.setVisibility(View.GONE);
+            recyclerView.setVisibility(View.VISIBLE);
+        }else{
+            recyclerView.setVisibility(View.GONE);
+            lottie.setVisibility(View.VISIBLE);
+        }
     }
 
     @SuppressLint("MissingInflatedId")
@@ -73,6 +84,7 @@ public class HomeFragment extends Fragment {
         if (!checkPermissions()) {
             ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, LOCATION_PERMISSION_REQUEST_CODE);
         }
+        recyclerView=view.findViewById(R.id.viewAllRecyclerView);
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
 
 //        getCurrentLocation();
@@ -85,6 +97,9 @@ public class HomeFragment extends Fragment {
             Animation Animation = AnimationUtils.loadAnimation(getContext(), R.anim.show_bottom_navigation);
             bottomNavigationView.startAnimation(Animation);
         }
+        lottie=view.findViewById(R.id.loadingAnimation);
+//        lottie.playAnimation();
+        setLoadingAnimation(View.VISIBLE);
         apiCall(view);
         currentLocation = view.findViewById(R.id.myLocationTV);
         sos_main_emergency = view.findViewById(R.id.id_sos_alert_img);
@@ -117,7 +132,6 @@ public class HomeFragment extends Fragment {
 
             }
         });
-
         return view;
     }
 
@@ -157,13 +171,16 @@ public class HomeFragment extends Fragment {
         Call<GetCategoryResponse> responseCall = RestClient.makeAPI().getCategory();
         responseCall.enqueue(new Callback<GetCategoryResponse>() {
             @Override
-            public void onResponse(Call<GetCategoryResponse> call, Response<GetCategoryResponse> response) {
+            public void onResponse(@NonNull Call<GetCategoryResponse> call, @NonNull Response<GetCategoryResponse> response) {
+                lottie.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.VISIBLE);
                 if (response.isSuccessful()) {
                     GetCategoryResponse imageResponse = response.body();
+                    assert imageResponse != null;
                     if (imageResponse.getStatus() == 200) {
-                        RecyclerView recyclerView=view.findViewById(R.id.viewAllRecyclerView);
                         List<View_all> dataList=new ArrayList<>();
                         for(int i=0;i<imageResponse.getData().size();i++){
+                            assert response.body() != null;
                             GetCategoryResponse.Data data = response.body().getData().get(i);
                             dataList.add(new View_all(data.getCategory_name(),data.getImage(),data.getCategory_id()));
                         }
@@ -180,6 +197,8 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onFailure(Call<GetCategoryResponse> call, Throwable t) {
+                recyclerView.setVisibility(View.VISIBLE);
+                setLoadingAnimation(View.GONE);
                 Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
