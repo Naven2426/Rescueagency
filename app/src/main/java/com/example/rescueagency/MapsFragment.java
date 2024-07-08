@@ -19,6 +19,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Looper;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -42,6 +43,11 @@ import com.example.rescueagency.databinding.FragmentRescueTeamDetailBinding;
 import com.example.rescueagency.user_agency_member_list_view.RescueTeamDetailFragment;
 import com.example.rescueagency.user_agency_member_list_view.UserRescueTeamMemberListHolder;
 import com.example.rescueagency.user_agency_member_list_view.user_rescue_team_member_list;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -51,6 +57,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -75,9 +83,34 @@ public class MapsFragment extends Fragment implements Callback<GetDistanceRootRe
     private GoogleMap mMap;
     String categoryId;
     public static Location myLocation = null;
+    private FusedLocationProviderClient mFusedLocationClient;
     int i=0;
     int kmACET;
+    private LocationCallback mLocationCallback = new LocationCallback() {
 
+        @Override
+        public void onLocationResult(LocationResult locationResult) {
+            Location mLastLocation = locationResult.getLastLocation();
+//            latitudeTextView.setText("Latitude: " + mLastLocation.getLatitude() + "");
+//            longitTextView.setText("Longitude: " + mLastLocation.getLongitude() + "");
+        }
+    };
+    @SuppressLint("MissingPermission")
+    private void requestNewLocationData() {
+
+        // Initializing LocationRequest
+        // object with appropriate methods
+        LocationRequest mLocationRequest = new LocationRequest();
+        mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        mLocationRequest.setInterval(5);
+        mLocationRequest.setFastestInterval(0);
+        mLocationRequest.setNumUpdates(1);
+
+        // setting LocationRequest
+        // on FusedLocationClient
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
+        mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
+    }
     private final OnMapReadyCallback callback = new OnMapReadyCallback() {
         @Override
         public void onMapReady(@NonNull GoogleMap googleMap) {
@@ -91,9 +124,36 @@ public class MapsFragment extends Fragment implements Callback<GetDistanceRootRe
                 Toast.makeText(requireContext(), "Unable To Get Current Location", Toast.LENGTH_SHORT).show();
                 return;
             }
-            Location location=getCurrentLocation();
-            moveCamera(location);
             googleMap.setMyLocationEnabled(true);
+            googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+
+            mFusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
+                @Override
+                public void onComplete(@NonNull Task<Location> task) {
+                    Location location = task.getResult();
+                    if (location == null) {
+                        requestNewLocationData();
+                    } else {
+                        moveCamera(location);
+                        if(agencyInfo!=null){
+                            nearBy=new ArrayList<>();
+                            for(int i=0;i<agencyInfo.size();i++){
+                                GetAgencies.Data data=agencyInfo.get(i);
+                                nearBy.add(new LatLng(data.getLatitude(),data.getLongitude()));
+                            }
+                            if(location!=null){
+                                LatLng myLocation=new LatLng(location.getLatitude(),location.getLongitude());
+                                Log.d("myLocation","myLocation "+location.getLatitude()+" "+location.getLongitude());
+                                findNearbyAgency(myLocation,nearBy);
+                            }else{
+                                Toast.makeText(requireContext(), "Location is null", Toast.LENGTH_SHORT).show();
+                            }
+                        }else{
+                            Toast.makeText(requireContext(), "AgencyInformation Is Null", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            });
             googleMap.setOnMyLocationClickListener(new GoogleMap.OnMyLocationClickListener() {
                 @Override
                 public void onMyLocationClick(@NonNull Location location) {
@@ -103,23 +163,7 @@ public class MapsFragment extends Fragment implements Callback<GetDistanceRootRe
                 }
             });
 
-            if(agencyInfo!=null){
-                nearBy=new ArrayList<>();
-                for(int i=0;i<agencyInfo.size();i++){
-                    GetAgencies.Data data=agencyInfo.get(i);
-                    nearBy.add(new LatLng(data.getLatitude(),data.getLongitude()));
-                }
-//                PermissionClass.getMyLocation(requireActivity());
-                if(location!=null){
-                    LatLng myLocation=new LatLng(location.getLatitude(),location.getLongitude());
-                    Log.d("myLocation","myLocation "+location.getLatitude()+" "+location.getLongitude());
-                    findNearbyAgency(myLocation,nearBy);
-                }else{
-                    Toast.makeText(requireContext(), "Location is null", Toast.LENGTH_SHORT).show();
-                }
-            }else{
-                Toast.makeText(requireContext(), "AgencyInformation Is Null", Toast.LENGTH_SHORT).show();
-            }
+
 //            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latlang.get(latlang.size()-1),15));
 
             googleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
@@ -169,6 +213,7 @@ public class MapsFragment extends Fragment implements Callback<GetDistanceRootRe
         mapFragment =  (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         Bundle bundle=getArguments();
         sf=requireActivity().getSharedPreferences(Constant.SF_LAT_LONG_NAME, Context.MODE_PRIVATE);
+        mFusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
         assert getArguments() != null;
         assert bundle != null;
          categoryId=bundle.getString("categoryId",null);
