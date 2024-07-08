@@ -37,7 +37,7 @@
                 android:textSize="25dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:layout_marginLeft="70dp"
+                android:layout_marginLeft="60dp"
                 android:layout_marginTop="53dp" >
             </androidx.appcompat.widget.AppCompatTextView>
 
