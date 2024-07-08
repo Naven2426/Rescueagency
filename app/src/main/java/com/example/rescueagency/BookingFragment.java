@@ -217,7 +217,7 @@ public class BookingFragment extends Fragment {
                 FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
                 transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right,
                         R.anim.enter_from_right, R.anim.exit_to_left);
-                MapsFragment mapsFragment=new MapsFragment();
+                MapsFragment mapsFragment = new MapsFragment();
                 mapsFragment.setArguments(bundle);
                 transaction.replace(R.id.frameLayout, mapsFragment).addToBackStack("RescueTeamSelectionInMapFragment").commit();
 //                Intent intent=new Intent(requireContext(),MapsActivity.class);
@@ -263,9 +263,9 @@ public class BookingFragment extends Fragment {
             public void onResponse(@NonNull Call<SignUpResponse> call, @NonNull Response<SignUpResponse> response) {
                 if(response.isSuccessful()){
                     assert response.body() != null;
-                    FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-                    transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
-                    transaction.replace(R.id.frameLayout, new alertsentFragment()).commit();
+//                    FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
+//                    transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_left);
+//                    transaction.replace(R.id.frameLayout, new alertsentFragment()).commit();
                     Toast.makeText(requireContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -293,28 +293,17 @@ public class BookingFragment extends Fragment {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
         mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
     }
-    private boolean checkPermissions() {
-        return ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) ==
-                PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(requireContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
-    }
+
         // if location is enabled
-    private boolean isLocationEnabled() {
-        LocationManager locationManager = (LocationManager) requireActivity().getSystemService(Context.LOCATION_SERVICE);
-        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) || locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
-    }
+
     @SuppressLint("MissingPermission")
     private void getLastLocation() {
         // check if permissions are given
-        if (checkPermissions()) {
+        if (PermissionClass.checkLocationPermissions(requireContext())) {
 
             // check if location is enabled
-            if (isLocationEnabled()) {
+            if (PermissionClass.isLocationEnabled(requireContext())) {
 
-                // getting last
-                // location from
-                // FusedLocationClient
-                // object
                 mFusedLocationClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
                     @Override
                     public void onComplete(@NonNull Task<Location> task) {

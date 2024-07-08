@@ -24,7 +24,7 @@
                 android:id="@+id/idAgencyEmergencyReqDetailBackButIV"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
                 android:layout_marginTop="56dp"
                 android:src="@mipmap/backarrow"
                 app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +38,7 @@
                 android:layout_marginTop="52dp"
                 android:text="Emergency Request"
                 android:textColor="@color/black"
-                android:textSize="25dp"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toEndOf="@+id/idAgencyEmergencyReqDetailBackButIV"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -51,7 +51,7 @@
                 android:layout_marginTop="40dp"
                 android:text="Name :"
                 android:textColor="@color/black"
-                android:textSize="17dp"
+                android:textSize="17sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/idAgencyEmergencyReqDetailBackButIV" />
@@ -136,14 +136,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/appCompatEditText" />
 
             <androidx.viewpager.widget.ViewPager
-                android:id="@+id/showImagesVP"
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/idAgencyEmergencyReqDetailProof" />
 
+                android:id="@+id/showIncidentImages"
+                android:layout_width="336dp"
+                android:layout_height="123dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/idAgencyEmergencyReqDetailProof"
+
+            </androidx.viewpager.widget.ViewPager>
+          
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/idAgencyEmergencyReqDetailLocation"
                 android:layout_width="wrap_content"
@@ -154,7 +156,7 @@
                 android:textSize="17dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/showImagesVP">
+                app:layout_constraintTop_toBottomOf="@+id/showIncidentImages">
 
             </androidx.appcompat.widget.AppCompatTextView>
 

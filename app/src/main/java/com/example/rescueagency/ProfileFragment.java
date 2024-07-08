@@ -39,9 +39,6 @@ import retrofit2.Response;
 
 public class ProfileFragment extends Fragment {
 
-
-
-
     AppCompatButton updateButton;
     AppCompatButton changepassword;
     //imageview

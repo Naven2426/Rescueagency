@@ -2,22 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!--  Internet permissions  -->
+    <!-- Internet permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <!--  Location permissions  -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Location permissions -->
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <!--   Media and Storage permissions  -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- Media and Storage permissions -->
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
     <uses-permission android:name="android.permission.READ_MEDIA_VISUAL_USER_SELECTED" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
-    <!--   Camera permissions  -->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" /> <!-- Camera permissions -->
     <uses-feature android:name="android.hardware.camera.any" />
+
     <uses-permission android:name="android.permission.CAMERA" />
 
     <uses-feature
@@ -37,12 +35,6 @@
         android:theme="@style/Theme.Rescueagency"
         tools:targetApi="31">
 
-        <activity
-            android:name=".TakePhotoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ImagePreviewActivity"
-            android:exported="false" />
         <!--
              TODO: Before you run your application, you need a Google Maps API key.
 
@@ -56,8 +48,18 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyAl1GtFi8AASbb7VJ8Q-UK8gG-o1upmC7M" />
+            android:value="YOUR_API_KEY" />
 
+        <activity
+            android:name=".agency.SOSRequestRVFragment.FindRouteMapsActivity"
+            android:exported="false"
+            android:label="@string/title_activity_find_route_maps" />
+        <activity
+            android:name=".TakePhotoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ImagePreviewActivity"
+            android:exported="false" />
         <activity
             android:name=".admin.MarkLocationActivity"
             android:exported="false"
