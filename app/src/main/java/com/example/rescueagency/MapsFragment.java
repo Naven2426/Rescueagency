@@ -215,7 +215,7 @@ public class MapsFragment extends Fragment implements Callback<GetDistanceRootRe
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity());
         assert getArguments() != null;
         assert bundle != null;
-         categoryId=bundle.getString("categoryId",null);
+        categoryId=bundle.getString("categoryId",null);
         if(checkPermissions()) {
             if (isLocationEnabled()) {
                 if(categoryId!=null){
@@ -244,7 +244,7 @@ public class MapsFragment extends Fragment implements Callback<GetDistanceRootRe
         responseCall.enqueue(this);
     }
 
-  public void Onclick(){
+    public void Onclick(){
         binding.idMapBackReqBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -257,7 +257,7 @@ public class MapsFragment extends Fragment implements Callback<GetDistanceRootRe
             apiCallGetAgencies(categoryId);
         });
 
-  }
+    }
 
     private Location getCurrentLocation() {
         int permissionCheck = ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION);
@@ -271,35 +271,35 @@ public class MapsFragment extends Fragment implements Callback<GetDistanceRootRe
         return lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
     }
 
-  private void apiCallGetAgencies(String categoryId) {
+    private void apiCallGetAgencies(String categoryId) {
         binding.searchIcon.setClickable(false);
-      Call<GetAgencies> responseCall=RestClient.makeAPI().getAgencies(Integer.parseInt(categoryId),"LIVE");
-      responseCall.enqueue(new Callback<GetAgencies>() {
-          @Override
-          public void onResponse(@NonNull Call<GetAgencies> call, @NonNull Response<GetAgencies> response) {
-              if(response.isSuccessful()){
-                  agencyInfo=new ArrayList<>();
-                  assert response.body() != null;
-                  agencyInfo.addAll(response.body().getData());
-                  if (mapFragment != null) {
-                      mapFragment.getMapAsync(callback);
-                  }
-                  binding.searchIcon.setClickable(true);
-              }else{
-                  binding.searchIcon.setClickable(true);
-                  Toast.makeText(requireContext(), "Response "+response.isSuccessful(), Toast.LENGTH_SHORT).show();
-              }
-          }
+        Call<GetAgencies> responseCall=RestClient.makeAPI().getAgencies(Integer.parseInt(categoryId),"LIVE");
+        responseCall.enqueue(new Callback<GetAgencies>() {
+            @Override
+            public void onResponse(@NonNull Call<GetAgencies> call, @NonNull Response<GetAgencies> response) {
+                if(response.isSuccessful()){
+                    agencyInfo=new ArrayList<>();
+                    assert response.body() != null;
+                    agencyInfo.addAll(response.body().getData());
+                    if (mapFragment != null) {
+                        mapFragment.getMapAsync(callback);
+                    }
+                    binding.searchIcon.setClickable(true);
+                }else{
+                    binding.searchIcon.setClickable(true);
+                    Toast.makeText(requireContext(), "Response "+response.isSuccessful(), Toast.LENGTH_SHORT).show();
+                }
+            }
 
-          @SuppressLint("LongLogTag")
-          @Override
-          public void onFailure(@NonNull Call<GetAgencies> call, @NonNull Throwable t) {
-              binding.searchIcon.setClickable(true);
-              Log.e("onFailureGetAgenciesApiCall","onFailureGetAgenciesApiCall "+t.getMessage());
-              Toast.makeText(requireContext(), "Response "+t.getMessage(), Toast.LENGTH_SHORT).show();
-          }
-      });
-  }
+            @SuppressLint("LongLogTag")
+            @Override
+            public void onFailure(@NonNull Call<GetAgencies> call, @NonNull Throwable t) {
+                binding.searchIcon.setClickable(true);
+                Log.e("onFailureGetAgenciesApiCall","onFailureGetAgenciesApiCall "+t.getMessage());
+                Toast.makeText(requireContext(), "Response "+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
     private double getDouble(String str) {
         StringBuilder s=new StringBuilder();
         if(!str.isEmpty())
