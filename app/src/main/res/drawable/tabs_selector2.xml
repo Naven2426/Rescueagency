@@ -1,12 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true">
+    <!-- Selected state for the "Accepted" tab -->
+    <item android:state_selected="true" android:state_enabled="true">
         <shape android:shape="rectangle">
             <solid android:color="@color/green" />
             <corners android:radius="5dp" />
         </shape>
     </item>
-    <item android:state_selected="false">
+    <!-- Selected state for the "Rejected" tab -->
+    <item android:state_selected="true" android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/red" />
+            <corners android:radius="5dp" />
+        </shape>
+    </item>
+    <!-- Default state -->
+    <item>
         <shape android:shape="rectangle">
             <solid android:color="@android:color/white" />
             <corners android:radius="0dp" />
