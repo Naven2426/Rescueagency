@@ -11,6 +11,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,8 @@ import com.example.rescueagency.MainActivity;
 import com.example.rescueagency.R;
 import com.example.rescueagency.RestClient;
 import com.example.rescueagency.agency.SOSRequestRVFragment.FindRouteMapsActivity;
+import com.example.rescueagency.apiresponse.CommonResponse;
+import com.example.rescueagency.apiresponse.SignUpResponse;
 import com.example.rescueagency.apiresponse.getnewemergencyrequestinfo.Agent;
 import com.example.rescueagency.apiresponse.getnewemergencyrequestinfo.GetNewEmergencyRequestRootClass;
 import com.example.rescueagency.apiresponse.getnewemergencyrequestinfo.IncidentInformation;
@@ -49,6 +52,7 @@ public class AgencyEmergencyRequestDetailFragment extends Fragment {
 
     FragmentAgencyEmergencyRequestDetailBinding binding;
     Double latitude, longitude;
+    String requestId;
     private final OnMapReadyCallback callback = new OnMapReadyCallback() {
 
         @Override
@@ -69,13 +73,12 @@ public class AgencyEmergencyRequestDetailFragment extends Fragment {
             });
         }
     };
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentAgencyEmergencyRequestDetailBinding.inflate(inflater, container, false);
         Click();
-        String requestId = getArguments().getString("requestId");
+         requestId = getArguments().getString("requestId");
         getEmergencyAlertMessage(requestId);
         SupportMapFragment mapFragment =  (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         if (mapFragment != null) {
@@ -95,6 +98,29 @@ public class AgencyEmergencyRequestDetailFragment extends Fragment {
                 // Navigate back to the previous fragment
                 FragmentManager transaction = requireActivity().getSupportFragmentManager();
                 transaction.popBackStack();
+            }
+        });
+        binding.acceptRequestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateStatusApi(requestId,"ONGOING");
+            }
+        });
+    }
+    private void updateStatusApi(String requestId,String status){
+        Call<CommonResponse> responseCall = RestClient.makeAPI().updateRequest(requestId,status);
+        responseCall.enqueue(new Callback<CommonResponse>() {
+            @Override
+            public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {
+                if(response.isSuccessful()){
+                    Toast.makeText(requireContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<CommonResponse> call, Throwable t) {
+                Toast.makeText(requireContext(), "onFailure "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d("TAG", "onFailure: "+t.getMessage());
             }
         });
     }
