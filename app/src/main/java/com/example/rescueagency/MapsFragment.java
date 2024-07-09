@@ -273,7 +273,7 @@ public class MapsFragment extends Fragment implements Callback<GetDistanceRootRe
 
   private void apiCallGetAgencies(String categoryId) {
         binding.searchIcon.setClickable(false);
-      Call<GetAgencies> responseCall=RestClient.makeAPI().getAgencies(Integer.parseInt(categoryId));
+      Call<GetAgencies> responseCall=RestClient.makeAPI().getAgencies(Integer.parseInt(categoryId),"LIVE");
       responseCall.enqueue(new Callback<GetAgencies>() {
           @Override
           public void onResponse(@NonNull Call<GetAgencies> call, @NonNull Response<GetAgencies> response) {

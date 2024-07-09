@@ -1,5 +1,6 @@
 package com.example.rescueagency;
 
+import com.example.rescueagency.apiresponse.CommonResponse;
 import com.example.rescueagency.apiresponse.GetAgencies;
 import com.example.rescueagency.apiresponse.GetCategoryResponse;
 import com.example.rescueagency.apiresponse.SignUpResponse;
@@ -84,8 +85,10 @@ public interface MYAPI {
                                         @Part("password")RequestBody password,
                                         @Part("user_type")RequestBody user_type,@Part("latitude")RequestBody latitude,
                                         @Part("longitude")RequestBody longitude,@Part("category_id")int categoryId);
+
+
     @GET("/use/get_agency")
-    Call<GetAgencies> getAgencies(@Query("category_id")int agentID);
+    Call<GetAgencies> getAgencies(@Query("category_id")int agentID,@Query("agent_status")String agencyStatus);
     @Multipart
     @POST("use/new_request")
     Call<SignUpResponse> newRequest(@Part("agent_id")RequestBody agencyId,@Part("agency_name")RequestBody agentName,
@@ -98,6 +101,12 @@ public interface MYAPI {
     Call<GetNewEmergencyRequestRootClass> getRequestInfo(@Query("request_id")String requestId);
     @GET("/use/get_new_emergency_request")
     Call<NewRequestRootClass> getRequest(@Query("agency_id")String agentId);
+
+    @GET("/use/update_request")
+    retrofit2.Call<CommonResponse> updateRequest(@Query("request_id")String requestId, @Query("status")String status);
+
+
+
     /* Google Map API */
     // get distance and duration
     @GET("distancematrix/json")

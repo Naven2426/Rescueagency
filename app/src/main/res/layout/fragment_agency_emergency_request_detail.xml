@@ -187,7 +187,7 @@
             </androidx.appcompat.widget.AppCompatButton>
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/appCompatButton"
+                android:id="@+id/acceptRequestButton"
                 android:layout_width="339dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
@@ -211,7 +211,7 @@
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/appCompatButton">
+                app:layout_constraintTop_toBottomOf="@+id/acceptRequestButton">
 
             </androidx.appcompat.widget.AppCompatButton>
 
