@@ -52,7 +52,6 @@ public class AgencyHomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentAgencyHomeBinding.inflate(inflater, container, false);
-        click();
         sf = requireActivity().getSharedPreferences(Constant.SF_NAME, Context.MODE_PRIVATE);
         agentId = sf.getString(Constant.SF_USERID, "");
         MainActivity mainActivity=(MainActivity) getActivity();
@@ -104,17 +103,7 @@ public class AgencyHomeFragment extends Fragment {
             }
         });
     }
-    private void click(){
-        binding.idChatIV.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frameLayout, new AgencyNotificationFragment());
-                transaction.addToBackStack(null);
-                transaction.commit();
-            }
-        });
-    }
+
 
     private void recycle(List<AgencySOSReqList> data){
         binding.idHomeSOSReqListRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));

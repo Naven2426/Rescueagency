@@ -85,7 +85,7 @@ public interface MYAPI {
                                         @Part("user_type")RequestBody user_type,@Part("latitude")RequestBody latitude,
                                         @Part("longitude")RequestBody longitude,@Part("category_id")int categoryId);
     @GET("/use/get_agency")
-    Call<GetAgencies> getAgencies(@Query("category_id")int agentID);
+    Call<GetAgencies> getAgencies(@Query("category_id")int agentID,@Query("agent_status")String agencyStatus);
     @Multipart
     @POST("use/new_request")
     Call<SignUpResponse> newRequest(@Part("agent_id")RequestBody agencyId,@Part("agency_name")RequestBody agentName,
