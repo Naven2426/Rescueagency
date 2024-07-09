@@ -184,6 +184,7 @@ public class BottomSheet extends BottomSheetDialogFragment {
             public void onFailure (@NonNull Call <AgencyInfoRoot> call, @NonNull Throwable t){
                 try {
                     Toast.makeText(getContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                    Log.e("Error", t.getMessage());
                 }catch (Exception e){
                     e.printStackTrace();
                 }

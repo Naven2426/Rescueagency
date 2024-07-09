@@ -62,7 +62,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class BookingFragment extends Fragment {
+public class    BookingFragment extends Fragment {
     FragmentBookingBinding binding;
 
     private static ImagePreviewAdapter imagePreviewAdapter;
