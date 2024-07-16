@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 
@@ -11,6 +12,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,7 +35,9 @@ import com.example.rescueagency.apiresponse.getnewemergencyrequestinfo.GetNewEme
 import com.example.rescueagency.apiresponse.getnewemergencyrequestinfo.IncidentInformation;
 import com.example.rescueagency.apiresponse.getnewemergencyrequestinfo.Result;
 import com.example.rescueagency.apiresponse.getnewemergencyrequestinfo.User;
+import com.example.rescueagency.check_status_fragment.RequestHistoryFragment;
 import com.example.rescueagency.databinding.FragmentAgencyEmergencyRequestDetailBinding;
+import com.example.rescueagency.main_menu_fragments.HomeFragment;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -78,7 +82,7 @@ public class AgencyEmergencyRequestDetailFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentAgencyEmergencyRequestDetailBinding.inflate(inflater, container, false);
         Click();
-         requestId = getArguments().getString("requestId");
+        requestId = getArguments().getString("requestId");
         getEmergencyAlertMessage(requestId);
         SupportMapFragment mapFragment =  (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
         if (mapFragment != null) {
@@ -103,35 +107,58 @@ public class AgencyEmergencyRequestDetailFragment extends Fragment {
         binding.acceptRequestButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateStatusApi(requestId,"ONGOING");
+                updateStatusApi(requestId,"ONGOING", new Runnable() {
+                    @Override
+                    public void run() {
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frameLayout, new AgencyRequestHistoryFragment()).commit();
+                    }
+                });
+            }
+        });
+        binding.rejectRequestButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                updateStatusApi(requestId,"REJECTED", new Runnable() {
+                    @Override
+                    public void run() {
+                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        transaction.replace(R.id.frameLayout, new AgencyRequestHistoryFragment()).commit();
+                    }
+                });
             }
         });
     }
-    private void updateStatusApi(String requestId,String status){
-        Call<CommonResponse> responseCall = RestClient.makeAPI().updateRequest(requestId,status);
+
+    private void updateStatusApi(String requestId, String status, final Runnable onSuccess) {
+        Call<CommonResponse> responseCall = RestClient.makeAPI().updateRequest(requestId, status);
         responseCall.enqueue(new Callback<CommonResponse>() {
             @Override
             public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful() && response.body() != null) {
                     Toast.makeText(requireContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    // Delay the fragment transaction to show the status update message
+                    new Handler().postDelayed(onSuccess, 2000); // 2 seconds delay
+                } else {
+                    Toast.makeText(requireContext(), "Error: " + (response.body() != null ? response.body().getMessage() : response.message()), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<CommonResponse> call, Throwable t) {
-                Toast.makeText(requireContext(), "onFailure "+t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.d("TAG", "onFailure: "+t.getMessage());
+                Toast.makeText(requireContext(), "onFailure " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.d("TAG", "onFailure: " + t.getMessage());
             }
         });
     }
-    private void getEmergencyAlertMessage(String requestId){
-        Call<GetNewEmergencyRequestRootClass> responseCall= RestClient.makeAPI().getRequestInfo(requestId);
+
+    private void getEmergencyAlertMessage(String requestId) {
+        Call<GetNewEmergencyRequestRootClass> responseCall = RestClient.makeAPI().getRequestInfo(requestId);
         responseCall.enqueue(new Callback<GetNewEmergencyRequestRootClass>() {
             @Override
             public void onResponse(@NonNull Call<GetNewEmergencyRequestRootClass> call, @NonNull Response<GetNewEmergencyRequestRootClass> response) {
-                if(response.isSuccessful()){
-                    assert response.body() != null;
-                    if(response.body().getStatus()==200){
+                if (response.isSuccessful() && response.body() != null) {
+                    if (response.body().getStatus() == 200) {
                         Result result = response.body().getResult();
                         User user = result.getUser();
                         IncidentInformation info = result.getIncident_information();
@@ -142,20 +169,21 @@ public class AgencyEmergencyRequestDetailFragment extends Fragment {
                         binding.idAgencyEmergencyReqDetailDateTV.setText(info.getDate());
                         binding.idAgencyEmergencyReqDetailDescribe.setText(info.getDescribe_incident());
                         binding.showIncidentImages.setAdapter(new ImagePreviewAdapter(info.getIncident_images(), requireContext()));
-                    }else{
-                        Toast.makeText(requireContext(),response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(requireContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     }
-                }else{
-                    Toast.makeText(requireContext(), "Error "+response.message(), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(requireContext(), "Error " + response.message(), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(@NonNull Call<GetNewEmergencyRequestRootClass> call, @NonNull Throwable t) {
-                Toast.makeText(requireContext(), "onFailure "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "onFailure " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
     public static class ImagePreviewAdapter extends PagerAdapter {
 
         List<String> uris;
@@ -172,6 +200,7 @@ public class AgencyEmergencyRequestDetailFragment extends Fragment {
         public int getCount() {
             return uris.size();
         }
+
         @NonNull
         @Override
         public Object instantiateItem(@NonNull ViewGroup container, final int position) {
@@ -189,16 +218,15 @@ public class AgencyEmergencyRequestDetailFragment extends Fragment {
 
             return itemView;
         }
+
         @Override
         public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
             return view == ((LinearLayout) object);
         }
+
         @Override
         public void destroyItem(ViewGroup container, int position, @NonNull Object object) {
-
             container.removeView((LinearLayout) object);
         }
     }
-
-
 }

@@ -202,6 +202,7 @@
             </androidx.appcompat.widget.AppCompatButton>
 
             <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/rejectRequestButton"
                 android:layout_width="339dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
