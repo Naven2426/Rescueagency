@@ -147,15 +147,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/appCompatEditText" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
                 android:layout_width="336dp"
                 android:layout_height="123dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/idAgencyEmergencyReqDetailProof">
-
-            </androidx.recyclerview.widget.RecyclerView>
+                app:layout_constraintTop_toBottomOf="@+id/idAgencyEmergencyReqDetailProof"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/idAgencyEmergencyReqDetailLocation"
@@ -167,7 +165,7 @@
                 android:textSize="17dp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/recyclerView">
+                app:layout_constraintTop_toBottomOf="@+id/viewPager">
 
             </androidx.appcompat.widget.AppCompatTextView>
 

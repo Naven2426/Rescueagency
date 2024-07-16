@@ -1,5 +1,6 @@
 package com.example.rescueagency.agency.AgencyReqHistoryList;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,8 +33,7 @@ public class AgencyReqHistoryListHolder extends RecyclerView.Adapter<AgencyReqHi
     @NonNull
     @Override
     public AgencyReqHistoryListHolder.MyAgencyReqHistoryListHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(activity).inflate(R.layout.agency_req_approved_list,
-                parent, false);
+        View view = LayoutInflater.from(activity).inflate(R.layout.agency_req_approved_list, parent, false);
         return new MyAgencyReqHistoryListHolder(view);
     }
 
@@ -45,9 +45,12 @@ public class AgencyReqHistoryListHolder extends RecyclerView.Adapter<AgencyReqHi
         holder.img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(activity,AgencyReqHistoryList.getImage(), Toast.LENGTH_SHORT).show();
                 FragmentTransaction transaction=activity.getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.frameLayout,new AgencyStatusUpdateFragment());
+                AgencyStatusUpdateFragment agencyStatusUpdateFragment=new AgencyStatusUpdateFragment();
+                Bundle bundle=new Bundle();
+                bundle.putString("requestId",agencyReqHistoryList.getRequestId());
+                agencyStatusUpdateFragment.setArguments(bundle);
+                transaction.replace(R.id.frameLayout,agencyStatusUpdateFragment);
                 transaction.addToBackStack("AgencyStatusUpdateFragment").commit();
             }
         });
@@ -59,7 +62,7 @@ public class AgencyReqHistoryListHolder extends RecyclerView.Adapter<AgencyReqHi
     @Override
     public int getItemCount() {return list.size();}
 
-    public class MyAgencyReqHistoryListHolder extends RecyclerView.ViewHolder {
+    public static class MyAgencyReqHistoryListHolder extends RecyclerView.ViewHolder {
         CardView cardView;
         CardView statusID;
         TextView status;
