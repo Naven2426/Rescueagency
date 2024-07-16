@@ -55,13 +55,14 @@ public class CheckStatusListHolder extends RecyclerView.Adapter<CheckStatusListH
             holder.track_agency.setVisibility(View.VISIBLE);
             holder.imageView.setVisibility(View.VISIBLE);
         }
-        Glide.with(activity).load(data.getImage()).placeholder(R.mipmap.chat)
-                .error(R.mipmap.chat).into(holder.imageView);
+//        Glide.with(activity).load(data.getImage()).placeholder(R.mipmap.chat).error(R.mipmap.chat).into(holder.imageView);
         holder.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(activity, data.getStatus(), Toast.LENGTH_SHORT).show();
-                activity.startActivity(new Intent(activity, UserAgencyChatActivity.class));
+                Toast.makeText(activity, data.getRoomId(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(activity, UserAgencyChatActivity.class);
+                intent.putExtra("roomId",data.getRoomId());
+                activity.startActivity(intent);
 
             }
         });
@@ -78,7 +79,7 @@ public class CheckStatusListHolder extends RecyclerView.Adapter<CheckStatusListH
     @Override
     public int getItemCount() {return list.size();}
 
-    public class MyCheckStatusListHolder extends RecyclerView.ViewHolder {
+    public static class MyCheckStatusListHolder extends RecyclerView.ViewHolder {
 
         AppCompatTextView textstatus;
         AppCompatTextView textstatus_name;

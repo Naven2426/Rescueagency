@@ -2,6 +2,7 @@ package com.example.rescueagency;
 
 public class Constant {
 
+
     public static final String BASE_URL                     = "https://a039-106-222-222-48.ngrok-free.app";
     public static final String MAP_BASE_URL                 = "https://maps.googleapis.com/maps/api/";
     public static final String KEY                          = "AIzaSyALLPYvuPjitBzGcIkUTQ1E1738lWR-iDo";

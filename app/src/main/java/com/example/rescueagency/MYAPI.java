@@ -6,6 +6,7 @@ import com.example.rescueagency.apiresponse.GetCategoryResponse;
 import com.example.rescueagency.apiresponse.SignUpResponse;
 import com.example.rescueagency.apiresponse.UpdateProfile;
 import com.example.rescueagency.apiresponse.agencyinfo.AgencyInfoRoot;
+import com.example.rescueagency.apiresponse.checkstatus.CheckStatusResponseRootClass;
 import com.example.rescueagency.apiresponse.getnewemergencyrequestinfo.GetNewEmergencyRequestRootClass;
 import com.example.rescueagency.apiresponse.map.GoogleMapResponse;
 import com.example.rescueagency.apiresponse.map.getcurrentlocation.CurrentLocationRootClass;
@@ -100,12 +101,13 @@ public interface MYAPI {
     @GET("/use/get_request_info")
     Call<GetNewEmergencyRequestRootClass> getRequestInfo(@Query("request_id")String requestId);
     @GET("/use/get_new_emergency_request")
-    Call<NewRequestRootClass> getRequest(@Query("agency_id")String agentId);
+    Call<NewRequestRootClass> getRequest(@Query("agency_id")String agentId,@Query("request_status")String requestStatus);
 
     @GET("/use/update_request")
-    retrofit2.Call<CommonResponse> updateRequest(@Query("request_id")String requestId, @Query("status")String status);
+    Call<CommonResponse> updateRequest(@Query("request_id")String requestId, @Query("status")String status);
 
-
+    @GET("/use/check_status")
+    Call<CheckStatusResponseRootClass> checkStatus(@Query("user_id")String user_id);
 
     /* Google Map API */
     // get distance and duration

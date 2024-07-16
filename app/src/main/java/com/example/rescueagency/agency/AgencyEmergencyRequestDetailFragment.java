@@ -168,9 +168,13 @@ public class AgencyEmergencyRequestDetailFragment extends Fragment {
                         binding.idAgencyEmergencyReqDetailName.setText(user.getUser_name());
                         binding.idAgencyEmergencyReqDetailDateTV.setText(info.getDate());
                         binding.idAgencyEmergencyReqDetailDescribe.setText(info.getDescribe_incident());
-                        binding.showIncidentImages.setAdapter(new ImagePreviewAdapter(info.getIncident_images(), requireContext()));
-                    } else {
-                        Toast.makeText(requireContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                        try {
+                            binding.showIncidentImages.setAdapter(new ImagePreviewAdapter(info.getIncident_images(), requireContext()));
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }else{
+                        Toast.makeText(requireContext(),response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(requireContext(), "Error " + response.message(), Toast.LENGTH_SHORT).show();

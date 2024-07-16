@@ -106,11 +106,15 @@ public class AgencyHomeFragment extends Fragment {
 
 
     private void recycle(List<AgencySOSReqList> data){
-        binding.idHomeSOSReqListRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
-        binding.idHomeSOSReqListRecyclerView.setAdapter(new AgencySOSReqListHolder(data, requireActivity()));
+        try{
+            binding.idHomeSOSReqListRecyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
+            binding.idHomeSOSReqListRecyclerView.setAdapter(new AgencySOSReqListHolder(data, requireActivity()));
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
     private void getNewRequest(String agentId){
-        Call<NewRequestRootClass> responseCall= RestClient.makeAPI().getRequest(agentId);
+        Call<NewRequestRootClass> responseCall= RestClient.makeAPI().getRequest(agentId,"NEW");
         responseCall.enqueue(new Callback<NewRequestRootClass>() {
             @Override
             public void onResponse(@NonNull Call<NewRequestRootClass> call, @NonNull Response<NewRequestRootClass> response) {
@@ -123,8 +127,12 @@ public class AgencyHomeFragment extends Fragment {
                     }
                     recycle(list);
                     tabLayout();
+                    try{
+
+                    }catch (Exception e){
+                        Toast.makeText(requireContext(), "Success "+response.body().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
                     assert response.body() != null;
-                    Toast.makeText(requireContext(), "Success "+response.body().getMessage(), Toast.LENGTH_SHORT).show();
                 }else{
                     Toast.makeText(requireContext(), "Error "+response.message(), Toast.LENGTH_SHORT).show();
                 }
