@@ -146,7 +146,7 @@ public class    BookingFragment extends Fragment {
 
         TakePhotoActivity.fragment=requireContext();
 
-        imagePreviewAdapter=new ImagePreviewAdapter(uriImages,requireContext());
+        imagePreviewAdapter = new ImagePreviewAdapter(uriImages,requireContext());
         binding.showImagesVP.setAdapter(imagePreviewAdapter);
         mainActivity.findViewById(R.id.bottomNavigationView).setVisibility(View.GONE);
         return binding.getRoot();
