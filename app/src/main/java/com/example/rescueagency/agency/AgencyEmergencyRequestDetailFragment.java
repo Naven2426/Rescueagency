@@ -5,12 +5,10 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.PagerAdapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -29,21 +27,16 @@ import com.example.rescueagency.R;
 import com.example.rescueagency.RestClient;
 import com.example.rescueagency.agency.SOSRequestRVFragment.FindRouteMapsActivity;
 import com.example.rescueagency.apiresponse.CommonResponse;
-import com.example.rescueagency.apiresponse.SignUpResponse;
 import com.example.rescueagency.apiresponse.getnewemergencyrequestinfo.Agent;
 import com.example.rescueagency.apiresponse.getnewemergencyrequestinfo.GetNewEmergencyRequestRootClass;
 import com.example.rescueagency.apiresponse.getnewemergencyrequestinfo.IncidentInformation;
 import com.example.rescueagency.apiresponse.getnewemergencyrequestinfo.Result;
 import com.example.rescueagency.apiresponse.getnewemergencyrequestinfo.User;
-import com.example.rescueagency.check_status_fragment.RequestHistoryFragment;
 import com.example.rescueagency.databinding.FragmentAgencyEmergencyRequestDetailBinding;
-import com.example.rescueagency.main_menu_fragments.HomeFragment;
-import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
 import java.util.Objects;
@@ -88,8 +81,9 @@ public class AgencyEmergencyRequestDetailFragment extends Fragment {
         if (mapFragment != null) {
             mapFragment.getMapAsync(callback);
         }
-        MainActivity mainActivity=(MainActivity) getActivity();
+        MainActivity mainActivity = (MainActivity) getActivity();
         Animation Animation = AnimationUtils.loadAnimation(getContext(), R.anim.hide_bottom_navigation);
+        assert mainActivity != null;
         mainActivity.findViewById(R.id.bottomNavigationView).startAnimation(Animation);
         mainActivity.findViewById(R.id.bottomNavigationView).setVisibility(View.GONE);
         return binding.getRoot();
@@ -110,7 +104,7 @@ public class AgencyEmergencyRequestDetailFragment extends Fragment {
                 updateStatusApi(requestId,"ONGOING", new Runnable() {
                     @Override
                     public void run() {
-                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frameLayout, new AgencyRequestHistoryFragment()).commit();
                     }
                 });
@@ -122,7 +116,7 @@ public class AgencyEmergencyRequestDetailFragment extends Fragment {
                 updateStatusApi(requestId,"REJECTED", new Runnable() {
                     @Override
                     public void run() {
-                        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                        FragmentTransaction transaction = requireActivity().getSupportFragmentManager().beginTransaction();
                         transaction.replace(R.id.frameLayout, new AgencyRequestHistoryFragment()).commit();
                     }
                 });
@@ -134,7 +128,7 @@ public class AgencyEmergencyRequestDetailFragment extends Fragment {
         Call<CommonResponse> responseCall = RestClient.makeAPI().updateRequest(requestId, status);
         responseCall.enqueue(new Callback<CommonResponse>() {
             @Override
-            public void onResponse(Call<CommonResponse> call, Response<CommonResponse> response) {
+            public void onResponse(@NonNull Call<CommonResponse> call, @NonNull Response<CommonResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     Toast.makeText(requireContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
                     // Delay the fragment transaction to show the status update message
@@ -145,7 +139,7 @@ public class AgencyEmergencyRequestDetailFragment extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<CommonResponse> call, Throwable t) {
+            public void onFailure(@NonNull Call<CommonResponse> call, @NonNull Throwable t) {
                 Toast.makeText(requireContext(), "onFailure " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.d("TAG", "onFailure: " + t.getMessage());
             }
