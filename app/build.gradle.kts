@@ -75,4 +75,9 @@ dependencies {
         exclude(group = "org.json", module = "json")
     }
 
+    //duplicate avoider
+//    implementation ("com.thebluealliance:spectrum:0.7.1")
+//    implementation ("com.karumi:dexter:6.2.3")
+//    implementation ("com.github.QuadFlask:colorpicker:0.0.15")
+
 }

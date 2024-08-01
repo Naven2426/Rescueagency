@@ -24,6 +24,7 @@ import com.example.rescueagency.apiresponse.checkstatus.CheckStatusResponseRootC
 import com.example.rescueagency.apiresponse.checkstatus.Data;
 import com.example.rescueagency.apiresponse.checkstatus.IncidentInformation;
 import com.example.rescueagency.apiresponse.checkstatus.User;
+import com.example.rescueagency.apiresponse.oldrequest.OldRequestRootClass;
 import com.example.rescueagency.databinding.FragmentRequestHistoryBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabItem;
@@ -44,6 +45,7 @@ public class RequestHistoryFragment extends Fragment {
     List<CheckStatusList> data = new ArrayList<>();
 
     SharedPreferences sf;
+    String userId;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -52,8 +54,8 @@ public class RequestHistoryFragment extends Fragment {
 //        setupRecyclerView(data);
         tabLayout();
         sf = requireActivity().getSharedPreferences(Constant.SF_NAME , Context.MODE_PRIVATE);
-        String userId=sf.getString(Constant.SF_USERID,"");
-        checkStatusApi(userId);
+         userId=sf.getString(Constant.SF_USERID,"");
+
         MainActivity mainActivity=(MainActivity) getActivity();
         BottomNavigationView bottomNavigationView = mainActivity.findViewById(R.id.bottomNavigationView);
         if(bottomNavigationView.getVisibility()==View.GONE){
@@ -66,11 +68,13 @@ public class RequestHistoryFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 if(tab.getPosition() == 0){
-                    List<CheckStatusList> data = new ArrayList<>();
-
+                    checkStatusApi(userId);
+                    Toast.makeText(requireContext(), "check status", Toast.LENGTH_SHORT).show();
                 }else{
-                    List<CheckStatusList> data = new ArrayList<>();
+                    oldRequestApi(userId);
+                    Toast.makeText(requireContext(), "history", Toast.LENGTH_SHORT).show();
                 }
+
             }
 
             @Override
@@ -81,6 +85,28 @@ public class RequestHistoryFragment extends Fragment {
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
 
+            }
+        });
+    }
+    private void oldRequestApi(String userId){
+        Call<OldRequestRootClass> response= RestClient.makeAPI().oldRequest(userId);
+        response.enqueue(new Callback<OldRequestRootClass>() {
+            @Override
+            public void onResponse(@NonNull Call<OldRequestRootClass> call, @NonNull Response<OldRequestRootClass> response) {
+                if(response.isSuccessful()){
+                    OldRequestRootClass checkStatusResponseRootClass=response.body();
+                    List<CheckStatusList> data = new ArrayList<>();
+                    
+                    setupRecyclerView(data);
+                }else{
+                    Toast.makeText(requireContext(), "response not successful", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<OldRequestRootClass> call, @NonNull Throwable t) {
+                Log.e("error",t.getMessage());
+                Toast.makeText(requireContext(), "Something went wrong "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -95,11 +121,11 @@ public class RequestHistoryFragment extends Fragment {
                     assert checkStatusResponseRootClass != null;
                     for(Data data1:checkStatusResponseRootClass.getData()){
                         IncidentInformation incidentInfo=data1.getIncident_information();
-                        Agent agent= data1.getAgent();
-                        User user=data1.getUser();
+                        Agent agent = data1.getAgent();
+                        User user = data1.getUser();
                         data.add(new CheckStatusList(""+incidentInfo.getRoom_id(),incidentInfo.getStatus(),incidentInfo.getDescribe_incident(),incidentInfo.getDate(),""+incidentInfo.getRequest_id()));
-                        setupRecyclerView(data);
                     }
+                    setupRecyclerView(data);
                 }else{
                     Toast.makeText(requireContext(), "response not successful", Toast.LENGTH_SHORT).show();
                 }
